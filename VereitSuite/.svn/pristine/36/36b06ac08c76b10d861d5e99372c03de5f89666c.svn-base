@@ -1,0 +1,150 @@
+!|Scenario           |Verify horizantal bar                                          |horizantalName|Horizantal Bar|
+|variable            |verifyelement                                                  |equals to                    |
+|verify page contains|//a[@class='gwt-Anchor' and contains(text(),'@horizantalName')]|Element                      |
+|assert              |{$verifyelement}                                               |true                         |
+
+
+!|Scenario            |search student with studentid|searchid                                            |
+|type                 |@searchid                    |into|{$DASHBOARDPAGE.SearchSudentIDfield}|text field|
+|click                |{$DASHBOARDPAGE.Searchfield}                                                      |
+|click                |{$SEARCHRESULTPAGE.Viewprofilefield}                                              |
+|Verify horizantal bar|TouchPoints                  |Horizantal Bar                                      |
+|click                |{$STUDENTPROFILEDASHBOARDPAGE.touchpointfield}                                    |
+|pause  execution  for|2                            |seconds                                             |
+
+
+!|Scenario            |add student touchpoint with touchpoint type|touchpointdropdown|and scheduled date                                            |scheduleddate|and scheduled time|scheduledtime|and am pm|ampm|and comment|comment|
+|variable             |touchpointaddfieldPresent                  |equals  to                                                                                                                                                         |
+|wait  for  element   |{$STUDENTPROFILEDASHBOARDPAGE.touchpointaddfield}                                                                                                                                                              |
+|assert true          |{$touchpointaddfieldPresent}                                                                                                                                                                                   |
+|log result           |{$touchpointaddfieldPresent}               |with comment      |add button is present                                         |in page      |student profile add touchpoint page                                |
+|click                |{$STUDENTPROFILEDASHBOARDPAGE.touchpointaddfield}                                                                                                                                                              |
+|variable             |touchpointdropdownfieldPresent             |equals  to                                                                                                                                                         |
+|wait  for  element   |{$STUDENTPROFILEADDTOUCHPOINT.addtouchpointdropdownfield}                                                                                                                                                      |
+|assert true          |{$touchpointdropdownfieldPresent}                                                                                                                                                                              |
+|log result           |{$touchpointdropdownfieldPresent}          |with comment      |select touchpoint dropdown is present                         |in page      |student profile add touchpoint page                                |
+|select               |@touchpointdropdown                        |from              |{$STUDENTPROFILEADDTOUCHPOINT.addtouchpointdropdownfield}                                                                                       |
+|pause  execution  for|5                                          |seconds                                                                                                                                                            |
+|variable             |touchpointscheduleddatefieldPresent        |equals  to                                                                                                                                                         |
+|wait  for  element   |{$STUDENTPROFILEADDTOUCHPOINT.addtouchpointscheduleddatefield}                                                                                                                                                 |
+|assert true          |{$touchpointscheduleddatefieldPresent}                                                                                                                                                                         |
+|log result           |{$touchpointscheduleddatefieldPresent}     |with comment      |scheduled date is present                                     |in page      |student profile add touchpoint page                                |
+|pause  execution  for|5                                          |seconds                                                                                                                                                            |
+|double  click  on    |{$STUDENTPROFILEADDTOUCHPOINT.addtouchpointscheduleddatefield}                                                                                                                                                 |
+|pause  execution  for|1                                          |seconds                                                                                                                                                            |
+|type                 |@scheduleddate                             |into              |{$STUDENTPROFILEADDTOUCHPOINT.addtouchpointscheduleddatefield}|text field                                                                       |
+|pause  execution  for|1                                          |seconds                                                                                                                                                            |
+|press                |TAB                                        |key                                                                                                                                                                |
+|variable             |touchpointscheduledtimefieldPresent        |equals  to                                                                                                                                                         |
+|wait  for  element   |{$STUDENTPROFILEADDTOUCHPOINT.addtouchpointscheduledtimefield}                                                                                                                                                 |
+|assert true          |{$touchpointscheduledtimefieldPresent}                                                                                                                                                                         |
+|log result           |{$touchpointscheduledtimefieldPresent}     |with comment      |select scheduled time is present                              |in page      |student profile add touchpoint page                                |
+|select               |@scheduledtime                             |from              |{$STUDENTPROFILEADDTOUCHPOINT.addtouchpointscheduledtimefield}                                                                                  |
+|variable             |touchpointscheduledtimeampmfieldPresent    |equals  to                                                                                                                                                         |
+|wait  for  element   |{$STUDENTPROFILEADDTOUCHPOINT.addtouchpointscheduledtimeampmfield}                                                                                                                                             |
+|assert true          |{$touchpointscheduledtimeampmfieldPresent}                                                                                                                                                                     |
+|log result           |{$touchpointscheduledtimeampmfieldPresent} |with comment      |select scheduled time am pm is present                        |in page      |student profile add touchpoint page                                |
+|select               |@ampm                                      |from              |{$STUDENTPROFILEADDTOUCHPOINT.addtouchpointscheduledtimeampmfield}                                                                              |
+|variable             |touchpointcommentfieldPresent              |equals  to                                                                                                                                                         |
+|wait  for  element   |{$STUDENTPROFILEADDTOUCHPOINT.addtouchpointcommentfield}                                                                                                                                                       |
+|assert true          |{$touchpointcommentfieldPresent}                                                                                                                                                                               |
+|log result           |{$touchpointcommentfieldPresent}           |with comment      |comment field is present                                      |in page      |student profile add touchpoint page                                |
+|type                 |@comment                                   |into              |{$STUDENTPROFILEADDTOUCHPOINT.addtouchpointcommentfield}      |text area                                                                        |
+|press                |TAB                                        |key                                                                                                                                                                |
+|pause  execution  for|10                                         |seconds                                                                                                                                                            |
+|variable             |touchpointsavebuttonPresent                |equals  to                                                                                                                                                         |
+|wait  for  element   |{$STUDENTPROFILEADDTOUCHPOINT.addtouchpointsavebutton}                                                                                                                                                         |
+|assert true          |{$touchpointsavebuttonPresent}                                                                                                                                                                                 |
+|log result           |{$touchpointsavebuttonPresent}             |with comment      |save button is present                                        |in page      |student profile add touchpoint page                                |
+|click                |{$STUDENTPROFILEADDTOUCHPOINT.addtouchpointsavebutton}                                                                                                                                                         |
+|pause  execution  for|10                                         |seconds                                                                                                                                                            |
+|click                |Yes                                        |from popup                                                                                                                                                         |
+|verify               |Touchpoints                                |added student touchpoint values                                                                                                                                    |
+
+
+
+!|Scenario         |verify    |page_name                                        |added student touchpoint values                           |
+|verify            |@page_name|data table of student profile touchpoint contains|{$touchpointdropdown}                                     |
+|verify            |@page_name|data table of student profile touchpoint contains|{$scheduleddate}        |student touchpoint scheduled date|
+|verify            |@page_name|data table of student profile touchpoint contains|{$scheduledtime} {$ampm}|student touchpoint scheduled time|
+|wait  for  element|//*[@id='main']//descendant::h3[contains(text(),'Touchpoints')]/..//tbody//tr/td[contains(.,'{$defaultstatus}')]/div   |
+|verify            |@page_name|data table of student profile touchpoint contains|{$comment}                                                |
+
+
+!|Scenario         |verify      |page_name   |data table of student profile touchpoint contains|value                      |
+|variable          |isPresent   |equals  to                                                                                |
+|wait  for  element|//*[@id='main']//descendant::h3[contains(text(),'@page_name')]/..//tbody//tr/td[contains(.,'@value')]  |
+|log result        |{$isPresent}|with comment|@value field is present in the grid table        |in page|add touchpoint grid|
+
+
+!|Scenario         |verify                  |page_name      |data table of student profile touchpoint contains  |value            |student touchpoint scheduled date |
+|wait  for  element|//*[@id='main']//descendant::h3[contains(text(),'@page_name')]/..//tbody//tr/td[contains(.,'{$touchpointdropdown}')]/following-sibling::td[1]/div|
+|variable          |dateFromApplication     |equals  to                                                                                                              |
+|get  text  from   |//*[@id='main']//descendant::h3[contains(text(),'@page_name')]/..//tbody//tr/td[contains(.,'{$touchpointdropdown}')]/following-sibling::td[1]/div|
+|variable          |dateCompValue           |equals  to                                                                                                              |
+|compare date      |{$dateFromApplication}  |with           |@value                                             |where format is  |mm/dd/yyyy                        |
+|$val7=            |get                     |dateCompValue  |value                                                                                                   |
+|variable          |isDateMatched           |equals  to                                                                                                              |
+|verify            |$val7                   |with           |0                                                                                                       |
+|assert true       |{$isDateMatched}                                                                                                                                 |
+|log result        |{$isDateMatched}        |with comment   |Effective date present in the grid table           |in page          |add touchpoint grid               |
+
+
+!|Scenario         |verify                |page_name   |data table of student profile touchpoint contains|value  |student touchpoint scheduled time|
+|variable          |timeFromApplication   |equals  to                                                                                              |
+|wait  for  element|//*[@id='main']//descendant::h3[contains(text(),'Touchpoints')]/..//tbody//tr/td[contains(.,'{$scheduledtime} {$ampm}')]       |
+|assert true       |{$timeFromApplication}                                                                                                         |
+|log result        |{$timeFromApplication}|with comment|time field is present in the grid table          |in page|add touchpoint grid              |
+
+
+!|Scenario            |add student touchpoint with touchpoint group    |touchpointgroup|and assigned to                                                     |assignedto|and start date         |startdate         |
+|variable             |touchpointgroupaddfieldPresent                  |equals  to                                                                                                                                |
+|wait  for  element   |{$STUDENTPROFILEDASHBOARDPAGE.touchpointgroupaddfield}                                                                                                                                     |
+|assert true          |{$touchpointgroupaddfieldPresent}                                                                                                                                                          |
+|log result           |{$touchpointgroupaddfieldPresent}               |with comment   |group add field is present                                          |in page   |student profile add touchpoint group  page|
+|press                |TAB                                             |key                                                                                                                                       |
+|click                |{$STUDENTPROFILEDASHBOARDPAGE.touchpointgroupaddfield}                                                                                                                                     |
+|variable             |touchpointgroupdropdownfieldPresent             |equals  to                                                                                                                                |
+|wait  for  element   |{$STUDENTPROFILEADDTOUCHPOINTGROUP.addtouchpointgroupdropdownfield}                                                                                                                        |
+|assert true          |{$touchpointgroupdropdownfieldPresent}                                                                                                                                                     |
+|log result           |{$touchpointgroupdropdownfieldPresent}          |with comment   |select group field is present                                       |in page   |student profile add touchpoint group  page|
+|press                |TAB                                             |key                                                                                                                                       |
+|click                |{$STUDENTPROFILEADDTOUCHPOINTGROUP.addtouchpointgroupdropdownfield}                                                                                                                        |
+|click                |.//*[@id='touchPointGroupFormView']//label[contains(.,'{$touchpointgroup}')]/..//input                                                                                                     |
+|variable             |touchpointgroupassignedtodropdownfieldPresent   |equals  to                                                                                                                                |
+|wait  for  element   |{$STUDENTPROFILEADDTOUCHPOINTGROUP.addtouchpointgroupassignedtodropdownfield}                                                                                                              |
+|assert true          |{$touchpointgroupassignedtodropdownfieldPresent}                                                                                                                                           |
+|log result           |{$touchpointgroupassignedtodropdownfieldPresent}|with comment   |select assigned to field is present                                 |in page   |student profile add touchpoint group  page|
+|press                |TAB                                             |key                                                                                                                                       |
+|select               |@assignedto                                     |from           |{$STUDENTPROFILEADDTOUCHPOINTGROUP.addtouchpointgroupassignedtodropdownfield}                                             |
+|press                |TAB                                             |key                                                                                                                                       |
+|variable             |touchpointgroupstartdatefieldPresent            |equals  to                                                                                                                                |
+|wait  for  element   |{$STUDENTPROFILEADDTOUCHPOINTGROUP.addtouchpointgroupstartdatefield}                                                                                                                       |
+|assert true          |{$touchpointgroupstartdatefieldPresent}                                                                                                                                                    |
+|log result           |{$touchpointgroupstartdatefieldPresent}         |with comment   |start date field is present                                         |in page   |student profile add touchpoint group  page|
+|press                |TAB                                             |key                                                                                                                                       |
+|pause  execution  for|1                                               |seconds                                                                                                                                   |
+|type                 |@startdate                                      |into           |{$STUDENTPROFILEADDTOUCHPOINTGROUP.addtouchpointgroupstartdatefield}|text field                                           |
+|pause  execution  for|1                                               |seconds                                                                                                                                   |
+|variable             |touchpointgroupsavebuttonPresent                |equals  to                                                                                                                                |
+|wait  for  element   |{$STUDENTPROFILEADDTOUCHPOINTGROUP.addtouchpointgroupsavebutton}                                                                                                                           |
+|assert true          |{$touchpointgroupsavebuttonPresent}                                                                                                                                                        |
+|log result           |{$touchpointgroupsavebuttonPresent}             |with comment   |save button is present                                              |in page   |student profile add touchpoint group  page|
+|press                |TAB                                             |key                                                                                                                                       |
+|click                |{$STUDENTPROFILEADDTOUCHPOINTGROUP.addtouchpointgroupsavebutton}                                                                                                                           |
+|press                |TAB                                             |key                                                                                                                                       |
+|click                |Yes                                             |from popup                                                                                                                                |
+|verify               |Touchpoints                                     |added student touchpoint group values                                                                                                     |
+
+
+
+!|Scenario         |verify        |page_name                                                  |added student touchpoint group values   |
+|verify            |@page_name    |data table of student profile touchpoint group contains    |{$touchpointdropdown}                   |
+|wait  for  element|//*[@id='main']//descendant::h3[contains(text(),'@page_name')]/..//tbody//tr/td[contains(.,'{$defaultstatus}')]/div|
+
+!|Scenario         |verify      |page_name   |data table of student profile touchpoint group contains|value                            |
+|variable          |isPresent   |equals  to                                                                                            |
+|wait  for  element|//*[@id='main']//descendant::h3[contains(text(),'@page_name')]/..//tbody//tr/td[contains(.,'@value')]              |
+|log result        |{$isPresent}|with comment|@value field is present in the grid table              |in page|add touchpoint group grid|
+
+

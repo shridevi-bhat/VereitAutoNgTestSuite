@@ -1,0 +1,137 @@
+''' Object Repository for PAYMENT PERIOD '''
+
+|Object Repository    |PAYMENTPERIOD                                                           |
+|Id                   |Value                                                             |Type |
+|paymentperiodname    |.//input[@name='name']                                            |xpath|
+|paymentperiodnamereq |.//input[@name='name' and contains(@style, 'rgb')]                |xpath|
+|startdate            |.//input[@name='startDate']                                       |xpath|
+|selpastdatearrow     |//tr/td[@class='datePicker-MonthSelector-cell'][1]                |xpath|
+|selmiddate           |//div[@class='day' and text()='15']                               |xpath|
+|enddate              |.//input[@name='endOn']                                           |xpath|
+|effectiveondate      |//input[@name='effectiveOn']                                      |xpath|
+|externalcode         |//input[@name='externalCode']                                     |xpath|
+|activedate           |.//table[@class='day']//div[@class= 'day active']                 |xpath|
+|addbtn               |.//button[contains(text(), 'Add')]                                |xpath|
+|cancelbtn            |.//button[contains(text(), 'Cancel')]                             |xpath|
+|savebtn              |.//button[contains(text(), 'Save')]                               |xpath|
+|duplicatename        |.//div[contains(text(), 'Please specify a different name')]       |xpath|
+|enddatepriortoeffdate|.//div[contains(text(), 'End date cannot be prior to Start date')]|xpath|
+|closebtn             |.//a[@class='btn btn-primary' and contains(text(), 'Close')]      |xpath|
+
+''' Object Repository for LOAN PERIOD '''
+
+|Object Repository      |LOANPERIOD                                                               |
+|Id                     |Value                                                              |Type |
+|newbtn                 |.//a[@title='New row']                                             |xpath|
+|loanperiodformheader   |.//h1[contains(text(), 'Loan Period')]                             |xpath|
+|loanperiodcode         |.//input[@name='name']                                             |xpath|
+|loanperiodcodereq      |.//input[@name='name' and contains(@style, 'rgb')]                 |xpath|
+|loanperioddescription  |.//textarea[@name='description']                                   |xpath|
+|startdate              |.//input[@name='startDate']                                        |xpath|
+|startdatereq           |.//input[@name='effectiveOn' and contains(@style, 'rgb')]          |xpath|
+|selpastdatearrow       |//tr/td[@class='datePicker-MonthSelector-cell'][1]                 |xpath|
+|selmiddate             |//div[@class='day' and text()='15']                                |xpath|
+|enddate                |.//input[@name='endOn']                                            |xpath|
+|effectiveondate        |.//input[@name='effectiveOn']                                      |xpath|
+|disbursementdate       |.//input[@name='disbursedOn']                                      |xpath|
+|disbursementdatereq    |.//input[@name='disbursedOn' and contains(@style, 'rgb')]          |xpath|
+|activedate             |.//table[@class='day']//div[@class= 'day active']                  |xpath|
+|addbtn                 |.//button[contains(text(), 'Add')]                                 |xpath|
+|confirmmsg             |//div[text()='Are you sure you want to save this form?']           |xpath|
+|yesbtn                 |.//a[@class='btn btn-primary' and contains(text(), 'Yes')]         |xpath|
+|nobtn                  |.//a[@class='btn']                                                 |xpath|
+|cancelbtn              |.//button[contains(text(), 'Cancel')]                              |xpath|
+|savebtn                |.//button[contains(text(), 'Save')]                                |xpath|
+|duplicatename          |.//div[contains(text(), 'Please specify a different name')]        |xpath|
+|enddatepriortoeffdate  |.//div[contains(text(), 'End date cannot be prior to Start date')] |xpath|
+|startdatepriortoenddate|.//div[contains(text(), 'Start Date should be prior to End date.')]|xpath|
+|closebtn               |.//a[@class='btn btn-primary' and contains(text(), 'Close')]       |xpath|
+
+'''Admin Cost of Attendance List'''
+
+|Object Repository                |COSTOFATTENDANCEGRID                                                                                                                                                                        |
+|Id                               |Value                                                                                                                                                                                 |Type |
+|columntextpellbudget2016n17      |//*[@id='main']//th[contains(text(),'COA Name')]//..//..//..//td[2]/div[contains(text(),'2016-2017 Pell Budget')]                                                                     |xpath|
+|viewcoadetails                   |//*[@id='main']//descendant::h1[contains(text(),'Cost of Attendance')]/..//tbody//tr/td[contains(.,'2016-2017 Pell Budget')]/following-sibling::td[6]/..//a[@title='View COA Details']|xpath|
+|editcoadetails                   |//*[@id='main']//descendant::h1[contains(text(),'Cost of Attendance')]/..//tbody//tr/td[contains(.,'2016-2017 Pell Budget')]/following-sibling::td[6]/..//a[@title='Edit row']        |xpath|
+|newcoadetails                    |//a[@title = 'New row']                                                                                                                                                               |xpath|
+|modaltuitionvalue                |//h3[contains(text(),' View Cost of Attendance Details')]//..//..//../div/b[contains(text(),'Tuition')]//..//..//following-sibling::td//div                                           |xpath|
+|modalfeesvalue                   |//h3[contains(text(),' View Cost of Attendance Details')]//..//..//../div/b[contains(text(),'Fees')]//..//..//following-sibling::td//div                                              |xpath|
+|modalbooksnsuppliesvalue         |//h3[contains(text(),' View Cost of Attendance Details')]//..//..//../div/b[contains(text(),'Books & Supplies')]//..//..//following-sibling::td//div                                  |xpath|
+|modaltransportationvalue         |//h3[contains(text(),' View Cost of Attendance Details')]//..//..//../div/b[contains(text(),'Transportation')]//..//..//following-sibling::td//div                                    |xpath|
+|modalotherfeesvalue              |//h3[contains(text(),' View Cost of Attendance Details')]//..//..//../div/b[contains(text(),'Other Fees')]//..//..//following-sibling::td//div                                        |xpath|
+|modalroomoncampusvalue           |//h3[contains(text(),' View Cost of Attendance Details')]//..//..//../div/b[contains(text(),'Room & Board (On Campus)')]//..//..//following-sibling::td//div                          |xpath|
+|modalroomoffcampusvalue          |//h3[contains(text(),' View Cost of Attendance Details')]//..//..//../div/b[contains(text(),'Room & Board (Off Campus)')]//..//..//following-sibling::td//div                         |xpath|
+|modalroomoffcampuswithparentvalue|//h3[contains(text(),' View Cost of Attendance Details')]//..//..//../div/b[contains(text(),'Room & Board (Off Campus with Parent)')]//..//..//following-sibling::td//div             |xpath|
+|modalviewcoaclose                |.//*[@id='modalViewCOA']/div/button[@class='close']                                                                                                                                   |xpath|
+
+''' Admin  Add New Cost of Attendance '''
+
+|Object Repository                              |ADDSTUDENTCOSTOFATTENDANCE                                                                                                      |
+|Id                                             |Value                                                                                                                     |Type |
+|Admin_COA_Award_Year                           |//*[@id='main']//label[contains(text(),'Award Year')]//..//select                                                         |xpath|
+|Admin_COA_COA_Name                             |//*[@id='main']//label[contains(text(),'COA Name')]//..//input                                                            |xpath|
+|Admin_COA_Effective_Date                       |//input[@name='effectiveOn']                                                                                              |xpath|
+|Admin_COA_End_Date                             |//input[@name='endOn']                                                                                                    |xpath|
+|Admin_COA_Tuition_Full_time                    |//*[@id='main']//label[contains(text(),'Tuition')]//..//label[contains(text(),'Full time')]//..//input                    |xpath|
+|Admin_COA_Tuition_Three_quarter_time           |//*[@id='main']//label[contains(text(),'Tuition')]//..//label[contains(text(),'Three-quarter time')]//..//input           |xpath|
+|Admin_COA_Tuition_Half_time                    |(//*[@id='main']//label[contains(text(),'Tuition')]//..//label[contains(text(),'Half-time')])[1]//..//input               |xpath|
+|Admin_COA_Tuition_Less_than_Half_time          |//*[@id='main']//label[contains(text(),'Tuition')]//..//label[contains(text(),'Less than Half-time')]//..//input          |xpath|
+|Admin_COA_Fees_Full_time                       |//*[@id='main']//label[contains(text(),'Fees')]//..//label[contains(text(),'Full time')]//..//input                       |xpath|
+|Admin_COA_Fees_Three_quarter_time              |//*[@id='main']//label[contains(text(),'Fees')]//..//label[contains(text(),'Three-quarter time')]//..//input              |xpath|
+|Admin_COA_Fees_Half_time                       |(//*[@id='main']//label[contains(text(),'Fees')]//..//label[contains(text(),'Half-time')])[1]//..//input                  |xpath|
+|Admin_COA_Fees_Less_than_Half_time             |//*[@id='main']//label[contains(text(),'Fees')]//..//label[contains(text(),'Less than Half-time')]//..//input             |xpath|
+|Admin_COA_Books_Supplies_Full_time             |//*[@id='main']//label[contains(text(),'Books')]//..//label[contains(text(),'Full time')]//..//input                      |xpath|
+|Admin_COA_Books_Supplies_Three_quarter_time    |//*[@id='main']//label[contains(text(),'Books')]//..//label[contains(text(),'Three-quarter time')]//..//input             |xpath|
+|Admin_COA_Books_Supplies_Half_time             |(//*[@id='main']//label[contains(text(),'Books')]//..//label[contains(text(),'Half-time')])[1]//..//input                 |xpath|
+|Admin_COA_Books_Supplies_Less_than_Half_time   |//*[@id='main']//label[contains(text(),'Books')]//..//label[contains(text(),'Less than Half-time')]//..//input            |xpath|
+|Admin_COA_Transportation_Full_time             |//*[@id='main']//label[contains(text(),'Transportation')]//..//label[contains(text(),'Full time')]//..//input             |xpath|
+|Admin_COA_Transportation_Three_quarter_time    |//*[@id='main']//label[contains(text(),'Transportation')]//..//label[contains(text(),'Three-quarter time')]//..//input    |xpath|
+|Admin_COA_Transportation_Half_time             |(//*[@id='main']//label[contains(text(),'Transportation')]//..//label[contains(text(),'Half-time')])[1]//..//input        |xpath|
+|Admin_COA_Transportation_Less_than_Half_time   |//*[@id='main']//label[contains(text(),'Transportation')]//..//label[contains(text(),'Less than Half-time')]//..//input   |xpath|
+|Admin_COA_Personal_Expenses_Full_time          |//*[@id='main']//label[contains(text(),'Personal Expenses')]//..//label[contains(text(),'Full time')]//..//input          |xpath|
+|Admin_COA_Personal_Expenses_Three_quarter_time |//*[@id='main']//label[contains(text(),'Personal Expenses')]//..//label[contains(text(),'Three-quarter time')]//..//input |xpath|
+|Admin_COA_Personal_Expenses_Half_time          |(//*[@id='main']//label[contains(text(),'Personal Expenses')]//..//label[contains(text(),'Half-time')])[1]//..//input     |xpath|
+|Admin_COA_Personal_Expenses_Less_than_Half_time|//*[@id='main']//label[contains(text(),'Personal Expenses')]//..//label[contains(text(),'Less than Half-time')]//..//input|xpath|
+|Admin_COA_Loan_Fees                            |//*[@id='main']//label[contains(text(),'Loan Fees')]//..//input                                                           |xpath|
+|Admin_COA_Other_Fees                           |//*[@id='main']//label[contains(text(),'Other Fees')]//..//input                                                          |xpath|
+|Admin_COA_Room_Board_On_Campus                 |//*[@id='main']//label[contains(text(),'Room & Board (On Campus)')]//..//input                                            |xpath|
+|Admin_COA_Room_Board_Off_Campus                |//*[@id='main']//label[contains(text(),'Room & Board (Off Campus)')]//..//input                                           |xpath|
+|Admin_COA_Room_Board_Off_Campus_w_Parent       |//*[@id='main']//label[contains(text(),'Off Campus w/ Parent')]//..//input                                                |xpath|
+|Admin_COA_Add                                  |//button[@class='btn btn-primary' and contains(text(), 'Add')]                                                            |xpath|
+|Admin_COA_Cancel                               |//button[@class='btn btn-default' and contains(text(), 'Cancel')]                                                         |xpath|
+
+''' Admin  Add New COA Period '''
+
+|Object Repository                      |ADDCOAPERIOD                                                                       |
+|Id                                     |Value                                                                        |Type |
+|Admin_COA_Period                       |//a[contains(text(),'COA Period')]                                           |xpath|
+|Admin_COA_Period_New                   |//a[contains(text(),'New')]                                                  |xpath|
+|Admin_COAPERIOD_COAPeriod_Name         |//*[@id='main']//label[contains(text(),'COA Period Name')]//..//input        |xpath|
+|Admin_COAPERIOD_Award_Year             |//*[@id='main']//label[contains(text(),'Award Year')]//..//select            |xpath|
+|Admin_COAPERIOD_Effective_Date         |//input[@name='effectiveOn']                                                 |xpath|
+|Admin_COAPERIOD_End_Date               |//input[@name='endOn']                                                       |xpath|
+|Admin_COAPERIOD_External_Code          |//*[@id='main']//label[contains(text(),'External Code')]//..//input          |xpath|
+|Admin_COAPERIOD_EFC_Budget_Type        |//*[@id='main']//label[contains(text(),'EFC Budget Type')]//..//select       |xpath|
+|Admin_COAPERIOD_Complete               |//button[contains(text(),'Complete')]                                        |xpath|
+|Admin_COAPERIOD_COATERMS_New           |//a[@title = 'New row']                                                      |xpath|
+|Admin_COAPERIOD_COATERMS_Payment_Period|//*[@id='modalPayTerm']//label[contains(text(),'Payment Period')]//..//select|xpath|
+|Admin_COAPERIOD_COATERMS_COA_Name      |//*[@id='modalPayTerm']//label[contains(text(),'COA Name')]//..//select      |xpath|
+|Admin_COAPERIOD_COATERMS_Freeze_Date   |//*[@id='modalPayTerm']//label[contains(text(),'Freeze Date')]//..//input    |xpath|
+|Admin_COAPERIOD_COATERMS_Add           |//button[contains(text(),'Add')]                                             |xpath|
+
+
+
+'''Admin Edit Cost of Attendance for 2016-2017 Pell Budget '''
+
+|Object Repository                         |EDITSTUDENTCOSTOFATTENDANCE                                                                                        |
+|Id                                        |Value                                                                                                        |Type |
+|admineditfulltimetuitionvalue             |//*[@id='main']//label[contains(text(),'Tuition')]//..//label[contains(text(),'Full time')]//..//input       |xpath|
+|admineditfulltimefeesvalue                |//*[@id='main']//label[contains(text(),'Fees')]//..//label[contains(text(),'Full time')]//..//input          |xpath|
+|admineditfulltimebooksnsuppliesvalue      |//*[@id='main']//label[contains(text(),'Books')]//..//label[contains(text(),'Full time')]//..//input         |xpath|
+|admineditfulltimetransportationvalue      |//*[@id='main']//label[contains(text(),'Transportation')]//..//label[contains(text(),'Full time')]//..//input|xpath|
+|admineditotherfeesvalue                   |//*[@id='main']//label[contains(text(),'Other Fees')]//..//input                                             |xpath|
+|admineditroomoncampusvalue                |//*[@id='main']//label[contains(text(),'Room & Board (On Campus)')]//..//input                               |xpath|
+|admineditroomoffcampusvalue               |//*[@id='main']//label[contains(text(),'Room & Board (Off Campus)')]//..//input                              |xpath|
+|admineditroomoffcampuswithparentvaluevalue|//*[@id='main']//label[contains(text(),'Off Campus w')]//..//input                                           |xpath|
+|admineditsave                             |//button[@class='btn btn-primary' and contains(text(), 'Save')]                                              |xpath|

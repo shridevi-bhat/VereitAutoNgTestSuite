@@ -1,0 +1,70 @@
+!|Scenario|verifying  Award Setup menu                              |
+|verify   |Award Setup|has|Award Status      |in administration page|
+|verify   |Award Setup|has|Award Category    |in administration page|
+|verify   |Award Setup|has|Award Sub Category|in administration page|
+|verify   |Award Setup|has|Awards            |in administration page|
+
+|Scenario       |read from data for|sheetName       |excelsheet from  |rowNumber   |
+|load           |@sheetName        |excel sheet from|{$DATASHEET.data}|in|read|Mode|
+|variable       |name              |equals to                                      |
+|getFromExcelRow|@rowNumber        |Column          |1                             |
+|variable       |description       |equals to                                      |
+|getFromExcelRow|@rowNumber        |Column          |2                             |
+|variable       |sequence          |equals to                                      |
+|getFromExcelRow|@rowNumber        |Column          |3                             |
+|variable       |effectiveDate     |equals to                                      |
+|getFromExcelRow|@rowNumber        |Column          |4                             |
+|variable       |endDate           |equals to                                      |
+|getFromExcelRow|@rowNumber        |Column          |5                             |
+|unload  excel sheet                                                               |
+
+
+!|Scenario         |add new record for|form_name      |picking data from|rowNumber|row            |
+|read from data for|@form_name        |excelsheet from|@rowNumber                                 |
+|enter             |{$name}           |as             |Name             |for      |@form_name|form|
+|enter             |{$description}    |as             |Description      |for      |@form_name|form|
+|enter             |{$sequence}       |as             |Sequence         |for      |@form_name|form|
+|enter             |{$effectiveDate}  |as             |Effective Date   |for      |@form_name|form|
+|enter             |{$endDate}        |as             |End Date         |for      |@form_name|form|
+
+
+!|Scenario         |Add new        |form_name             |record picking data from row     |rowNumber    |of excel and save    |
+|add new record for|@form_name     |picking data from     |@rowNumber                       |row                                |
+|click             |//*[@id='main']//descendant::h1[contains(text(),'@form_name')]/..//label[contains(.,'Description')]/../input|
+|click add button                                                                                                               |
+
+!|Scenario|create a new record for _|form_name                                       |
+|Add new  |@form_name               |record picking data from row|2|of excel and save|
+
+!|Scenario             |verify mandatory fields of|form_name                   |by picking data from row|rowNumber|of excel|
+|Add new               |@form_name                |record picking data from row|@rowNumber              |of excel and save |
+|verify mandatory field|Name                      |is highlighted in form      |@form_name                                 |
+|verify mandatory field|Description               |is highlighted in form      |@form_name                                 |
+|verify mandatory field|Effective Date            |is highlighted in form      |@form_name                                 |
+|click cancel button                                                                                                       |
+
+!|Scenario|verify    |form_name|form should have the following fields 'Name','Description' 'Sequence', 'Effective Date' and 'End Date'|
+|verify   |@form_name|has      |Name                             |as                   |1                   |column                   |
+|verify   |@form_name|has      |Description                      |as                   |2                   |column                   |
+|verify   |@form_name|has      |Sequence                         |as                   |3                   |column                   |
+|verify   |@form_name|has      |Effective Date                   |as                   |4                   |column                   |
+|verify   |@form_name|has      |End Date                         |as                   |5                   |column                   |
+
+
+!|Scenario|verify    |form_name|grid should have the following fields 'Name','Description' 'Sequence', 'Effective Date' and 'End Date'|
+|verify   |@form_name|form has |Name                              |as                   |1                   |field                   |
+|verify   |@form_name|form has |Description                       |as                   |2                   |field                   |
+|verify   |@form_name|form has |Sequence                          |as                   |3                   |field                   |
+|verify   |@form_name|form has |Effective Date                    |as                   |4                   |field                   |
+|verify   |@form_name|form has |End Date                          |as                   |5                   |field                   |
+
+
+!|Scenario|verify fields of|form_name   |form are enabled/disabled where name is|name_field_value                                                  |
+|Edit     |@form_name      |record where|Name                                   |is|@name_field_value|and verify|Name          |is a|disabled|field|
+|Edit     |@form_name      |record where|Name                                   |is|@name_field_value|and verify|Effective Date|is a|disabled|field|
+|Edit     |@form_name      |record where|Name                                   |is|@name_field_value|and verify|End Date      |is a|disabled|field|
+|Edit     |@form_name      |record where|Name                                   |is|@name_field_value|and verify|Description   |is a|enabled |field|
+|Edit     |@form_name      |record where|Name                                   |is|@name_field_value|and verify|Sequence      |is a|enabled |field|
+
+!|Scenario                 |verify mandatory fields of|form_name               |form       |
+|verify mandatory fields of|@form_name                |by picking data from row|10|of excel|

@@ -1,0 +1,57 @@
+|import                          |
+|net.indecomm.autong.api.fitnesse|
+
+!include -c <FinancialAidSuite.FinancialAidCommonFiles 
+!include -c <FinancialAidSuite.FinancialAid.CommonScenarios
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.AssociateActiveDocumentToTheStudentImpl
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.IsirObjectRepository
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.StudentObjectRepository
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.IsirSummaryTest.IsirSummaryScenario
+
+
+!|Script                                                                 |AutomationNG                                                 |
+|set test                                                                |${PAGE_NAME}                                                 |
+|initialize test setup with result name                                  |${PAGE_NAME}_${defaultBrowser}                               |
+|login to the Financial Aid module                                                                                                     |
+|search student                                                                                                                        |
+|Verify                                                                  |Verification                   |Panel                        |
+|Verify                                                                  |Active ISIR                    |Panel                        |
+|Verify                                                                  |Warnings                       |Panel                        |
+|Verify default award year                                               |2016-2017                                                    |
+|Select Award Year and Click 2015-16                                                                                                   |
+|Select Award Year and Click 2016-17                                                                                                   |
+|Verify                                                                  |Verification Group             |Verification Panel           |
+|Verify                                                                  |ISIR Transaction               |Verification Panel           |
+|Verify                                                                  |Student                        |Verification Panel           |
+|Verify                                                                  |Parent                         |Verification Panel           |
+|Verify                                                                  |ETI                            |Verification Panel           |
+|Verify                                                                  |Verified By                    |Verification Panel           |
+|Verify                                                                  |Verified On                    |Verification Panel           |
+|verify summary status with verification status                                                                                        |
+|verify summary isir transaction with verification isir transaction                                                                    |
+|verify status icon                                                                                                                    |
+|verify parent drt                                                       |                                                             |
+|verify summary verified by                                              |-                                                            |
+|verify summary verified on                                              |-                                                            |
+|scroll to display Active ISIR panel                                                                                                   |
+|Verify                                                                  |Current Transaction            |ActiveISIRPanel|1 - RCVD     |
+|Verify                                                                  |Status                         |ActiveISIRPanel|ACTIVE       |
+|Verify                                                                  |EFC                            |ActiveISIRPanel|30682        |
+|Verify                                                                  |Dependency                     |ActiveISIRPanel|(D) Dependent|
+|Verify                                                                  |SAR C-Flag                     |ActiveISIRPanel|N            |
+|Verify that the Current Transaction displays the ISIR transaction number|1 - RCVD                                                     |
+|Verify that the Status field in Active ISIR Section                     |ACTIVE                                                       |
+|Verify that the EFC field in Active ISIR Section                        |30682                                                        |
+|Verify that the "Dependency" is a static                                |(D) Dependent                                                |
+|Verify that the SAR-C Flag is a static text and displays Y or N         |N                                                            |
+|Verify that under Warnings section any warnings they are displayed                                                                    |
+|Verify                                                                  |New                            |Warning Panel                |
+|Verify                                                                  |Unresolved                     |Warning Panel                |
+|Verify                                                                  |New Pushed ISIR Received       |Warning Panel                |
+|Verify                                                                  |Transaction #:  1-RCVD         |Warning Panel                |
+|Verify date format                                                      |                                                             |
+|Verify                                                                  |Unresolved SAR Comment Received|Warning Panel                |
+|Verify                                                                  |Comment Code :                 |Warning Panel                |
+|Verify                                                                  |...                            |Warning Panel                |
+|tear down                                                                                                                             |
+

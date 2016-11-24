@@ -1,0 +1,124 @@
+!|Scenario                    |search student                                     |
+|read from data for           |StudentID|excelsheet from|2|for searching a student|
+|pause  execution  for        |2        |seconds                                  |
+|search student with studentid|{$searchid}                                        |
+
+
+|Scenario       |read from data for|sheetName       |excelsheet from      |rowNumber|for searching a student|
+|load           |@sheetName        |excel sheet from|{$DATASHEET.students}|in       |read       |Mode       |
+|variable       |searchid          |equals to                                                               |
+|getFromExcelRow|@rowNumber        |Column          |1                                                      |
+|unload  excel sheet                                                                                        |
+
+
+!|Scenario                    |read test data from excel                                                                                                                                                                                                                                              |
+|read from data for           |Document Status|excelsheet from      |2                  |for new status                                                                                                                                                                                               |
+|pause  execution  for        |2              |seconds                                                                                                                                                                                                                                                |
+|choose                       |Administration |from header menu                                                                                                                                                                                                                                       |
+|select                       |Document Status|menu from            |Communications Management                                                                                                                                                                                                        |
+|add status with name         |{$name}        |and description      |{$description}     |and sequence        |{$sequence}       |and effective date|{$effectiveDate}|and end date  |{$endDate}                                                                                                        |
+|verify                       |Document Status|added values                                                                                                                                                                                                                                           |
+|pause  execution  for        |2              |seconds                                                                                                                                                                                                                                                |
+|read from data for           |Document Types |excelsheet from      |2                  |for new document type                                                                                                                                                                                        |
+|pause  execution  for        |2              |seconds                                                                                                                                                                                                                                                |
+|choose                       |Administration |from header menu                                                                                                                                                                                                                                       |
+|select                       |Document Type  |menu from            |Communications Management                                                                                                                                                                                                        |
+|click                        |//a[@title='New row']                                                                                                                                                                                                                                                  |
+|add document types with code |{$code}        |and short description|{$shortdescription}|and long description|{$longdescription}|and default status|{$defaultstatus}|and award year|{$awardyear}|and effective date|{$effectivedate}|and end date         |{$enddate}|and display order  |{$sequence} |
+|pause  execution  for        |2              |seconds                                                                                                                                                                                                                                                |
+|read from data for           |Document Groups|excelsheet from      |2                  |for new document group                                                                                                                                                                                       |
+|pause  execution  for        |2              |seconds                                                                                                                                                                                                                                                |
+|choose                       |Administration |from header menu                                                                                                                                                                                                                                       |
+|select                       |Document Group |menu from            |Communications Management                                                                                                                                                                                                        |
+|click                        |{$TOUCHPOINTGROUPS.addtouchpointgroupnewbuttonfield}                                                                                                                                                                                                                   |
+|add document groups with code|{$code}        |and short description|{$shortdescription}|and long description|{$longdescription}|and effective date|{$effectivedate}|and end date  |{$enddate}  |and sequence      |{$sequence}     |and add document type|{$doctype}|and document status|{$docstatus}|
+
+
+|Scenario       |read from data for|sheetName       |excelsheet from      |rowNumber|for new status|
+|load           |@sheetName        |excel sheet from|{$DATASHEET.students}|in       |read   |Mode  |
+|variable       |name              |equals to                                                      |
+|getFromExcelRow|@rowNumber        |Column          |1                                             |
+|variable       |description       |equals to                                                      |
+|getFromExcelRow|@rowNumber        |Column          |2                                             |
+|variable       |sequence          |equals to                                                      |
+|getFromExcelRow|@rowNumber        |Column          |3                                             |
+|variable       |effectiveDate     |equals to                                                      |
+|getFromExcelRow|@rowNumber        |Column          |4                                             |
+|variable       |endDate           |equals to                                                      |
+|getFromExcelRow|@rowNumber        |Column          |5                                             |
+|unload  excel sheet                                                                               |
+
+
+|Scenario       |read from data for|sheetName       |excelsheet from      |rowNumber|for new document type|
+|load           |@sheetName        |excel sheet from|{$DATASHEET.students}|in       |read      |Mode      |
+|variable       |code              |equals to                                                             |
+|getFromExcelRow|@rowNumber        |Column          |1                                                    |
+|variable       |shortdescription  |equals to                                                             |
+|getFromExcelRow|@rowNumber        |Column          |2                                                    |
+|variable       |longdescription   |equals to                                                             |
+|getFromExcelRow|@rowNumber        |Column          |3                                                    |
+|variable       |defaultstatus     |equals to                                                             |
+|getFromExcelRow|@rowNumber        |Column          |4                                                    |
+|variable       |awardyear         |equals to                                                             |
+|getFromExcelRow|@rowNumber        |Column          |5                                                    |
+|variable       |effectivedate     |equals to                                                             |
+|getFromExcelRow|@rowNumber        |Column          |6                                                    |
+|variable       |enddate           |equals to                                                             |
+|getFromExcelRow|@rowNumber        |Column          |7                                                    |
+|variable       |sequence          |equals to                                                             |
+|getFromExcelRow|@rowNumber        |Column          |8                                                    |
+|unload  excel sheet                                                                                      |
+
+
+|Scenario       |read from data for|sheetName       |excelsheet from      |rowNumber|for new document group|
+|load           |@sheetName        |excel sheet from|{$DATASHEET.students}|in       |read       |Mode      |
+|variable       |code              |equals to                                                              |
+|getFromExcelRow|@rowNumber        |Column          |1                                                     |
+|variable       |shortdescription  |equals to                                                              |
+|getFromExcelRow|@rowNumber        |Column          |2                                                     |
+|variable       |longdescription   |equals to                                                              |
+|getFromExcelRow|@rowNumber        |Column          |3                                                     |
+|variable       |effectivedate     |equals to                                                              |
+|getFromExcelRow|@rowNumber        |Column          |4                                                     |
+|variable       |enddate           |equals to                                                              |
+|getFromExcelRow|@rowNumber        |Column          |5                                                     |
+|variable       |sequence          |equals to                                                              |
+|getFromExcelRow|@rowNumber        |Column          |6                                                     |
+|variable       |doctype           |equals to                                                              |
+|getFromExcelRow|@rowNumber        |Column          |7                                                     |
+|variable       |docstatus         |equals to                                                              |
+|getFromExcelRow|@rowNumber        |Column          |8                                                     |
+|unload  excel sheet                                                                                       |
+
+
+!|Scenario                              |associate document type to the student                                             |
+|read from data for                     |StudentProfile Document|excelsheet from|2                 |for new student document|
+|pause  execution  for                  |2                      |seconds                                                    |
+|add student document with document type|{$documenttypedropdown}|and due date   |{$documentduedate}|and comment |{$comments}|
+
+|Scenario       |read from data for  |sheetName       |excelsheet from      |rowNumber|for new student document|
+|load           |@sheetName          |excel sheet from|{$DATASHEET.students}|in       |read        |Mode       |
+|variable       |documenttypedropdown|equals to                                                                |
+|getFromExcelRow|@rowNumber          |Column          |1                                                       |
+|variable       |documentduedate     |equals to                                                                |
+|getFromExcelRow|@rowNumber          |Column          |2                                                       |
+|variable       |comments            |equals to                                                                |
+|getFromExcelRow|@rowNumber          |Column          |3                                                       |
+|unload  excel sheet                                                                                           |
+
+
+!|Scenario                                     |associate document group to the student                                       |
+|read from data for                            |StudentProfile Document Group|excelsheet from|2|for new student document group|
+|pause  execution  for                         |2                            |seconds                                         |
+|add student document group with document group|{$documentgroup}             |and due date   |{$documentduedate}              |
+
+
+|Scenario       |read from data for|sheetName       |excelsheet from      |rowNumber|for new student document group|
+|load           |@sheetName        |excel sheet from|{$DATASHEET.students}|in       |read           |Mode          |
+|variable       |documentgroup     |equals to                                                                      |
+|getFromExcelRow|@rowNumber        |Column          |1                                                             |
+|variable       |documentduedate   |equals to                                                                      |
+|getFromExcelRow|@rowNumber        |Column          |2                                                             |
+|unload  excel sheet                                                                                               |
+
+

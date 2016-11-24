@@ -1,0 +1,24 @@
+!1 Test suite X
+!contents -R2 -g -p -f -h
+
+!path FitNesseRoot/lib/*.jar
+!define TEST_SYSTEM {slim}
+!define SLIM_PORT {0}
+
+!define defaultBrowser {chrome}
+
+!3 executionEnvironment may be one of the these -- jxauto/devjx/jxqalin
+
+!define executionEnvironment {jxauto}  
+!define testDataPath {./FitNesseRoot/AutomationNg/FinancialAidSuite/FinancialAid}
+
+!define first40 {masasdasdasdasdasdasdasdasdasdmasasdasda}
+!define next59 {masasdasdasdasdasdasdasdasdasdmasasdasdamasasdasdamasasdasd}
+!define first40Of100 {aqwedhsfdesdasdasdasdasdasdasdmasasdasda}
+!define next59 {masasdasdasdasdasdasdasdasdasdmasasdasdamasasdasdamasasdasds}
+!define stringOfLength9 {ASDFGHJKM}
+!define stringOfLength10 {ABCDE12345}
+!define stringOfLength1 {6}
+!define numericData {123456}
+
+

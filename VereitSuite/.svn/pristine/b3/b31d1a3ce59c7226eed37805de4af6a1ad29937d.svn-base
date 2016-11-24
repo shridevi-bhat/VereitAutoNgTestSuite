@@ -1,0 +1,19 @@
+|Object Repository      |FAGROUPPROCESS                                                                  |
+|Id                     |Value                                                                     |Type |
+|creategrpbtn           |//button[@class='btn btn-success']                                        |xpath|
+|grpheader              |//h1/span[text()='New Group']                                             |xpath|
+|awardyeardrpdwn        |//label[contains(text(),'Award Year')]/following-sibling::select          |xpath|
+|groupname              |//input[@name='groupName']                                                |xpath|
+|descofgrp              |//textarea[@name='description']                                           |xpath|
+|filtminawardamt        |//input[@name='minAwardAmount']                                           |xpath|
+|touchpointtype         |.//form[@id='createEditGroupProcessingForm']/div[14]/div[2]/div/button    |xpath|
+|exluawardtype          |.//form[@id='createEditGroupProcessingForm']/div[18]/div/div[1]/div/button|xpath|
+|saveandrunbtn          |//a[@class='btn btn-primary'][text()='Save & Run']                        |xpath|
+|runonlybtn             |//a[@class='btn btn-info'][text()='Run Only']                             |xpath|
+|returntogrplistlink    |//ul[@class='breadcrumb']/li/a[text()='Return to Group Listing']          |xpath|
+|awardyeardrpdownsummary|//li[@class='btn btn-default dropdown-toggle']                            |xpath|
+|eyeicononsummary       |//tr[3]/td[6]/div/div/a[1]                                                |xpath|
+|editicononsummary      |//tr[3]/td[6]/div/div/a[2]                                                |xpath|
+|closebtnviewset        |//button[@class='btn accordion-toggle portletTitle'][text()='Close']      |xpath|
+|editgrpheader          |//span[contains(text(),'Edit Group')]                                     |xpath|
+|awardyeardrpdwnsummary |//li[@class='btn btn-default dropdown-toggle']                            |xpath|

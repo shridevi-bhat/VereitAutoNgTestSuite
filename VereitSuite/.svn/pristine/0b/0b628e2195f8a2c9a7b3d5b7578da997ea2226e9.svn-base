@@ -1,0 +1,114 @@
+!|Scenario           |Verify horizantal bar                                          |horizantalName|Horizantal Bar|
+|variable            |verifyelement                                                  |equals to                    |
+|verify page contains|//a[@class='gwt-Anchor' and contains(text(),'@horizantalName')]|Element                      |
+|assert              |{$verifyelement}                                               |true                         |
+
+
+!|Scenario            |search student with studentid|searchid                                            |
+|type                 |@searchid                    |into|{$DASHBOARDPAGE.SearchSudentIDfield}|text field|
+|click                |{$DASHBOARDPAGE.Searchfield}                                                      |
+|click                |{$SEARCHRESULTPAGE.Viewprofilefield}                                              |
+|Verify horizantal bar|Documents                    |Horizantal Bar                                      |
+|click                |{$STUDENTPROFILEDASHBOARDPAGE.documentfield}                                      |
+|pause  execution  for|2                            |seconds                                             |
+
+
+!|Scenario            |add student document with document type|documenttypedropdown                                    |and due date                                        |documentduedate    |and comment            |comment           |
+|variable             |documentaddfieldPresent                |equals  to                                                                                                                                                                  |
+|wait  for  element   |{$STUDENTPROFILEDASHBOARDPAGE.documentaddfield}                                                                                                                                                                     |
+|assert true          |{$documentaddfieldPresent}                                                                                                                                                                                          |
+|log result           |{$documentaddfieldPresent}             |with comment                                            |add button is present                               |in page            |student profile add docuement page        |
+|click                |{$STUDENTPROFILEDASHBOARDPAGE.documentaddfield}                                                                                                                                                                     |
+|pause  execution  for|10                                     |seconds                                                                                                                                                                     |
+|                     |upload  file                           |C:\\Users\\Public\\Pictures\\Sample Pictures\\Tulips.jpg|by                                                  |{$STUDENTPROFILEADDDOCUMENT.adddocumentattachmentselectbutton}|
+|                     |execute javascript function            |{js function}                                           |on element                                          |{^}                                                           |
+|                     |send                                   |C:\\Users\\Public\\Pictures\\Sample Pictures\\Tulips.jpg|KeysTo                                              |{$STUDENTPROFILEADDDOCUMENT.adddocumentattachmentselectbutton}|
+|                     |pause  execution  for                  |10                                                      |seconds                                                                                                            |
+|                     |press Robot                            |ENTER                                                   |key                                                                                                                |
+|                     |pause  execution  for                  |10                                                      |seconds                                                                                                            |
+|                     |release Robot                          |ENTER                                                   |key                                                                                                                |
+|                     |pause  execution  for                  |50                                                      |seconds                                                                                                            |
+|variable             |adddocumentdropdownfieldPresent        |equals  to                                                                                                                                                                  |
+|wait  for  element   |{$STUDENTPROFILEADDDOCUMENT.adddocumentdropdownfield}                                                                                                                                                               |
+|assert true          |{$adddocumentdropdownfieldPresent}                                                                                                                                                                                  |
+|log result           |{$adddocumentdropdownfieldPresent}     |with comment                                            |select document dropdown is present               |in page            |student profile add document page         |
+|select               |@documenttypedropdown                  |from                                                    |{$STUDENTPROFILEADDDOCUMENT.adddocumentdropdownfield}                                                              |
+|variable             |adddocumentduedatefieldPresent         |equals  to                                                                                                                                                                  |
+|wait  for  element   |{$STUDENTPROFILEADDDOCUMENT.adddocumentduedatefield}                                                                                                                                                                |
+|assert true          |{$adddocumentduedatefieldPresent}                                                                                                                                                                                   |
+|log result           |{$adddocumentduedatefieldPresent}      |with comment                                            |scheduled date is present                           |in page            |student profile add document page         |
+|pause  execution  for|5                                      |seconds                                                                                                                                                                     |
+|double  click  on    |{$STUDENTPROFILEADDDOCUMENT.adddocumentduedatefield}                                                                                                                                                                |
+|pause  execution  for|1                                      |seconds                                                                                                                                                                     |
+|type                 |@documentduedate                       |into                                                    |{$STUDENTPROFILEADDDOCUMENT.adddocumentduedatefield}|text field                                                    |
+|pause  execution  for|1                                      |seconds                                                                                                                                                                     |
+|press                |TAB                                    |key                                                                                                                                                                         |
+|variable             |adddocumentcommentfieldPresent         |equals  to                                                                                                                                                                  |
+|wait  for  element   |{$STUDENTPROFILEADDDOCUMENT.adddocumentcommentfield}                                                                                                                                                                |
+|assert true          |{$adddocumentcommentfieldPresent}                                                                                                                                                                                   |
+|log result           |{$adddocumentcommentfieldPresent}      |with comment                                            |comment field is present                            |in page            |student profile add document page         |
+|type                 |@comment                               |into                                                    |{$STUDENTPROFILEADDDOCUMENT.adddocumentcommentfield}|text area                                                     |
+|pause  execution  for|10                                     |seconds                                                                                                                                                                     |
+|variable             |adddocumentaddbuttonPresent            |equals  to                                                                                                                                                                  |
+|wait  for  element   |{$STUDENTPROFILEADDDOCUMENT.adddocumentaddbutton}                                                                                                                                                                   |
+|assert true          |{$adddocumentaddbuttonPresent}                                                                                                                                                                                      |
+|log result           |{$adddocumentaddbuttonPresent}         |with comment                                            |save button is present                              |in page            |student profile add document page         |
+|click                |{$STUDENTPROFILEADDDOCUMENT.adddocumentaddbutton}                                                                                                                                                                   |
+|pause  execution  for|10                                     |seconds                                                                                                                                                                     |
+|click                |Yes                                    |from popup                                                                                                                                                                  |
+|verify               |Documents                              |added student document values                                                                                                                                               |
+
+
+
+!|Scenario           |verify                                                                                            |documents_name                                 |added student document values               |
+|verify page contains|//thead/tr/th[contains(text(),'Type')]/../../../tbody/tr/td[contains(.,'{$documenttypedropdown}')]|element                                                                                     |
+|verify              |@documents_name                                                                                   |data table of student profile document contains|{$documentduedate}|student document due date|
+
+
+!|Scenario         |verify                |documents_name|data table of student profile document contains|value          |student document due date|
+|wait  for  element|//thead/tr/th[contains(text(),'Type')]/../../../tbody/tr/td[contains(.,'{$documenttypedropdown}')]/following-sibling::td[3]    |
+|variable          |dateFromApplication   |equals  to                                                                                              |
+|get  text  from   |//thead/tr/th[contains(text(),'Type')]/../../../tbody/tr/td[contains(.,'{$documenttypedropdown}')]/following-sibling::td[3]    |
+|variable          |dateCompValue         |equals  to                                                                                              |
+|compare date      |{$dateFromApplication}|with          |@value                                         |where format is|mm/dd/yyyy               |
+|$val7=            |get                     |dateCompValue  |value                                                                                                   |
+|variable          |isDateMatched         |equals  to                                                                                              |
+|verify            |$val7                   |with           |0                                                                                                       |
+|assert true       |{$isDateMatched}                                                                                                               |
+|log result        |{$isDateMatched}      |with comment  |due date present in the grid table             |in page        |add document grid        |
+
+
+!|Scenario            |add student document group with document group|documentgroup|and due date                                                  |documentduedate                                 |
+|variable             |documentgroupaddfieldPresent                  |equals  to                                                                                                                   |
+|wait  for  element   |{$STUDENTPROFILEDASHBOARDPAGE.documentgroupaddfield}                                                                                                                        |
+|assert true          |{$documentgroupaddfieldPresent}                                                                                                                                             |
+|log result           |{$documentgroupaddfieldPresent}               |with comment |group add field is present                                    |in page|student profile add document group  page|
+|press                |TAB                                           |key                                                                                                                          |
+|click                |{$STUDENTPROFILEDASHBOARDPAGE.documentgroupaddfield}                                                                                                                        |
+|variable             |adddocumentgroupdropdownfieldPresent          |equals  to                                                                                                                   |
+|wait  for  element   |{$STUDENTPROFILEADDDOCUMENTGROUP.adddocumentgroupdropdownfield}                                                                                                             |
+|assert true          |{$adddocumentgroupdropdownfieldPresent}                                                                                                                                     |
+|log result           |{$adddocumentgroupdropdownfieldPresent}       |with comment |select group field is present                                 |in page|student profile add document group  page|
+|press                |TAB                                           |key                                                                                                                          |
+|click                |{$STUDENTPROFILEADDDOCUMENTGROUP.adddocumentgroupdropdownfield}                                                                                                             |
+|click                |.//*[@id='studentDocumentGroupFormView']//label[contains(.,'{$documentgroup}')]/..//input                                                                                   |
+|click                |.//*[@id='main']/h3                                                                                                                                                         |
+|variable             |adddocumentgroupduedatefieldPresent           |equals  to                                                                                                                   |
+|wait  for  element   |{$STUDENTPROFILEADDDOCUMENTGROUP.adddocumentgroupduedatefield}                                                                                                              |
+|assert true          |{$adddocumentgroupduedatefieldPresent}                                                                                                                                      |
+|log result           |{$adddocumentgroupduedatefieldPresent}        |with comment |start date field is present                                   |in page|student profile add document group  page|
+|press                |TAB                                           |key                                                                                                                          |
+|pause  execution  for|5                                             |seconds                                                                                                                      |
+|double  click  on    |{$STUDENTPROFILEADDDOCUMENTGROUP.adddocumentgroupduedatefield}                                                                                                              |
+|pause  execution  for|5                                             |seconds                                                                                                                      |
+|type                 |@documentduedate                              |into         |{$STUDENTPROFILEADDDOCUMENTGROUP.adddocumentgroupduedatefield}|text field                                      |
+|pause  execution  for|1                                             |seconds                                                                                                                      |
+|variable             |adddocumentgroupaddbuttonPresent              |equals  to                                                                                                                   |
+|wait  for  element   |{$STUDENTPROFILEADDDOCUMENTGROUP.adddocumentgroupaddbutton}                                                                                                                 |
+|assert true          |{$adddocumentgroupaddbuttonPresent}                                                                                                                                         |
+|log result           |{$adddocumentgroupaddbuttonPresent}           |with comment |save button is present                                        |in page|student profile add document group  page|
+|press                |TAB                                           |key                                                                                                                          |
+|click                |{$STUDENTPROFILEADDDOCUMENTGROUP.adddocumentgroupaddbutton}                                                                                                                 |
+|press                |TAB                                           |key                                                                                                                          |
+|click                |Yes                                           |from popup                                                                                                                   |
+|verify               |Documents                                     |added student document values                                                                                                |

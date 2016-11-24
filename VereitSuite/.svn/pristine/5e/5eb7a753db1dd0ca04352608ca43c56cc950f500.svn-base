@@ -1,0 +1,4 @@
+!include -c <FinancialAidSuite.FinancialAidCommonFiles.CommonConfigurations
+!include -c <FinancialAidSuite.FinancialAidCommonFiles.DataRepository
+!include -c <FinancialAidSuite.FinancialAidCommonFiles.CommonScenarios
+!include -c <FinancialAidSuite.FinancialAidCommonFiles.EnvironmentSetUp

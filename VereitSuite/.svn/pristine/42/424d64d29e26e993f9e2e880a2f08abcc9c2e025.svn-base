@@ -1,0 +1,131 @@
+!|Scenario            |student search                                                                  |
+|type                 |10002                   |into        |{$LANDINGPAGE.studentid}|text field       |
+|pause  execution  for|1                       |seconds                                                |
+|variable             |isSearchButtonVisible   |equals  to                                             |
+|click                |{$LANDINGPAGE.searchbutton}                                                     |
+|assert true          |{$isSearchButtonVisible}                                                        |
+|log result           |{$isSearchButtonVisible}|with comment|Search button present   |in page|Home page|
+
+
+!|Scenario            |student isir history                                                                                 |
+|variable             |isProfileVisible                      |equals  to                                                    |
+|click                |{$ISIRHISTORY.profile}                                                                               |
+|assert true          |{$isProfileVisible}                                                                                  |
+|log result           |{$isProfileVisible}                   |with comment|Profile link present           |in page|Home page|
+|pause  execution  for|2                                     |seconds                                                       |
+|variable             |isNeedHeaderVisible                   |equals  to                                                    |
+|click                |{$ISIRHISTORY.need}                                                                                  |
+|assert true          |{$isNeedHeaderVisible}                                                                               |
+|log result           |{$isNeedHeaderVisible}                |with comment|Need Header present            |in page|Home page|
+|pause  execution  for|2                                     |seconds                                                       |
+|variable             |isIsirLinkVisible                     |equals  to                                                    |
+|click                |{$ISIRHISTORY.isir}                                                                                  |
+|assert true          |{$isIsirLinkVisible}                                                                                 |
+|log result           |{$isIsirLinkVisible}                  |with comment|ISIR Link present              |in page|Home page|
+|variable             |isCheckboxVisible                     |equals  to                                                    |
+|verify page contains |//tr[2]/td/div/input[@type='checkbox']|element                                                       |
+|assert true          |{$isCheckboxVisible}                                                                                 |
+|log result           |{$isCheckboxVisible}                  |with comment|checkbox present in first colum|in page|ISIR page|
+
+!|Scenario             |compare isir transaction records                                                                |
+|click                 |{$ISIRHISTORY.firstcheckbox}                                                                    |
+|pause  execution  for |1                                       |seconds                                                |
+|click                 |{$ISIRHISTORY.secondcheckbox}                                                                   |
+|variable              |isCompareButtonVisible                  |equals  to                                             |
+|click                 |{$ISIRHISTORY.comparebutton}                                                                    |
+|assert true           |{$isCompareButtonVisible}                                                                       |
+|log result            |{$isCompareButtonVisible}               |with comment|compre button is visible|in page|ISIR page|
+|pause  execution  for |2                                       |seconds                                                |
+|click                 |{$ISIRHISTORY.returnisir}                                                                       |
+|pause  execution  for |2                                       |seconds                                                |
+|click                 |{$ISIRHISTORY.firstcheckbox}                                                                    |
+|click                 |{$ISIRHISTORY.comparebutton}                                                                    |
+|verify  page  contains|You must select two ISIRs for comparison|text                                                   |
+|click                 |{$ISIRHISTORY.closebutton}                                                                      |
+|uncheck check box     |{$ISIRHISTORY.firstcheckbox}                                                                    |
+
+!|Scenario            |isir data page                                                                             |
+|pause  execution  for|1                           |seconds                                                       |
+|click                |{$ISIRHISTORY.isirrecord}                                                                  |
+|pause  execution  for|1                           |seconds                                                       |
+|verify page contains |{$ISIRHISTORY.isirdata}     |element                                                       |
+|pause  execution  for|2                           |seconds                                                       |
+|variable             |isReturnToIsirLinkVisible   |equals  to                                                    |
+|click                |{$ISIRHISTORY.returnisir}                                                                  |
+|assert true          |{$isReturnToIsirLinkVisible}                                                               |
+|log result           |{$isReturnToIsirLinkVisible}|with comment|reuturn to isir link is visible|in page|ISIR page|
+
+
+!|Scenario            |column data validate                                                                       |
+|variable             |isDatePresent             |equals  to                                                      |
+|verify page contains |{$COLDATA.date}           |element                                                         |
+|assert true          |{$isDatePresent}                                                                           |
+|log result           |{$isDatePresent}          |with comment|Date is visible                  |in page|ISIR page|
+|variable             |isVerifstatusPresent      |equals  to                                                      |
+|verify page contains |{$COLDATA.verifstatus}    |element                                                         |
+|assert true          |{$isVerifstatusPresent}                                                                    |
+|log result           |{$isVerifstatusPresent}   |with comment|Verif Status visible             |in page|ISIR page|
+|variable             |isCmtsPresent             |equals  to                                                      |
+|verify page contains |{$COLDATA.cmts}           |element                                                         |
+|assert true          |{$isCmtsPresent}                                                                           |
+|log result           |{$isCmtsPresent}          |with comment|cmts visible                     |in page|ISIR page|
+|click                |{$COLDATA.comments}                                                                        |
+|pause  execution  for|1                         |seconds                                                         |
+|variable             |iscommentscodePresent     |equals  to                                                      |
+|verify page contains |{$COLDATA.commentscode}   |element                                                         |
+|assert true          |{$iscommentscodePresent}                                                                   |
+|log result           |{$iscommentscodePresent}  |with comment|cmts visible                     |in page|ISIR page|
+|click                |{$COLDATA.colclosebutton}                                                                  |
+|variable             |isAsmptPresent            |equals  to                                                      |
+|verify page contains |{$COLDATA.asmpt}          |element                                                         |
+|assert true          |{$isAsmptPresent}                                                                          |
+|log result           |{$isAsmptPresent   }      |with comment|cmts visible                     |in page|ISIR page|
+|click                |{$COLDATA.assumption}                                                                      |
+|pause  execution  for|2                         |seconds                                                         |
+|verify page contains |{$COLDATA.assuptiontext}  |element                                                         |
+|click                |{$COLDATA.asmptclose}                                                                      |
+|variable             |isRejPresent              |equals  to                                                      |
+|pause  execution  for|2                         |seconds                                                         |
+|verify page contains |{$COLDATA.rej}            |element                                                         |
+|assert true          |{$isRejPresent}                                                                            |
+|log result           |{$isRejPresent}           |with comment|Rej visible                      |in page|ISIR page|
+|variable             |isefcPresent              |equals  to                                                      |
+|verify page contains |{$COLDATA.efc}            |element                                                         |
+|assert true          |{$isefcPresent}                                                                            |
+|log result           |{$isefcPresent}           |with comment|EFC visible                      |in page|ISIR page|
+|variable             |isdepPresent              |equals  to                                                      |
+|verify page contains |{$COLDATA.dep}            |element                                                         |
+|assert true          |{$isdepPresent}                                                                            |
+|log result           |{$isdepPresent}           |with comment|Dep visible                      |in page|ISIR page|
+|variable             |iseyeiconPresent          |equals  to                                                      |
+|verify page contains |{$COLDATA.eyeicon}        |element                                                         |
+|assert true          |{$iseyeiconPresent}                                                                        |
+|log result           |{$iseyeiconPresent}       |with comment|eyeicon visible                  |in page|ISIR page|
+|click                |{$COLDATA.eyeicon}                                                                         |
+|click                |{$COLDATA.eyeclosebutton}                                                                  |
+|pause  execution  for|2                         |seconds                                                         |
+|variable             |isStateIndicatorPresent   |equals  to                                                      |
+|verify page contains |{$COLDATA.stateindicator} |element                                                         |
+|assert true          |{$isStateIndicatorPresent}                                                                 |
+|log result           |{$isStateIndicatorPresent}|with comment|Stateindicator visible           |in page|ISIR page|
+|variable             |isgeariconPresent         |equals  to                                                      |
+|verify page contains |{$COLDATA.gearicon}       |element                                                         |
+|assert true          |{$isgeariconPresent}                                                                       |
+|log result           |{$isgeariconPresent}      |with comment|gearicon visible                 |in page|ISIR page|
+|click                |{$COLDATA.gearicon}                                                                        |
+|pause  execution  for|2                         |seconds                                                         |
+|variable             |isFreezUnfreezPresent     |equals  to                                                      |
+|verify page contains |{$COLDATA.freezeunfreeze} |element                                                         |
+|assert true          |{$isFreezUnfreezPresent}                                                                   |
+|log result           |{$isFreezUnfreezPresent}  |with comment|freezunfreeze is visible         |in page|ISIR page|
+|pause  execution  for|2                         |seconds                                                         |
+|variable             |isMakeActivePresent       |equals  to                                                      |
+|verify page contains |{$COLDATA.makeactive}     |element                                                         |
+|assert true          |{$isMakeActivePresent}                                                                     |
+|log result           |{$isMakeActivePresent}    |with comment|MakeActive is visible            |in page|ISIR page|
+|pause  execution  for|2                         |seconds                                                         |
+|variable             |isMakeCorrectionPresent   |equals  to                                                      |
+|verify page contains |{$COLDATA.makecorrection} |element                                                         |
+|assert true          |{$isMakeCorrectionPresent}                                                                 |
+|log result           |{$isMakeCorrectionPresent}|with comment|MakeCorrection Present is visible|in page|ISIR page|
+

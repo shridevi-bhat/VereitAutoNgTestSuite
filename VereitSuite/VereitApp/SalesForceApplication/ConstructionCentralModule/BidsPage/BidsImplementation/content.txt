@@ -1,0 +1,20 @@
+!|Scenario            |associate single bid to cmproject                                                                                                                                                                         |
+|read from data for   |Bid Creation |excelsheet from|2              |for new bid                                                                                                                                                 |
+|pause  execution  for|2            |seconds                                                                                                                                                                                     |
+|add bid with bid name|{$bidbidname}|and contact name|{$bidcontactname}|and bid status|{$bidbidstatusdropdown}|and bid amount|{$bidbidamount}|and comments|{$bidcomments}|and vendor|{$bidvendor}|
+
+|Scenario       |read from data for  |sheetName       |excelsheet from               |rowNumber|for new bid|
+|load           |@sheetName          |excel sheet from|{$DATASHEET.cmprojectsbiddata}|in       |read |Mode |
+|variable       |bidbidname          |equals to                                                            |
+|getFromExcelRow|@rowNumber          |Column          |1                                                   |
+|variable       |bidcontactname      |equals to                                                            |
+|getFromExcelRow|@rowNumber          |Column          |2                                                   |
+|variable       |bidbidstatusdropdown|equals to                                                            |
+|getFromExcelRow|@rowNumber          |Column          |3                                                   |
+|variable       |bidbidamount        |equals to                                                            |
+|getFromExcelRow|@rowNumber          |Column          |4                                                   |
+|variable       |bidcomments         |equals to                                                            |
+|getFromExcelRow|@rowNumber          |Column          |5                                                   |
+|variable       |bidvendor           |equals to                                                            |
+|getFromExcelRow|@rowNumber          |Column          |6                                                   |
+|unload  excel sheet                                                                                       |

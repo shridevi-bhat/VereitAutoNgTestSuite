@@ -1,0 +1,47 @@
+----
+'''Test data:''' Username'LDAPVP', Firstname 'Automation', lastname 'user', Title 'Automation user' , Mobile'1234' , Securityroles 'FA Advisor'
+'''Note:''' Existing user is deleted before script execution
+
+'''Test Steps'''
+1. Launch the application 
+2. Create New user 
+3. Edit New user data and save 
+4. Deactivate New user 
+5. Reactivate New user 
+8. Logout
+9. Close Browser
+
+'''Pre condition for script execution'''
+Not applicable
+
+
+'''Post execution instructions'''
+Not applicable
+----
+
+|import                          |
+|net.indecomm.autong.api.fitnesse|
+
+!include -c <FinancialAidSuite.FinancialAidCommonFiles 
+!include -c <FinancialAidSuite.FinancialAid.CommonScenarios
+!include -c <FinancialAid.AdministrationModule.OrganizationAndUsers.UsersTest.UserObjectRepository
+!include -c <FinancialAid.AdministrationModule.OrganizationAndUsers.UsersTest.UsersTestScenarios
+
+!|Script                               |AutomationNG                                       |
+|set test                              |${PAGE_NAME}                                       |
+|initialize test setup with result name|${PAGE_NAME}_${defaultBrowser}                     |
+|delete user info                                                                          |
+|login to the Financial Aid module                                                         |
+|choose                                |Administration|from header menu                    |
+|select                                |Users         |menu from      |Organization & Users|
+|read from data for                    |usersheet     |excelsheet from|2 |for user creation|
+|create a new user                     |                                                   |
+|verify new user creation                                                                  |
+|editing new user data and save                                                            |
+|deactivate user                                                                           |
+|reactivate user                                                                           |
+|login with new user                                                                       |
+|choose                                |Administration|from header menu                    |
+|select                                |Users         |menu from      |Organization & Users|
+|edit super user data                                                                      |
+|tear down                                                                                 |

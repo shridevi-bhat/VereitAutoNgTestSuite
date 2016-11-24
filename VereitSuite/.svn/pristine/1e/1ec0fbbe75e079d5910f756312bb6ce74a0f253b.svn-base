@@ -1,0 +1,26 @@
+|import                          |
+|net.indecomm.autong.api.fitnesse|
+
+!include -c <FinancialAidSuite.FinancialAidCommonFiles 
+!include -c <FinancialAidSuite.FinancialAid.CommonScenarios
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.AssociateActiveDocumentToTheStudentImpl
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.IsirObjectRepository
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.StudentObjectRepository
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.IsirSummaryTest.IsirSummaryScenario
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.AwardSummaryTest.AwardSummaryRepository
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.AwardSummaryTest.AwardSummaryCommonScenarios
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.AwardSummaryTest.AwardSummaryScenarios
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.PackageManagementTest.PackageManagementCommonScenarios
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.PackageManagementTest.PackageManagementRepository
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.PackageManagementTest.PackageManagementScenarios
+
+!|Script                               |AutomationNG                  |
+|set test                              |${PAGE_NAME}                  |
+|initialize test setup with result name|${PAGE_NAME}_${defaultBrowser}|
+|login to the Financial Aid module                                    |
+|search for student                                                   |
+|moving to award tab                                                  |
+|adding new award                                                     |
+|distribute award                                                     |
+|add new award                                                        |
+|delete award                                                         |

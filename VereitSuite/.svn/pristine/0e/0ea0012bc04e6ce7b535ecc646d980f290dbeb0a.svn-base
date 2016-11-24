@@ -1,0 +1,35 @@
+|Object Repository|STUDENT                                |
+|id               |value                            |type |
+|studentid        |.//div[1]/input[@type='text']    |xpath|
+|lastname         |//div[3]/input[@type='text']     |xpath|
+|firstname        |.//div[1]/input[@type='text']    |xpath|
+|searchbutton     |//div[3]/button[@type='button']  |xpath|
+|profile          |.//li[1]/a[@title='View profile']|xpath|
+
+|Object Repository|PACKAGE                                                                                  |
+|id               |value                                                                              |type |
+|packmgmt         |.//li[3]/a[contains (text(), 'Package Management')]                                |xpath|
+|packmanually     |.//button[contains (text(), 'Package Manually')]                                   |xpath|
+|awardyear        |.//select[@class='reqField']                                                       |xpath|
+|awardyearoption  |.//select/option[2][contains (.,'2014-2015')]                                      |xpath|
+|finaidyear       |.//select/option[2][contains (.,'AUTO1415')]                                       |xpath|
+|award            |.//select/option[3][contains (.,'Direct Subsidized Loan')]                         |xpath|
+|maxeli           |.//div[2]/label[contains (text(), 'Maximum Eligibility')]/..//input[@name='amount']|xpath|
+|awardamount      |.//div[3]/label[contains (text(), 'Award Amount')]/..//input[@name='amount']       |xpath|
+|addnewaward      |.//button[1][contains (text(),'Add New Award')]                                    |xpath|
+|cancel           |.//button[2][contains (text(), 'Cancel')]                                          |xpath|
+|distributetext   |.//h4[2][contains (text(), 'Step 2: Distribute')]                                  |xpath|
+|awardstatus      |.//div[1]/select[@class='span12 reqField']                                         |xpath|
+
+
+|Object Repository|DISTRIBUTE                                                                                            |
+|id               |value                                                                                           |type |
+|disaward         |.//div[2]/span/button[@type='button']                                                           |xpath|
+|addnewaward      |.//div[5]/button[1][contains (text(), 'Add New Award')]                                         |xpath|
+|confirmyes       |.//div[3][@class='modal-footer']/div/a[1][contains (text(), 'Yes')]                             |xpath|
+|xbutton          |//div[5]/div/div/div/button[contains (., '×')]                                                  |xpath|
+|deleteaward      |.//div[2]/div/table/tbody/tr/td[6][contains(.,'Estimated')]/../../../../../../div[1]/span[2]/a/i|xpath|
+|estimate         |.//select/option[2][@value='Estimated']                                                         |xpath|
+|deleteready      |.//span[2][@class='padLef']/a/i                                                                 |xpath|
+|closebutton      |//div[3][@class='modal-footer']/div/a[contains(.,'Close')]                                      |xpath|
+

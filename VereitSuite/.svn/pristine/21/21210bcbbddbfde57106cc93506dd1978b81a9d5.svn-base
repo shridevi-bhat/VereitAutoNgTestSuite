@@ -1,0 +1,376 @@
+!|Scenario|edit _ where _ is _|form_name , col_name , col_value                |
+|click    |edit               |where|@col_name|is|@col_value|in form|@form_name|
+
+
+!|Scenario               |check if _ dropdown is _                                              |dropdown_name , enable_disable                                                  |
+|variable                |isEnabled                                                             |equals  to                                                                      |
+|verify                  |@enable_disable                                                       |with        |enabled                                                            |
+|If                      |{$isEnabled}                                                                                                                                           |
+|variable                |isPresent                                                             |equals  to                                                                      |
+|verify page not contains|xpath-->.//label[contains(.,'@dropdown_name')]/../select[@disabled='']|element                                                                         |
+|assert true             |{$isPresent}                                                                                                                                           |
+|log result              |{$isPresent}                                                          |with comment|'@dropdown_name' drop down is @enable_disable.|in page|Awards  page|
+|End If                                                                                                                                                                          |
+|variable                |isDisabled                                                            |equals  to                                                                      |
+|verify                  |@enable_disable                                                       |with        |disabled                                                           |
+|If                      |{$isDisabled}                                                                                                                                          |
+|variable                |isPresent                                                             |equals  to                                                                      |
+|wait  for  element      |.//label[contains(.,'@dropdown_name')]/../select[@disabled='']                                                                                         |
+|assert true             |{$isPresent}                                                                                                                                           |
+|log result              |{$isPresent}                                                          |with comment|'@dropdown_name' drop down is @enable_disable.|in page|Awards  page|
+|End If                                                                                                                                                                          |
+
+
+!|Scenario               |check if _ textfield is _                                             |textfield_name , enable_disable                                              |
+|variable                |isEnabled                                                             |equals  to                                                                   |
+|verify                  |@enable_disable                                                       |with        |enabled                                                         |
+|If                      |{$isEnabled}                                                                                                                                        |
+|variable                |isPresent                                                             |equals  to                                                                   |
+|verify page not contains|xpath-->.//label[contains(.,'@textfield_name')]/../input[@disabled='']|element                                                                      |
+|assert true             |{$isPresent}                                                                                                                                        |
+|log result              |{$isPresent}                                                          |with comment|'@textfield_name' field is @enable_disable.|in page|Awards  page|
+|End If                                                                                                                                                                       |
+|variable                |isDisabled                                                            |equals  to                                                                   |
+|verify                  |@enable_disable                                                       |with        |disabled                                                        |
+|If                      |{$isDisabled}                                                                                                                                       |
+|variable                |isPresent                                                             |equals  to                                                                   |
+|wait  for  element      |.//label[contains(.,'@textfield_name')]/../input[@disabled='']                                                                                      |
+|assert true             |{$isPresent}                                                                                                                                        |
+|log result              |{$isPresent}                                                          |with comment|'@textfield_name' field is @enable_disable.|in page|Awards  page|
+|End If                                                                                                                                                                       |
+
+!|Scenario            |verification of Award Type Code field                                                                                     |
+|click                |{$AWARD.awardslink}                                                                                                       |
+|wait  for  element   |{$AWARD.new}                                                                                                              |
+|click                |{$AWARD.new}                                                                                                              |
+|type                 |{$awardTypeCode}B                    |into                |{$AWARD.awardtypecode}               |text field               |
+|select               |Pending                              |from                |{$AWARD.defaultstatus}                                         |
+|type                 |data                                 |into                |{$AWARD.desescription}               |text field               |
+|click add new button                                                                                                                            |
+|pause  execution  for|3                                    |seconds                                                                             |
+|click                |Yes                                  |from popup                                                                          |
+|variable             |awardTypeCodeOfLenTen                |equals  to                                                                          |
+|wait  for  element   |//*[@id='main']//descendant::h1[contains(text(),'Awards')]/../div[2]//table//tbody/tr//div[contains(.,'{$awardTypeCode}')]|
+|assert true          |{$awardTypeCodeOfLenTen}                                                                                                  |
+
+!|Scenario            |verification of 'Description' field                                                                                                           |
+|                     |click                                    |{$AWARD.awardslink}                                                                                 |
+|edit                 |Awards                                   |where       |Award Type Code                                |is                    |{$awardTypeCode}|
+|clear  text          |{$AWARD.desescription}                                                                                                                        |
+|type                 |ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJA|into        |{$AWARD.desescription}                         |text field                             |
+|select               |Pending                                  |from        |{$AWARD.defaultstatus}                                                                 |
+|click save button                                                                                                                                                   |
+|pause  execution  for|3                                        |seconds                                                                                             |
+|click                |Yes                                      |from popup                                                                                          |
+|edit                 |Awards                                   |where       |Award Type Code                                |is                    |{$awardTypeCode}|
+|$text=               |get  value  for  attribute               |value       |of                                             |{$AWARD.desescription}|element         |
+|variable             |isLenFourty                              |equals  to                                                                                          |
+|verify               |$text                                    |with        |ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJ                                               |
+|$val=                |get  length  of                          |$text       |string                                                                                 |
+|variable             |lenFourty                                |equals  to                                                                                          |
+|verify               |$val                                     |with        |40                                                                                     |
+|assert true          |{$lenFourty}                                                                                                                                  |
+|log result           |{$lenFourty}                             |with comment|'Description' field accepts only 40 characters.|in page               |Awards  page    |
+|click cancel new button                                                                                                                                             |
+|pause  execution  for|3                                        |seconds                                                                                             |
+|click                |Yes                                      |from popup                                                                                          |
+
+!|Scenario            |verification of 'Account Number' field                                                                                             |
+|edit                 |Awards                     |where       |Award Type Code                                   |is                    |{$awardTypeCode}|
+|type                 |123456789123456789123456789|into        |{$AWARD.accountnumber}                            |text field                             |
+|select               |Pending                    |from        |{$AWARD.defaultstatus}                                                                    |
+|click save button                                                                                                                                        |
+|pause  execution  for|3                          |seconds                                                                                                |
+|click                |Yes                        |from popup                                                                                             |
+|edit                 |Awards                     |where       |Award Type Code                                   |is                    |{$awardTypeCode}|
+|$text=               |get  value  for  attribute |value       |of                                                |{$AWARD.accountnumber}|element         |
+|variable             |isLenTwentyFive            |equals  to                                                                                             |
+|verify               |$text                      |with        |1234567891234567891234567                                                                 |
+|$val=                |get  length  of            |$text       |string                                                                                    |
+|variable             |lenIsTwentyFive            |equals  to                                                                                             |
+|verify               |$val                       |with        |25                                                                                        |
+|assert true          |{$lenIsTwentyFive}                                                                                                                 |
+|log result           |{$lenIsTwentyFive}         |with comment|'Account Number' field accepts only 25 characters.|in page               |Awards  page    |
+|click cancel new button                                                                                                                                  |
+|pause  execution  for|3                          |seconds                                                                                                |
+|click                |Yes                        |from popup                                                                                             |
+
+
+!|Scenario            |verification of 'Long Description'  field                                                                                                                                                                              |
+|edit                 |Awards                                                                                               |where       |Award Type Code                                    |is                          |{$awardTypeCode}   |
+|type                 |ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJZ|into        |{$AWARD.longdescription}                           |text field                                      |
+|select               |Pending                                                                                              |from        |{$AWARD.defaultstatus}                                                                              |
+|click save button                                                                                                                                                                                                                            |
+|pause  execution  for|3                                                                                                    |seconds                                                                                                          |
+|click                |Yes                                                                                                  |from popup                                                                                                       |
+|edit                 |Awards                                                                                               |where       |Award Type Code                                    |is                          |{$awardTypeCode}   |
+|$text=               |get  value  for  attribute                                                                           |value       |of                                                 |{$AWARD.longdescription}    |element            |
+|variable             |isLenNintyNine                                                                                       |equals  to                                                                                                       |
+|verify               |$text                                                                                                |with        |ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJ|
+|$val=                |get  length  of                                                                                      |$text       |string                                                                                              |
+|variable             |lenIsNintyNine                                                                                       |equals  to                                                                                                       |
+|verify               |$val                                                                                                 |with        |100                                                                                                 |
+|log result           |{$lenIsNintyNine}                                                                                    |with comment|'Long Description' field accepts 99 characters.    |in page                     |Awards  page       |
+|assert true          |{$lenIsNintyNine}                                                                                                                                                                                                      |
+|click cancel new button                                                                                                                                                                                                                      |
+|pause  execution  for|3                                                                                                    |seconds                                                                                                          |
+|click                |Yes                                                                                                  |from popup                                                                                                       |
+
+!|Scenario         |verify _ check box is checked and disabled|field_name                                                                       |
+|variable          |isPresent                                 |equals  to                                                                       |
+|wait  for  element|.//*[@id='awardForm']//label[contains(.,'@field_name')]//input[@checked='' and @disabled='']                                |
+|assert true       |{$isPresent}                                                                                                                |
+|log result        |{$isPresent}                              |with comment|'@field_name' check box is checked and disabled|in page|Awards  page|
+
+!|Scenario               |verify _ check box is unchecked and enabled                                                         |field_name                                                                        |
+|variable                |isPresent                                                                                           |equals  to                                                                        |
+|verify page not contains|xpath-->.//*[@id='awardForm']//label[contains(.,'@field_name')]//input[@checked='' and @disabled='']|element                                                                           |
+|assert true             |{$isPresent}                                                                                                                                                                           |
+|log result              |{$isPresent}                                                                                        |with comment|'@field_name' check box is unchecked and enabled|in page|Awards  page|
+
+!|Scenario     |check the _ checkbox  and verify if it is checked|field_name                                                                                      |
+|click         |.//*[@id='awardForm']//label[contains(.,'@field_name')]//input                                                                                    |
+|variable      |isCheckBoxChecked                                |equals  to                                                                                      |
+|verify Whether|checkbox                                         |At          |.//*[@id='awardForm']//label[contains(.,'@field_name')]//input|Is Selected         |
+|assert true   |{$isCheckBoxChecked}                                                                                                                              |
+|log result    |{$isCheckBoxChecked}                             |with comment|'@field_name' check box is checked.                           |in page|Awards  page|
+|click         |.//*[@id='awardForm']//label[contains(.,'@field_name')]//input                                                                                    |
+
+!|Scenario               |verify Portal Award Message text area                                                                                                                                  |
+|variable                |isDisabled                                                                                        |equals  to                                                          |
+|verify page not contains|xpath-->.//*[@id='awardForm']//label[contains(.,'Portal Award Message')]/../textarea[@disabled='']|element                                                             |
+|log result              |{$isDisabled}                                                                                     |with comment|'Portal Award Message' field is enabled.|in page|Awards|
+|click cancel new button                                                                                                                                                                         |
+|pause  execution  for   |3                                                                                                 |seconds                                                             |
+|click                   |Yes                                                                                               |from popup                                                          |
+
+!|Scenario            |verify sequence field                                                                                         |
+|edit                 |Awards                    |where       |Award Type Code                    |is               |{$awardTypeCode}|
+|select               |Pending                   |from        |{$AWARD.defaultstatus}                                                |
+|clear  text          |{$AWARD.sequence}                                                                                             |
+|double  click  on    |{$AWARD.save}                                                                                                 |
+|pause  execution  for|5                         |seconds                                                                            |
+|click                |Yes                       |from popup                                                                         |
+|edit                 |Awards                    |where       |Award Type Code                    |is               |{$awardTypeCode}|
+|$val=                |get  value  for  attribute|value       |of                                 |{$AWARD.sequence}|element         |
+|variable             |sequenceDefalutValueIs    |equals  to                                                                         |
+|verify               |$val                      |with        |9999                                                                  |
+|log result           |{$sequenceDefalutValueIs} |with comment|Sequence default value is 9999     |in page          |Awards          |
+|select               |Pending                   |from        |{$AWARD.defaultstatus}                                                |
+|clear  text          |{$AWARD.sequence}                                                                                             |
+|type                 |99                        |into        |{$AWARD.sequence}                  |text field                        |
+|double  click  on    |{$AWARD.save}                                                                                                 |
+|pause  execution  for|3                         |seconds                                                                            |
+|click                |Yes                       |from popup                                                                         |
+|edit                 |Awards                    |where       |Award Type Code                    |is               |{$awardTypeCode}|
+|$val=                |get  value  for  attribute|value       |of                                 |{$AWARD.sequence}|element         |
+|variable             |sequenceNewValueIs        |equals  to                                                                         |
+|verify               |$val                      |with        |99                                                                    |
+|log result           |{$sequenceNewValueIs}     |with comment|Sequence new value is 99           |in page          |Awards          |
+|select               |Pending                   |from        |{$AWARD.defaultstatus}                                                |
+|type                 |ABCD                      |into        |{$AWARD.sequence}                  |text field                        |
+|double  click  on    |{$AWARD.save}                                                                                                 |
+|pause  execution  for|4                         |seconds                                                                            |
+|click                |Yes                       |from popup                                                                         |
+|edit                 |Awards                    |where       |Award Type Code                    |is               |{$awardTypeCode}|
+|$val=                |get  value  for  attribute|value       |of                                 |{$AWARD.sequence}|element         |
+|variable             |sequenceNewValueIs        |equals  to                                                                         |
+|verify               |$val                      |with        |99                                                                    |
+|log result           |{$sequenceNewValueIs}     |with comment|Sequence accepts only numeric value|in page          |Awards          |
+|select               |Pending                   |from        |{$AWARD.defaultstatus}                                                |
+|clear  text          |{$AWARD.sequence}                                                                                             |
+|double  click  on    |{$AWARD.save}                                                                                                 |
+|pause  execution  for|3                         |seconds                                                                            |
+|click                |Yes                       |from popup                                                                         |
+
+!|Scenario            |verify posting period field                                                                                                         |
+|edit                 |Awards                     |where       |Award Type Code                                  |is                      |{$awardTypeCode}|
+|select               |Pending                    |from        |{$AWARD.defaultstatus}                                                                     |
+|type                 |ABCD                       |into        |{$AWARD.postingpriority}                         |text field                               |
+|click save button                                                                                                                                         |
+|pause  execution  for|3                          |seconds                                                                                                 |
+|click                |Yes                        |from popup                                                                                              |
+|edit                 |Awards                     |where       |Award Type Code                                  |is                      |{$awardTypeCode}|
+|$blankField=         |get  value  for  attribute |value       |of                                               |{$AWARD.postingpriority}|element         |
+|variable             |acceptsOnlyNumbericValue   |equals  to                                                                                              |
+|verify               |$blankField                |with        |                                                                                           |
+|log result           |{$acceptsOnlyNumbericValue}|with comment|Posting Priority field accepts only numeric value|in page                 |Awards          |
+|select               |Pending                    |from        |{$AWARD.defaultstatus}                                                                     |
+|type                 |123456                     |into        |{$AWARD.postingpriority}                         |text field                               |
+|click save button                                                                                                                                         |
+|pause  execution  for|3                          |seconds                                                                                                 |
+|click                |Yes                        |from popup                                                                                              |
+|edit                 |Awards                     |where       |Award Type Code                                  |is                      |{$awardTypeCode}|
+|$numericValue=       |get  value  for  attribute |value       |of                                               |{$AWARD.postingpriority}|element         |
+|variable             |acceptsOnlyNumbericValue   |equals  to                                                                                              |
+|verify               |$numericValue              |with        |123456                                                                                     |
+|log result           |{$acceptsOnlyNumbericValue}|with comment|Posting Priority field has 123456 numeric value  |in page                 |Awards          |
+|select               |Pending                    |from        |{$AWARD.defaultstatus}                                                                     |
+|clear  text          |{$AWARD.postingpriority}                                                                                                            |
+|click save button                                                                                                                                         |
+|pause  execution  for|3                          |seconds                                                                                                 |
+|click                |Yes                        |from popup                                                                                              |
+
+
+!|Scenario            |verify 'Loan Origination Fee' field                                  |
+|edit                 |Awards         |where|Award Type Code            |is|{$awardTypeCode}|
+|select               |Pending        |from |{$AWARD.defaultstatus}                         |
+|type                 |101.00000      |into |{$AWARD.loanoriginationfee}|text field         |
+|click                |{$AWARD.firstdisbursementdate}                                       |
+|click                |{$AWARD.awardday}                                                    |
+|click                |{$AWARD.loadd}                                                       |
+|variable             |errorMsgPresent|equals  to                                           |
+|wait  for  element   |{$AWARD.loerror}                                                     |
+|clear  text          |{$AWARD.loanoriginationfee}                                          |
+|type                 |0.0000000      |into |{$AWARD.loanoriginationfee}|text field         |
+|click                |{$AWARD.loadd}                                                       |
+|wait  for  element   |.//div[text()='0.00000%']                                            |
+|click                |{$AWARD.loedit}                                                      |
+|clear  text          |{$AWARD.loanoriginationfee}                                          |
+|type                 |90.00000       |into |{$AWARD.loanoriginationfee}|text field         |
+|click save button                                                                          |
+|pause  execution  for|3              |seconds                                              |
+|click cancel new button                                                                    |
+|pause  execution  for|3              |seconds                                              |
+|click                |Yes            |from popup                                           |
+
+!|Scenario         |verify 'First Disbursement Date ' field                                                                                               |
+|edit              |Awards                     |where|Award Type Code               |is                            |{$awardTypeCode}                      |
+|type              |100.00000                  |into |{$AWARD.loanoriginationfee}   |text field                                                           |
+|double  click  on |{$AWARD.firstdisbursementdate}                                                                                                        |
+|type              |02/29/2014                 |into |{$AWARD.firstdisbursementdate}|text field                                                           |
+|click             |{$AWARD.loanoriginationfee}                                                                                                           |
+|click             |{$AWARD.loadd}                                                                                                                        |
+|wait  for  element|{$AWARD.invaliddate}                                                                                                                  |
+|click             |{$AWARD.firstdisbursementdate}                                                                                                        |
+|click             |{$AWARD.day}                                                                                                                          |
+|click             |{$AWARD.rfadd}                                                                                                                        |
+|$date=            |get  value  for  attribute |value|of                            |{$AWARD.firstdisbursementdate}|element                               |
+|$diff=            |get date difference between|$date|and                           |$date                         |in|day|where date format is|MM/dd/yyyy|
+
+
+!|Scenario            |verify 'Rebate Percentage'  field                                  |
+|edit                 |Awards         |where|Award Type Code          |is|{$awardTypeCode}|
+|select               |Pending        |from |{$AWARD.defaultstatus}                       |
+|type                 |101.00000      |into |{$AWARD.rebatepercentage}|text field         |
+|click                |{$AWARD.effectivedate}                                             |
+|click                |{$AWARD.awardday}                                                  |
+|click                |{$AWARD.rfadd}                                                     |
+|variable             |errorMsgPresent|equals  to                                         |
+|wait  for  element   |{$AWARD.rferror}                                                   |
+|clear  text          |{$AWARD.rebatepercentage}                                          |
+|type                 |0.0000000      |into |{$AWARD.rebatepercentage}|text field         |
+|click                |{$AWARD.rfadd}                                                     |
+|wait  for  element   |.//div[text()='0.00000%']                                          |
+|click                |{$AWARD.redit}                                                     |
+|clear  text          |{$AWARD.rebatepercentage}                                          |
+|type                 |90.00000       |into |{$AWARD.rebatepercentage}|text field         |
+|click save button                                                                        |
+|click cancel button                                                                      |
+|pause  execution  for|3              |seconds                                            |
+|click                |Yes            |from popup                                         |
+
+!|Scenario       |verify 'Rebate Effective Date'                                                           |
+|$blankByDefault=|get  value  for  attribute|value|of                       |{$AWARD.effectivedate}|element|
+|variable        |isBlank                   |equals  to                                                    |
+|verify          |$blankByDefault           |with |                                                        |
+|assert true     |{$isBlank}                                                                               |
+|select          |Pending                   |from |{$AWARD.defaultstatus}                                  |
+|type            |101.00000                 |into |{$AWARD.rebatepercentage}|text field                    |
+|click           |{$AWARD.effectivedate}                                                                   |
+|click           |{$AWARD.day}                                                                             |
+|click addnew button                                                                                       |
+
+
+!|Scenario            |verify mandatory fields of prepopulated values for _ where 'Default status' is _ 'Description' is _ 'Awards category' is _ 'Awards sub category' is _|filed_name , default_status , description , category , sub_cat                  |
+|edit                 |Awards                                                                                                                                               |where                 |Award Type Code|is                           |@filed_name|
+|$defaultValue=       |get selected item from                                                                                                                               |{$AWARD.defaultstatus}|list                                                     |
+|verify               |$defaultValue                                                                                                                                        |with                  |@default_status                                          |
+|$awardsDes=          |get  value  for  attribute                                                                                                                           |value                 |of             |{$AWARD.awardformdescription}|element    |
+|verify               |$awardsDes                                                                                                                                           |with                  |@description                                             |
+|$subCategory=        |get selected item from                                                                                                                               |{$AWARD.awardsubcat}  |list                                                     |
+|verify               |$subCategory                                                                                                                                         |with                  |@sub_cat                                                 |
+|$category=           |get selected item from                                                                                                                               |{$AWARD.awardcategory}|list                                                     |
+|verify               |$category                                                                                                                                            |with                  |@category                                                |
+|click cancel new button                                                                                                                                                                                                                                     |
+|pause  execution  for|3                                                                                                                                                    |seconds                                                                         |
+|click                |Yes                                                                                                                                                  |from popup                                                                      |
+
+!|Scenario|create Loan Origination                                                                            |
+|type     |101.00000                 |into |{$AWARD.loanoriginationfee}|text field                            |
+|click    |{$AWARD.firstdisbursementdate}                                                                     |
+|click    |{$AWARD.awardday}                                                                                  |
+|click    |{$AWARD.locancel}                                                                                  |
+|$val1=   |get  value  for  attribute|value|of                         |{$AWARD.loanoriginationfee}   |element|
+|$val2=   |get  value  for  attribute|value|of                         |{$AWARD.firstdisbursementdate}|element|
+|verify   |$val1                     |with |                                                                  |
+|verify   |$val2                     |with |                                                                  |
+|type     |101.00000                 |into |{$AWARD.loanoriginationfee}|text field                            |
+|click    |{$AWARD.firstdisbursementdate}                                                                     |
+|click    |{$AWARD.awardday}                                                                                  |
+|click    |{$AWARD.loadd}                                                                                     |
+|click    |{$AWARD.loedit}                                                                                    |
+|$val1=   |get  value  for  attribute|value|of                         |{$AWARD.loanoriginationfee}   |element|
+|$val2=   |get  value  for  attribute|value|of                         |{$AWARD.firstdisbursementdate}|element|
+|verify   |$val1                     |with |101.00000                                                         |
+
+!|Scenario|verify Award Category dropdown                    |
+|$val=    |get selected item from|{$AWARD.awardcategory}|list|
+|verify   |$val1                 |with                  |    |
+
+!|Scenario            |verify 'Effective Date'                                                                      |
+|edit                 |Awards                    |where|Award Type Code|is                         |{$awardTypeCode}|
+|select               |Pending                   |from |{$AWARD.defaultstatus}                                      |
+|$curDate=            |get current date in format|mm/dd/yyyy                                                        |
+|$effectiveDate       |get  value  for  attribute|value|of             |{$AWARD.awardeffectivedate}|element         |
+|verify               |$effectiveDate            |with |$curDate                                                    |
+|click                |{$AWARD.awardeffectivedate}                                                                  |
+|click                |{$AWARD.calicon}                                                                             |
+|click                |{$AWARD.awardday}                                                                            |
+|click save button                                                                                                  |
+|pause  execution  for|3                         |seconds                                                           |
+|click                |Yes                       |from popup                                                        |
+|edit                 |Awards                    |where|Award Type Code|is                         |{$awardTypeCode}|
+|select               |Pending                   |from |{$AWARD.defaultstatus}                                      |
+|$blankEndDate=       |get  value  for  attribute|value|of             |{$AWARD.awardenddate}      |element         |
+|verify               |$blankEndDate             |with |                                                            |
+|click                |{$AWARD.awardenddate}                                                                        |
+|click                |{$AWARD.calicon}                                                                             |
+|click                |{$AWARD.day}                                                                                 |
+|click save button                                                                                                  |
+|wait  for  element   |{$AWARD.awarderrormsg}                                                                       |
+
+
+
+!|Scenario      |read from data for|sheetName       |excelsheet from  |rowNumber   |
+|load           |@sheetName        |excel sheet from|{$DATASHEET.data}|in|read|Mode|
+|variable       |awardTypeCode     |equals to                                      |
+|getFromExcelRow|@rowNumber        |Column          |1                             |
+|variable       |defaultStatus     |equals to                                      |
+|getFromExcelRow|@rowNumber        |Column          |2                             |
+|variable       |awardDescription  |equals to                                      |
+|getFromExcelRow|@rowNumber        |Column          |3                             |
+|unload  excel sheet                                                               |
+
+
+!|Scenario         |add new Awards record for|form_name      |picking data from     |rowNumber|row|
+|read from data for|@form_name               |excelsheet from|@rowNumber                          |
+|type              |{$awardTypeCode}         |into           |{$AWARD.awardtypecode}|text field   |
+|select            |{$defaultStatus}         |from           |{$AWARD.defaultstatus}              |
+|type              |{$awardDescription}      |into           |{$AWARD.desescription}|text field   |
+
+!|Scenario                |create a new Awards           |
+|click                    |{$AWARD.new}                  |
+|add new Awards record for|Awards|picking data from|2|row|
+|click add new button                                    |
+|pause  execution  for    |3     |seconds                |
+|click                    |Yes   |from popup             |
+
+!|Scenario         |remove records from database                               |
+|read from data for|Awards |excelsheet from                              |2    |
+|$val1=            |get    |awardTypeCode                                |value|
+|show              |execute|delete from ngp.award_type where code='$val1'|query|
+
+
+
+

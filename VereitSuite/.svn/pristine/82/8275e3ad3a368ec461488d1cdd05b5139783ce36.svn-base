@@ -1,0 +1,48 @@
+----
+'''Test data:'''  Award Year: 2015-2016, Touchpoint Type: QA testing, Filter Settings:Award Amount: 100, Exclusions: Award Type: Direct Subsidized Loan
+
+
+'''Test Steps'''
+1. Launch the application 
+2. Create a New Group '''FA_GRP_PRO1''' and save filters
+3. Verify New Group '''FA_GRP_PRO1''' and filter Details on '''Review''' screen
+4. Verify created group details on the summary screen
+5. Edit existing group and save
+6. Logout
+7. Close Browser
+
+'''Pre condition for script execution'''
+Not applicable
+
+
+'''Post execution instructions'''
+Not applicable
+----
+
+|import                          |
+|net.indecomm.autong.api.fitnesse|
+
+!include -c <FinancialAidSuite.FinancialAidCommonFiles 
+!include -c <FinancialAidSuite.FinancialAid.CommonScenarios
+!include -c <FinancialAidSuite.FinancialAid.OperationsModule.OperationsFaGroupProcessingSubModule.FaGroupProcessingCreateEditGroupTest.FaGroupProcessingCreateEditGroupScenarios
+!include -c <FinancialAidSuite.FinancialAid.OperationsModule.OperationsFaGroupProcessingSubModule.FaGroupProcessingCreateEditGroupTest.FaGroupProcessingCreateEditGroupImplementation
+!include -c <FinancialAidSuite.FinancialAid.OperationsModule.OperationsFaGroupProcessingSubModule.FaGrpProcessingObjectRepository
+!include -c <FinancialAidSuite.FinancialAid.OperationsModule.OperationsFaGroupProcessingSubModule.FaGrpProcessingCommonScenarios
+
+
+!|Script                                        |AutomationNG                                   |
+|set test                                       |${PAGE_NAME}                                   |
+|initialize test setup with result name         |${PAGE_NAME}_${defaultBrowser}                 |
+|connect to                                     |DEV                  |database                 |
+|deleting  fa group created by automation                                                       |
+|login to the Financial Aid dev module                                                          |
+|pause  execution  for                          |2                    |seconds                  |
+|create new fa group and save filters                                                           |
+|verify created fa group , selected filters and grid header in Financial Aid Group Review screen|
+|verify fa group details in summary screen                                                      |
+|verify grid header in fa group summary screen                                                  |
+|verify view setting details on fa group summary screen                                         |
+|edit the existing fa group                                                                     |
+|close browser                                                                                                                                                                                   |
+|end result                                                                                                                                                                                      |
+

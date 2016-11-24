@@ -1,0 +1,6 @@
+|Object Repository|AWARD                                                    |
+|Id               |Value                                              |Type |
+|AWARDSLINK       |.//*[@id='constNavBar']//a[text()='Awards']        |xpath|
+|AWARDSACTIVE     |.//li[@class='active']/a[contains(text(),'Awards')]|xpath|
+|AWARDMGMT        |.//a[contains(text(),'Award Management')]          |xpath|
+|AWARDMGMTPAGE    |.//h3[contains(.,'You are viewing/editing for')]   |xpath|

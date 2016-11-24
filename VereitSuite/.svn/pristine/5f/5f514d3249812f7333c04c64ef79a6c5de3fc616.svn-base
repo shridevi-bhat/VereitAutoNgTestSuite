@@ -1,0 +1,21 @@
+'''Student Profile Cost of Attendance '''
+
+|Object Repository                   |STUDENTCOSTOFATTENDANCEGRID                                                                                                       |
+|Id                                  |Value                                                                                                                       |Type |
+|horizantalbarawardclick             |//a[@class='gwt-Anchor' and contains(text(),'Awards')]                                                                      |xpath|
+|costofattendanceclick               |.//div[@class='row-fluid']//a[contains(text(),'Cost of Attendance')]                                                        |xpath|
+|studenttuitionvalue                 |//span[contains(text(),'Pell Budget')]//..//..//div[contains(text(),'Tuition')]//..//..//following-sibling::td//div         |xpath|
+|studentfeesvalue                    |//span[contains(text(),'Pell Budget')]//..//..//div[contains(text(),'Fees')]//..//..//following-sibling::td//div            |xpath|
+|studentbooksnsuppliesvalue          |//span[contains(text(),'Pell Budget')]//..//..//div[contains(text(),'Books & Supplies')]//..//..//following-sibling::td//div|xpath|
+|studenttransportationvalue          |//span[contains(text(),'Pell Budget')]//..//..//div[contains(text(),'Transportation')]//..//..//following-sibling::td//div  |xpath|
+|studentmiscellaneousvalue           |//span[contains(text(),'Pell Budget')]//..//..//div[contains(text(),'Miscellaneous')]//..//..//following-sibling::td//div   |xpath|
+|studenthouseoffcampuswithparentvalue|//span[contains(text(),'Pell Budget')]//..//..//div[contains(text(),'Housing')]//..//..//following-sibling::td//div         |xpath|
+|coaawardyear                        |//div[@class='alert centerMe']//div[@class='btn-group']//a[@class='dropdown-toggle']                                        |xpath|
+|coaawardyear201617                  |.//a[contains(text(),'2016-2017')]                                                                                          |xpath|
+|coabudgetediticon                   |//span[contains(text(),'COA Budget')]//..//a                                                                                |xpath|
+|coaperiodname                       |//*[@id='modalChangePB']//label[contains(text(),'COA Period Name:')]//..//select                                            |xpath|
+|coaefcbudget                        |//*[@id='modalChangePB']//label[contains(text(),'EFC Budget:')]//..//select                                                 |xpath|
+|coahousing                          |//*[@id='modalChangePB']//label[contains(text(),'Housing:')]//..//select                                                    |xpath|
+|coacomment                          |//*[@id='modalChangePB']//label[contains(text(),'Comment')]//..//textarea                                                   |xpath|
+|coasave                             |//*[@id='modalChangePB']//button[contains(text(),'Save')]                                                                   |xpath|
+

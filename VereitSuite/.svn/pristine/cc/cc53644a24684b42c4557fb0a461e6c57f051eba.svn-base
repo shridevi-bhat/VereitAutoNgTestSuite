@@ -1,0 +1,28 @@
+|Object Repository  |FINANCIALAIDYEAR                                                                                 |
+|Id                 |Value                                                                                      |Type |
+|name               |.//input[@name='name']                                                                     |xpath|
+|namereq            |.//input[@name='name' and contains(@style, 'rgb')]                                         |xpath|
+|awardyear          |.//label[contains(text(), 'Award Year')]/following-sibling::select                         |xpath|
+|awardyearreq       |.//label[contains(text(), 'Award Year')]/following-sibling::select[contains(@style, 'rgb')]|xpath|
+|startdate          |.//input[@name='startDate']                                                                |xpath|
+|selpastdatearrow   |//tr/td[@class='datePicker-MonthSelector-cell'][1]                                         |xpath|
+|selfuturedatearrow |//tr/td[@class='datePicker-MonthSelector-cell'][3]                                         |xpath|
+|selmiddate         |//div[@class='day' and text()='15']                                                        |xpath|
+|startdatereq       |//input[@name='startDate' and contains(@style, 'rgb')]                                     |xpath|
+|effectivereq       |.//input[@name='effectiveOn' and contains(@style, 'rgb')]                                  |xpath|
+|enddate            |.//input[@name='endDate']                                                                  |xpath|
+|effectiveon        |.//input[@name='effectiveOn']                                                              |xpath|
+|enddatereq         |.//input[@name='endDate' and contains(@style, 'rgb')]                                      |xpath|
+|activeday          |.//div[@class='day active']                                                                |xpath|
+|addnewpaytermheader|.//h3[@id='modalPayTerm']                                                                  |xpath|
+|paymentterm        |.//label[contains(text(), 'Payment Period')]/following-sibling::select                     |xpath|
+|loanperiod         |.//label[contains(text(), 'Loan Period')]/following-sibling::select                        |xpath|
+|disbursementdate   |.//input[@name='disbursedOn']                                                              |xpath|
+|newbtn             |.//a[@class='btn btn-success btn-small']                                                   |xpath|
+|addnewbtn          |.//a[@title='New row']                                                                     |xpath|
+|addbtn             |.//button[@class='btn btn-primary']                                                        |xpath|
+|addpaytermbtn      |//button[@class='btn btn-primary'][text()='Add']                                           |xpath|
+|completebtn        |//button[@class='btn btn-primary'][text()='Complete']                                      |xpath|
+|closebtn           |.//button[@class='btn']                                                                    |xpath|
+|xclosebtn          |.//button[@class='close']                                                                  |xpath|
+|cancelbtn          |.//button[@class='btn btn-default']                                                        |xpath|

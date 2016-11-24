@@ -1,0 +1,38 @@
+|import                          |
+|net.indecomm.autong.api.fitnesse|
+
+!include -c <FinancialAidSuite.FinancialAidCommonFiles 
+!include -c <FinancialAidSuite.FinancialAid.CommonScenarios
+!include -c <AwardSetup.TestCase003AwardsTest.AwardsScenarios
+!include -c <AwardSetup.TestCase003AwardsTest.AwardsImpl
+!include -c <AwardSetup.AwardSetupObjectRepository
+
+
+!|Script                                           |AutomationNG                                                                                                                                                |
+|set test                                          |${PAGE_NAME}                                                                                                                                                |
+|initialize test setup with result name            |${PAGE_NAME}_${defaultBrowser}                                                                                                                              |
+|remove records from database                                                                                                                                                                                   |
+|login to the Financial Aid module                                                                                                                                                                              |
+|verifying Financial Aid drop down menu                                                                                                                                                                         |
+|choose                                            |Administration |from header menu                                                                                                                            |
+|verifying                                    Award Setup                menu                                                                                                                                   |
+|select                                            |Awards         |menu from                |Award Setup                                                                                                       |
+|verify if bread crumb contains                    |Administration                                                                                                                                              |
+|verify                                            |Awards         |grid should have the following fields 'Award Type Code', 'Default Award Status', 'Description', 'Award Category', 'Award Sub Category'      |
+|verify                                            |Award          |table rows are highlighted on mouse over                                                                                                    |
+|verify mandatory fields of prepopulated values for|PELL           |where 'Default status' is|Pending   |'Description' is|Pell Grant short..|'Awards category' is|Federal|'Awards sub category' is|Federal Grant|
+|verify enabled disabled fields of awards where    |Award Type Code|is                       |DLSUB     |for             |Awards            |page for the defaults records                                      |
+|create a new Awards                                                                                                                                                                                            |
+|verify enabled disabled fields of awards where    |Award Type Code|is                       |AAAAAAAAAA|for             |Awards            |page for user enter records                                        |
+|validate mandatory fields on Award Administration page                                                                                                                                                         |
+|verification of 'Description' field                                                                                                                                                                            |
+|verification of 'Account Number' field                                                                                                                                                                         |
+|verification of 'Long Description' field                                                                                                                                                                       |
+|verify checkbox of default records are checked and disabled                                                                                                                                                    |
+|verify checkbox of user created records are unchecked and enabled                                                                                                                                              |
+|verify Portal Award Message text area                                                                                                                                                                          |
+|verify sequence field                                                                                                                                                                                          |
+|verify posting period field                                                                                                                                                                                    |
+|verify 'Loan Origination Fee' field                                                                                                                                                                            |
+|verify 'First Disbursement Date ' field                                                                                                                                                                        |
+|tear down                                                                                                                                                                                                      |

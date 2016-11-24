@@ -1,0 +1,161 @@
+!|Scenario            |moving to award tab                                                         |
+|pause  execution  for|2                       |seconds                                            |
+|click                |{$SEARCH.profile}                                                           |
+|pause  execution  for|3                       |seconds                                            |
+|variable             |isAwardHeaderPresent    |equals  to                                         |
+|click                |{$AWARD.awards}                                                             |
+|assert true          |{$isAwardHeaderPresent}                                                     |
+|log result           |{$isAwardHeaderPresent} |with comment|search button       |in page|Home page|
+|pause  execution  for|3                       |seconds                                            |
+|variable             |isYearDropdownPresent   |equals  to                                         |
+|click                |{$AWARD.yeardrop}                                                           |
+|assert true          |{$isYearDropdownPresent}                                                    |
+|log result           |{$isYearDropdownPresent}|with comment|Year dropdown button|in page|Home page|
+|pause  execution  for|2                       |seconds                                            |
+|click                |{$AWARD.fryear}                                                             |
+
+!|Scenario            |cost of attendance                                                                        |
+|pause  execution  for|2                           |seconds                                                      |
+|variable             |isCostOfAttendancePresent   |equals  to                                                   |
+|click                |{$AWARD.coa}                                                                              |
+|assert true          |{$isCostOfAttendancePresent}                                                              |
+|log result           |{$isCostOfAttendancePresent}|with comment|Cost of Attendance button    |in page|Award page|
+|pause  execution  for|2                           |seconds                                                      |
+|click                |{$AWARD.yeardrop}                                                                         |
+|click                |{$AWARD.fryear}                                                                           |
+|pause  execution  for|4                           |seconds                                                      |
+|variable             |isTotalAmountEquals         |equals  to                                                   |
+|verify page contains |{$AWARD.totalamountincoa}   |element                                                      |
+|assert true          |{$isTotalAmountEquals}                                                                    |
+|log result           |{$isTotalAmountEquals}      |with comment|Total amount is equals to 900|in page|COA page  |
+|pause  execution  for|2                           |seconds                                                      |
+|click                |{$AWARD.summary}                                                                          |
+|pause  execution  for|1                           |seconds                                                      |
+|click                |{$AWARD.yeardrop}                                                                         |
+|click                |{$AWARD.fryear}                                                                           |
+
+!|Scenario  |compare cost of attendance and summary total values        |
+|$val1=     |get               |istotalamountincoa    |value            |
+|$val2=     |get               |istotalamountinsummary|value            |
+|$val3=     |remove            |$                     |from|$val1|string|
+|$val4=     |remove            |$                     |from|$val2|string|
+|variable   |MatchFoundForTotal|equals  to                              |
+|verify     |$val3             |with                  |$val4            |
+|assert true|{$MatchFoundForTotal}                                      |
+
+
+
+
+!|Scenario             |compare remaining need in summary and award management            |
+|pause  execution  for |2                 |seconds                                        |
+|click                 |{$AWARD.awardmanagement}                                          |
+|click                 |{$AWARD.yeardrop}                                                 |
+|click                 |{$AWARD.fryear}                                                   |
+|pause  execution  for |5                 |seconds                                        |
+|verify  page  contains|Remaining Need:   |text                                           |
+|pause  execution  for |3                 |seconds                                        |
+|click                 |{$AWARD.summary}                                                  |
+|click                 |{$AWARD.yeardrop}                                                 |
+|click                 |{$AWARD.fryear}                                                   |
+|pause  execution  for |5                 |seconds                                        |
+|verify  page  contains|Remaining Need:   |text                                           |
+|$val1=                |get               |remainingneedinsummary       |value            |
+|$val2=                |get               |remainingneed_awardmanagement|value            |
+|$val3=                |remove            |$                            |from|$val1|string|
+|$val4=                |remove            |$                            |from|$val2|string|
+|variable              |MatchFoundForTotal|equals  to                                     |
+|verify                |$val3             |with                         |$val4            |
+|assert true           |{$MatchFoundForTotal}                                             |
+
+
+
+!|Scenario             |compare remaining eligibility in summary and award management                                            |
+|pause  execution  for |2                          |seconds                                                                      |
+|click                 |{$AWARD.awardmanagement}                                                                                 |
+|click                 |{$AWARD.yeardrop}                                                                                        |
+|click                 |{$AWARD.fryear}                                                                                          |
+|pause  execution  for |5                          |seconds                                                                      |
+|verify  page  contains|Remaining Eligibility:     |text                                                                         |
+|pause  execution  for |3                          |seconds                                                                      |
+|click                 |{$AWARD.summary}                                                                                         |
+|click                 |{$AWARD.yeardrop}                                                                                        |
+|click                 |{$AWARD.fryear}                                                                                          |
+|pause  execution  for |5                          |seconds                                                                      |
+|verify  page  contains|Remaining Eligibility:     |text                                                                         |
+|$val1=                |get                        |remainingeligibilityinsummary       |value                                   |
+|$val2=                |get                        |remainingeligibility_awardmanagement|value                                   |
+|$val3=                |remove                     |$                                   |from         |$val1  |string            |
+|$val4=                |remove                     |$                                   |from         |$val2  |string            |
+|variable              |MatchFoundForTotal         |equals  to                                                                   |
+|verify                |$val3                      |with                                |$val4                                   |
+|assert true           |{$MatchFoundForTotal}                                                                                    |
+|variable              |isDependencyvaluepresent   |equals  to                                                                   |
+|verify page contains  |{$AWARD.dependency}        |element                                                                      |
+|assert true           |{$isDependencyvaluepresent}                                                                              |
+|log result            |{$isDependencyvaluepresent}|with comment                        |value present|in page|Award summary page|
+|variable              |isHousingvaluepresent      |equals  to                                                                   |
+|verify page contains  |{$AWARD.housing}           |element                                                                      |
+|assert true           |{$isHousingvaluepresent}                                                                                 |
+|log result            |{$isHousingvaluepresent}   |with comment                        |value present|in page|Award summary page|
+|variable              |isenrollmentvaluepresent   |equals  to                                                                   |
+|verify page contains  |{$AWARD.enrollment}        |element                                                                      |
+|assert true           |{$isenrollmentvaluepresent}                                                                              |
+|log result            |{$isenrollmentvaluepresent}|with comment                        |value present|in page|Award summary page|
+
+!|Scenario           |package management values in award summary                                                        |
+|variable            |isPellleuvaluepresent           |equals  to                                                       |
+|verify page contains|{$PACKAGE.pellleu}              |element                                                          |
+|assert true         |{$isPellleuvaluepresent}                                                                          |
+|log result          |{$isPellleuvaluepresent}        |with comment|pellleu present          |in page|Award summary page|
+|variable            |isloansindefaultsvaluepresent   |equals  to                                                       |
+|verify page contains|{$PACKAGE.loansindefaults}      |element                                                          |
+|assert true         |{$isloansindefaultsvaluepresent}                                                                  |
+|log result          |{$isloansindefaultsvaluepresent}|with comment|loans in defaults present|in page|Award summary page|
+
+
+!|Scenario           |loan management values in award summary                                                                                 |
+|variable            |isSulavaluepresent                   |equals  to                                                                        |
+|verify page contains|{$LOAN.sula}                         |element                                                                           |
+|assert true         |{$isSulavaluepresent}                                                                                                   |
+|log result          |{$isSulavaluepresent}                |with comment|pellleu present                           |in page|Award summary page|
+|variable            |isSulaAppliedvaluepresent            |equals  to                                                                        |
+|verify page contains|{$LOAN.sulaapplied}                  |element                                                                           |
+|assert true         |{$isSulaAppliedvaluepresent}                                                                                            |
+|log result          |{$isSulaAppliedvaluepresent}         |with comment|loans in defaults present                 |in page|Award summary page|
+|variable            |isEntranceCounselingValuePresent     |equals  to                                                                        |
+|verify page contains|{$LOAN.entrancecounseling}           |element                                                                           |
+|assert true         |{$isEntranceCounselingValuePresent}                                                                                     |
+|log result          |{$isEntranceCounselingValuePresent}  |with comment|Entrance Counseling Value Present  present|in page|Award summary page|
+|variable            |isMasterPromissorynoteValuePresent   |equals  to                                                                        |
+|verify page contains|{$LOAN.masterpromissorynote}         |element                                                                           |
+|assert true         |{$isMasterPromissorynoteValuePresent}                                                                                   |
+|log result          |{$isMasterPromissorynoteValuePresent}|with comment|Master Promissory Note Present            |in page|Award summary page|
+
+
+!|Scenario            |award management in award summary                                                         |
+|variable             |isFundSourcepresent       |equals  to                                                     |
+|verify page contains |{$AHEADER.fundsource}     |element                                                        |
+|assert true          |{$isFundSourcepresent}                                                                    |
+|log result           |{$isFundSourcepresent}    |with comment|Fund Source present    |in page|Award summary page|
+|variable             |isAwardedpresent          |equals  to                                                     |
+|verify page contains |{$AHEADER.awarded}        |element                                                        |
+|assert true          |{$isAwardedpresent}                                                                       |
+|log result           |{$isAwardedpresent}       |with comment|Awarded present        |in page|Award summary page|
+|variable             |isDisbursedpresent        |equals  to                                                     |
+|verify page contains |{$AHEADER.disbursed}      |element                                                        |
+|assert true          |{$isDisbursedpresent}                                                                     |
+|log result           |{$isDisbursedpresent}     |with comment|Disbursed present      |in page|Award summary page|
+|pause  execution  for|5                         |seconds                                                        |
+|wait  for  element   |{$AHEADER.totalaward}                                                                     |
+|scroll to            |{$AHEADER.totalaward}                                                                     |
+|variable             |isTotalAwardPresent       |equals  to                                                     |
+|verify page contains |{$AHEADER.totalaward}     |element                                                        |
+|assert true          |{$isTotalAwardPresent}                                                                    |
+|log result           |{$isTotalAwardPresent}    |with comment|isTotal Awarded present|in page|Award summary page|
+|variable             |isTotalDisbursedPresent   |equals  to                                                     |
+|verify page contains |{$AHEADER.totaldisbursed} |element                                                        |
+|assert true          |{$isTotalDisbursedPresent}                                                                |
+|log result           |{$isTotalDisbursedPresent}|with comment|Total Disbursed present|in page|Award summary page|
+
+
+

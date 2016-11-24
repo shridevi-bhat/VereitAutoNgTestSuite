@@ -1,0 +1,43 @@
+----
+'''Test data:''' Student ID'10001', Touchpoint Status 'AA_Stat06', Touchpoint Type 'AA_Type06' and Touchpoint Group'AA_GRP06'
+'''Note:''' Touchpoint Status 'AA_Stat06', touchpoint Type 'AA_Type06' and touchpoint Group'AA_GRP06' will be automaticaly deleted before script execution
+
+'''Test Steps'''
+1. Launch the application 
+2. Create a touchpoint Status 'AA_Stat06'
+3. Create a touchpoint Type 'AA_Type06'
+4. Create a touchpoint Group'AA_GRP06'
+5. Search for the student '10001'
+6. Associate touchpoint Type 'AA_Type06' to the student
+7. Associate touchpoint Group'AA_GRP06' to the student
+8. Logout
+9. Close Browser
+
+'''Pre condition for script execution'''
+Student with the ID '10001' must exist in the system
+
+
+'''Post execution instructions'''
+Not applicable
+----
+
+|import                          |
+|net.indecomm.autong.api.fitnesse|
+
+!include -c <FinancialAidSuite.FinancialAidCommonFiles 
+!include -c <FinancialAidSuite.FinancialAid.CommonScenarios
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.AssociateActiveTouchpointToTheStudent.AssociateActiveTouchpointToTheStudentScenarios
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.AssociateActiveTouchpointToTheStudentImpl
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.StudentObjectRepository
+
+
+!|Script                               |AutomationNG                  |
+|set test                              |${PAGE_NAME}                  |
+|initialize test setup with result name|${PAGE_NAME}_${defaultBrowser}|
+|delete touchpoint group type and status                              |
+|login to the Financial Aid module                                    |
+|read test data from excel                                            |
+|search student                                                       |
+|associate touch point type to the student                            |
+|associate touch point group to the student                           |
+|tear down                                                            |

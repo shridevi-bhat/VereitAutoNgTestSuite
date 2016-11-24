@@ -1,0 +1,105 @@
+!|Scenario         |verify _ has _ in administration page|menu_mame , sub_menu                                                               |
+|variable          |menuPresent                          |equals  to                                                                         |
+|wait  for  element|.//*[@id='main']//h4[contains(text(),'@menu_mame')]//following-sibling::ul[position()=1]//a[text()='@sub_menu']          |
+|log result        |{$menuPresent}                       |with comment|'@menu_mame' has '@sub_menu' as sub menu.|in page|Administration  page|
+|assert true       |{$menuPresent}                                                                                                           |
+
+!|Scenario         |verify _ table rows are highlighted on mouse over                               |table_name                               |
+|mouse  over       |//*[@id='main']//descendant::h1[contains(text(),'@table_name')]/../div[2]//table//tbody//tr[2]                            |
+|variable          |isRowHighlighted                                                                |equals  to                               |
+|wait  for  element|//*[@id='main']//descendant::h1[contains(text(),'@table_name')]/../div[2]//table//tbody//tr[contains(@class,'GO13BLHBMI')]|
+|assert true       |{$isRowHighlighted}                                                                                                       |
+
+
+!|Scenario         |select _ menu from _                                      |menu_item , menu_name                                     |
+|wait  for  element|.//*[@id='main']//h4[contains(text(),'@menu_name')]//following-sibling::ul[position()=1]//a[contains(.,'@menu_item')]|
+|click             |.//*[@id='main']//h4[contains(text(),'@menu_name')]//following-sibling::ul[position()=1]//a[contains(.,'@menu_item')]|
+|variable          |isPresent                                                 |equals  to                                                |
+|wait  for  element|//*[@id='main']//descendant::h1[contains(text(),'@menu_item')]                                                       |
+|assert true       |{$isPresent}                                                                                                         |
+
+!|Scenario         |verify if bread crumb contains _|bread_crumb_name                                                 |
+|variable          |isBreadCrumbPresent             |equals  to                                                       |
+|wait  for  element|.//*[@id='main']/ul[contains(.,'@bread_crumb_name')]                                              |
+|log result        |{$isBreadCrumbPresent}          |with comment|{$isBreadCrumbPresent} present|in page|JXApplication|
+|assert true       |{$isBreadCrumbPresent}                                                                            |
+
+!|Scenario         |verify click on bread crumb|bread_crumb_name|and navigates to|administrationpage|
+|click             |//ul[@class='breadcrumb']/li/a[text()='@bread_crumb_name']                      |
+|variable          |isnavigatedtoAdmin         |equals  to                                          |
+|wait  for  element|//div[@id='main']/h1[contains(text(),'@administrationpage')]                    |
+|assert true       |{$isnavigatedtoAdmin}                                                           |
+
+!|Scenario         |verify _ form has _ as _ field     |from_name , label_name , position                                                                            |
+|variable          |isPresent                          |equals  to                                                                                                   |
+|wait  for  element|//*[@id='main']//descendant::h1[contains(text(),'@from_name')]/../div[2]//form/div[2]/div[1]/div[@position]/label[contains(text(),'@label_name')]|
+|assert true       |{$isPresent}                                                                                                                                     |
+|log result        |{$isPresent}                       |with comment     |@from_name has @label_name in @position position.     |in page    |Administration  page    |
+
+
+!|Scenario         |verify _ has _ as _ column|data_table_name , column_name , column_index                                                                 |
+|wait  for  element|.//*[@id='main']//descendant::h1[contains(text(),'@data_table_name')]/../div[2]//thead/tr/th[@column_index]                             |
+|variable          |colName                   |equals  to                                                                                                   |
+|get  text  from   |.//*[@id='main']//descendant::h1[contains(text(),'@data_table_name')]/../div[2]//thead/tr/th[@column_index]                             |
+|variable          |columnPresent             |equals  to                                                                                                   |
+|verify            |{$colName}                |with        |@column_name                                                                                    |
+|assert true       |{$columnPresent}                                                                                                                        |
+|log result        |{$isPresent}              |with comment|'@data_table_name' grid has @column_name in @column_index position.|in page|Administration  page|
+
+
+!|Scenario         |verify _ has _ as mandatory field      |form_name , field_name                                                                               |
+|variable          |isFieldMandatory                       |equals  to                                                                                           |
+|wait  for  element|//*[@id='main']//descendant::h1[contains(text(),'@form_name')]/..//label[contains(.,'@field_name')]/../label[contains(@class,'text-warning')]|
+|log result        |{$isFieldMandatory}                    |with comment      |@field_name is mandatory for @form_name form.      |in page     |JXApplication     |
+
+!|Scenario         |verify _ has _ as mandatory field in new form       |form_name , field_name                                                                                                            |
+|variable          |isFieldMandatory                                    |equals  to                                                                                                                        |
+|wait  for  element|//*[@id='main']//descendant::h1[contains(text(),'@form_name')]/..//label[contains(.,'@field_name') and contains(@class,'text-warning')]/../input[contains(@style,'rgb(255, 255, 204)')]|
+|log result        |{$isFieldMandatory}                                 |with comment       |'@field_name' is mandatory for '@form_name' form and is highlighted.       |in page       |JXApplication       |
+
+
+!|Scenario         |verify mandatory field _ is highlighted in form _       |field_name , form_name                                                                    |
+|variable          |isMadatoryFieldHighlighted                              |equals  to                                                                                |
+|wait  for  element|//*[@id='main']//descendant::h1[contains(text(),'@form_name')]/..//label[contains(.,'@field_name')]/../input[contains(@style,'rgb(255, 255, 204)')]|
+|log result        |{$isMadatoryFieldHighlighted}                           |with comment       |'@field_name' is highlighted.       |in page       |JXApplication      |
+|assert true       |{$isMadatoryFieldHighlighted}                                                                                                                      |
+
+
+
+!|Scenario |verifying Financial Aid drop down menu |
+|verify default value of drop down is financial aid|
+|verify dropdown menu content                      |
+
+
+!|Scenario               |Edit _ record where _ is _ and verify _ is a _ field                                                                                                   |form_name , col_name , col_value ,  field_name , field_type|
+|wait  for  element      |//*[@id='main']//descendant::h1[contains(text(),'@form_name')]/../div[2]//table//tbody/tr//div[contains(.,'@col_value')]/../..//a[@id='edit']/i                                                                    |
+|pause  execution  for   |5                                                                                                                                                      |seconds                                                    |
+|click                   |//*[@id='main']//descendant::h1[contains(text(),'@form_name')]/../div[2]//table//tbody/tr//div[contains(.,'@col_value')]/../..//a[@id='edit']/i                                                                    |
+|variable                |isDisabled                                                                                                                                             |equals  to                                                 |
+|verify                  |@field_type                                                                                                                                            |with         |disabled                                     |
+|variable                |isEnabled                                                                                                                                              |equals  to                                                 |
+|verify                  |@field_type                                                                                                                                            |with         |enabled                                      |
+|If                      |{$isDisabled}                                                                                                                                                                                                      |
+|variable                |disableFieldPresent                                                                                                                                    |equals  to                                                 |
+|wait  for  element      |//*[@id='main']//descendant::h1[contains(text(),'@form_name')]/..//label[contains(.,'@field_name')]/../input[contains(@class,'immutableField')]                                                                    |
+|log result              |{$disableFieldPresent}                                                                                                                                 |with comment |@field_name is Disabled.|in page|JXApplication|
+|End If                                                                                                                                                                                                                                      |
+|If                      |{$isEnabled}                                                                                                                                                                                                       |
+|variable                |enabledFieldPresent                                                                                                                                    |equals  to                                                 |
+|verify page not contains|xpath-->//*[@id='main']//descendant::h1[contains(text(),'@form_name')]/..//label[contains(.,'@field_name')]/../input[contains(@class,'immutableField')]|element                                                    |
+|log result              |{$enabledFieldPresent}                                                                                                                                 |with comment |@field_name is Enabled.|in page|JXApplication|
+|End If                                                                                                                                                                                                                                      |
+|click cancel button                                                                                                                                                                                                                         |
+
+!|Scenario            |click _ where _ is _ in form _                                      |icon_name , col_name , col_value , form_name                                     |
+|pause  execution  for|2                                                                   |seconds                                                                          |
+|wait  for  element   |//*[@id='main']//descendant::h1[contains(text(),'@form_name ')]/../div[2]//table//tbody/tr//div[contains(.,'@col_value')]/../..//a[@id='@icon_name']/i|
+|double  click  on    |//*[@id='main']//descendant::h1[contains(text(),'@form_name ')]/../div[2]//table//tbody/tr//div[contains(.,'@col_value')]/../..//a[@id='@icon_name']/i|
+
+
+!1 entering data in the form field
+!|Scenario        |enter _ as _ for _ form|data , label_name , form_name                                                                                               |
+|double  click  on|//*[@id='main']//descendant::h1[contains(text(),'@form_name')]/..//label[contains(.,'@label_name')]/../input                                        |
+|type             |@data                  |into|//*[@id='main']//descendant::h1[contains(text(),'@form_name')]/..//label[contains(.,'@label_name')]/../input|text field|
+
+

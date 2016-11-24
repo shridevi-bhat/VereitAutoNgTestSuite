@@ -1,0 +1,50 @@
+----
+
+'''Test Steps'''
+1. Launch the application 
+2. Verifying Financial Aid drop down menu
+3. Verify mandatory fields
+4. Create a new record for Award Category
+5. Validating name field
+6. Validating description field
+7. Validating sequence field
+8. Validating effective date and end date field
+8. Logout
+9. Close Browser
+
+'''Pre condition for script execution'''
+Not applicabl
+
+'''Post execution instructions'''
+Not applicable
+----
+
+|import                          |
+|net.indecomm.autong.api.fitnesse|
+
+!include -c <FinancialAidSuite.FinancialAidCommonFiles 
+!include -c <FinancialAidSuite.FinancialAid.CommonScenarios
+!include -c <AwardSetup.TestCase001AwardCategoryTest.AwardCategoryScenarios
+
+!|Script                                |AutomationNG                                                                                                                                             |
+|set test                               |${PAGE_NAME}                                                                                                                                             |
+|initialize test setup with result name |${PAGE_NAME}_${defaultBrowser}                                                                                                                           |
+|execute                                |delete from ngp.award_cat_type where code='WORLD1'|query                                                                                                 |
+|login to the Financial Aid module                                                                                                                                                                |
+|verifying Financial Aid drop down menu                                                                                                                                                           |
+|choose                                 |Administration                                    |from header menu                                                                                      |
+|verifying                                    Award Setup                menu                                                                                                                     |
+|select                                 |Award Category                                    |menu from                                                        |Award Setup                         |
+|verify if bread crumb contains         |Administration                                                                                                                                           |
+|verify                                 |Award Category                                    |form should have the following fields 'Name','Description' 'Sequence', 'Effective Date' and 'End Date'|
+|verify                                 |Award Category                                    |grid should have the following fields 'Name','Description' 'Sequence', 'Effective Date' and 'End Date'|
+|verify                                 |Award Category                                    |table rows are highlighted on mouse over                                                              |
+|verify fields of                       |Award Category                                    |form are enabled/disabled where name is                          |FEDERAL                             |
+|verify mandatory fields of             |Award Category                                    |form                                                                                                  |
+|create a new record for                |Award Category                                                                                                                                           |
+|validate name filed of                 |Award Category                                    |form where name is                                               |FEDERAL                             |
+|validate description filed of          |Award Category                                    |form                                                                                                  |
+|validate sequence filed of             |Award Category                                    |form                                                                                                  |
+|enter description filed default value  |Award Category                                                                                                                                           |
+|validate effective date and end date of|Award Category                                    |form  where name is                                              |FEDERAL                             |
+|tear down|

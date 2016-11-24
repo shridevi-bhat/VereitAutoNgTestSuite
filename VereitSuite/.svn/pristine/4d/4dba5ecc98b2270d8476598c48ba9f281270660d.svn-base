@@ -1,0 +1,14 @@
+!|Scenario|choose               |check_box              |for              |need_header              |
+|click    |.//div[contains (text(), '@need_header')]/..//span/label[contains (text(), '@check_box')]|
+
+!|Scenario|click          |@lablename          |icon name for          |@role_name          |
+|click    |.//div[contains (text(), 'AutomationNG')]/../..//td[3]/div/div/a[@id='duplicate']|
+
+!|Scenario      |read from data for|packagemanagesheet|excelsheet from          |rowNumber|for packagemanage role|
+|load           |@securityrolesheet|excel sheet from  |{$DATASHEET.securityrole}|in       |read       |Mode      |
+|variable       |securityrole      |equals to                                                                    |
+|getFromExcelRow|@rowNumber        |Column            |1                                                         |
+|variable       |description       |equals to                                                                    |
+|getFromExcelRow|@rowNumber        |Column            |2                                                         |
+|variable       |edit              |equals to                                                                    |
+|getFromExcelRow|@rowNumber        |Column            |3                                                         |

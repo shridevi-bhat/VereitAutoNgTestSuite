@@ -1,0 +1,98 @@
+''' Object Repository for Dashboad page '''
+
+|Object Repository  |DASHBOARDPAGE                                              |
+|Id                 |Value                                                |Type |
+|SearchSudentIDfield|.//input[@placeholder='Student ID']                  |xpath|
+|Searchfield        |.//button[@class='btn' and contains(text(),'Search')]|xpath|
+|searchbutton       |.//button[@class='btn' and contains(text(),'Search')]|xpath|
+
+''' Object Repository for Search Result page '''
+
+|Object Repository|SEARCHRESULTPAGE                                         |
+|Id               |Value                                              |Type |
+|Viewprofilefield |.//a[@class='gwt-Anchor' and @title='View profile']|xpath|
+
+''' Object Repository for Student Profile page '''
+
+|Object Repository      |STUDENTPROFILEDASHBOARDPAGE                                      |
+|Id                     |Value                                                      |Type |
+|touchpointfield        |//a[@class='gwt-Anchor' and contains(text(),'TouchPoints')]|xpath|
+|touchpointaddfield     |//a[@title='Add Touchpoint']                               |xpath|
+|touchpointgroupaddfield|//a[@title='Add Touchpoint Group']                         |xpath|
+|documentfield          |//a[@class='gwt-Anchor' and contains(text(),'Documents')]  |xpath|
+|documentaddfield       |//a[@title='New row' and contains(text(),'Doc Type')]      |xpath|
+|documentgroupaddfield  |//a[@title='New row' and contains(text(),'Doc Group')]     |xpath|
+|needfield              |.//a[@class='gwt-Anchor' and contains(text(),'Need')]      |xpath|
+|awardtab               |//a[@class='gwt-Anchor' and contains(text(),'Awards')]     |xpath|
+
+
+''' Object Repository for Student Profile - Add Touchpoint '''
+
+|Object Repository                  |STUDENTPROFILEADDTOUCHPOINT                                           |
+|Id                                 |Value                                                           |Type |
+|addtouchpointdropdownfield         |.//label[contains(.,'Touchpoint')]/../select                    |xpath|
+|addtouchpointstatusdropdownfield   |.//label[contains(.,'Status')]/../select                        |xpath|
+|addtouchpointscheduleddatefield    |.//input[@name='scheduledDate']                                 |xpath|
+|addtouchpointscheduledtimefield    |.//label[contains(.,'Scheduled Time')]/..//select[1]            |xpath|
+|addtouchpointscheduledtimeampmfield|.//label[contains(.,'Scheduled Time')]/..//select[2]            |xpath|
+|addtouchpointcommentfield          |.//textarea[@name='comments']                                   |xpath|
+|addtouchpointattachmenticon        |//a[@title='Add constituent']                                   |xpath|
+|addtouchpointattachmentbrowsefile  |//input[@name='file']                                           |xpath|
+|addtouchpointattachmentupload      |//a[@class='btn btn-primary' and contains(text(),'Upload')]     |xpath|
+|addtouchpointsavebutton            |//button[@class='btn btn-primary' and contains(text(),'Save')]  |xpath|
+|addtouchpointcancelbutton          |//button[@class='btn btn-default' and contains(text(),'Cancel')]|xpath|
+|addtouchpointtypebtn               |//button[@class='btn btn-primary'][contains(text(),'Add')]      |xpath|
+
+
+
+''' Object Repository for Student Profile - Add Touchpoint Group '''
+
+|Object Repository                        |STUDENTPROFILEADDTOUCHPOINTGROUP                                      |
+|Id                                       |Value                                                           |Type |
+|addtouchpointgroupdropdownfield          |//button[@class='multiselect dropdown-toggle btn btn-default']  |xpath|
+|addtouchpointgroupassignedtodropdownfield|.//label[contains(.,'Assigned to')]/../select                   |xpath|
+|addtouchpointgroupstartdatefield         |//input[@name='startDate']                                      |xpath|
+|addtouchpointgroupsavebutton             |//button[@class='btn btn-primary' and contains(text(),'Save')]  |xpath|
+|addtouchpointgroupcancelbutton           |//button[@class='btn btn-default' and contains(text(),'Cancel')]|xpath|
+
+
+''' Object Repository for Student Profile - Add Document '''
+
+|Object Repository                |STUDENTPROFILEADDDOCUMENT                                                           |
+|Id                               |Value                                                                         |Type |
+|adddocumentdropdownfield         |.//label[contains(.,'Document')]/../select                                    |xpath|
+|adddocumentstatusdropdownfield   |.//label[contains(.,'Status')]/../select                                      |xpath|
+|adddocumentduedatefield          |.//input[@name='dueDate']                                                     |xpath|
+|adddocumentcommentfield          |.//textarea[@name='comments']                                                 |xpath|
+|adddocumentattachmentselectbutton|//button[@class='btn btn-default btn-file' and contains(text(),'Select File')]|xpath|
+|adddocumentaddbutton             |//button[@class='btn btn-primary' and contains(text(),'Add')]                 |xpath|
+|adddocumentcancelbutton          |//button[@class='btn btn-default' and contains(text(),'Cancel')]              |xpath|
+
+''' Object Repository for Student Profile - Add Document Group '''
+
+|Object Repository            |STUDENTPROFILEADDDOCUMENTGROUP                                        |
+|Id                           |Value                                                           |Type |
+|adddocumentgroupdropdownfield|//button[@class='multiselect dropdown-toggle btn btn-default']  |xpath|
+|adddocumentgroupduedatefield |//input[@name='dueDate']                                        |xpath|
+|adddocumentgroupaddbutton    |//button[@class='btn btn-primary' and contains(text(),'Add')]   |xpath|
+|adddocumentgroupcancelbutton |//button[@class='btn btn-default' and contains(text(),'Cancel')]|xpath|
+
+''' Object Repository for Student Profile - Add Award'''
+
+|Object Repository      |STUDENTPROFILEADDAWARDSPACKAGE                                                                                        |
+|Id                     |Value                                                                                                           |Type |
+|packagemgmtlink        |//a[contains(text(),'Package Management')]                                                                      |xpath|
+|awardmgmtlink          |//a[contains(text(),'Award Management')]                                                                        |xpath|
+|packagemanuallybtn     |//button[text()='Package Manually']                                                                             |xpath|
+|awardyrdropdwn         |//form[@id='packageManuallyForm']/div/div/label[contains(text(),'Award Year')]/following-sibling::select        |xpath|
+|financialaidyrdropdwn  |//form[@id='packageManuallyForm']/div/div/label[contains(text(),'Fin Aid Year')]/following-sibling::select      |xpath|
+|awarddrpdwn            |//form[@id='packageManuallyForm']/div[1]/div[3]/label/following-sibling::select                                 |xpath|
+|maxeligibilitytextfield|//form[@id='packageManuallyForm']/div/div/label[contains(text(),'Maximum Eligibility')]/following-sibling::input|xpath|
+|awardamttextfield      |//form[@id='packageManuallyForm']/div/div/label[contains(text(),'Award Amount')]/following-sibling::input       |xpath|
+|distawardbtn           |//form[@id='packageManuallyForm']/following-sibling::div/span/button[contains(text(),'Distribute Award')]       |xpath|
+|addnewawardbtn         |//div[@class='pkgManuallyinfo']/following-sibling::div/button[contains(text(),'Add New Award')]                 |xpath|
+|popupnobtn             |//a[@class='btn'][contains(text(),'No')]                                                                        |xpath|
+|savemsg                |//button[@class='close']                                                                                        |xpath|
+
+
+

@@ -1,0 +1,46 @@
+''' Object Repository for Award Setup '''
+
+|Object Repository    |AWARD                                                                                                                                                                        |
+|Id                   |Value                                                                                                                                                                  |Type |
+|awardslink           |.//*[@id='main']//a[text()='Awards']                                                                                                                                   |xpath|
+|new                  |.//a[@title='New row']                                                                                                                                                 |xpath|
+|awardtypecode        |.//*[@id='awardForm']//label[contains(.,'Award Type Code')]/../input                                                                                                   |xpath|
+|defaultstatus        |.//*[@id='awardForm']//label[contains(.,'Default Status')]/../select                                                                                                   |xpath|
+|desescription        |.//*[@id='awardForm']//label[contains(.,'Description ')]/span/../../input                                                                                              |xpath|
+|accountnumber        |.//*[@id='awardForm']//label[contains(.,'Account Number')]/../input                                                                                                    |xpath|
+|longdescription      |.//*[@id='awardForm']//label[contains(.,' Long Description')]/../input                                                                                                 |xpath|
+|sequence             |.//*[@id='awardForm']//label[contains(.,'Sequence')]/../input                                                                                                          |xpath|
+|save                 |.//*[@id='main']//button[text()='Save']                                                                                                                                |xpath|
+|postingpriority      |.//*[@id='awardForm']//label[contains(.,'Posting Priority')]/../input                                                                                                  |xpath|
+|loanoriginationfee   |.//*[@id='loanOriginationForm']//label[contains(.,'Loan Origination Fee')]/../input                                                                                    |xpath|
+|firstdisbursementdate|.//*[@id='loanOriginationForm']//label[contains(.,'First Disbursement Date')]/../input                                                                                 |xpath|
+|loadd                |.//*[@id='loanOriginationForm']//button[text()='Add']                                                                                                                  |xpath|
+|loerror              |.//*[@id='loanOriginationForm']//div[contains(text(),'Loan Origination Fee field value must be greater than or equal to 0.00000 and less than or equal to 100.00000.')]|xpath|
+|loedit               |.//*[@id='main']//h3[contains(.,'Loan Origination')]/../../..//a[@id='edit']                                                                                           |xpath|
+|invaliddate          |.//*[@id='loanOriginationForm']//div[text()='Date is Invalid']                                                                                                         |xpath|
+|rfadd                |.//*[@id='rebateForm']//button[text()='Add']                                                                                                                           |xpath|
+|day                  |.//div[text()='15' and @class='day']                                                                                                                                   |xpath|
+|rebatepercentage     |.//*[@id='rebateForm']//label[contains(.,'Rebate Percentage')]/../input                                                                                                |xpath|
+|effectivedate        |.//*[@id='rebateForm']//label[contains(.,'Effective Date')]/../input                                                                                                   |xpath|
+|rferror              |.//*[@id='rebateForm']//div[contains(text(),'Rebate Percentage field value must be greater than or equal to 0.00000 and less than or equal to 100.00000.')]            |xpath|
+|rfrerror             |.//div[text()='15' and @class='day']                                                                                                                                   |xpath|
+|redit                |.//*[@id='main']//h3[contains(.,'Rebate')]/../../..//a[@id='edit']                                                                                                     |xpath|
+|zeroper              |.//div[text()='0.00000%']                                                                                                                                              |xpath|
+|locancel             |.//*[@id='loanOriginationForm']//button[text()='Cancel']                                                                                                               |xpath|
+|awardcategory        |.//*[@id='awardForm']//label[contains(.,' Award Category')]/../select                                                                                                  |xpath|
+|awardeffectivedate   |.//*[@id='awardForm']//label[contains(.,'Effective Date')]/../input                                                                                                    |xpath|
+|calicon              |(.//td[@class='datePicker-MonthSelector-cell'])[1]                                                                                                                     |xpath|
+|awardday             |.//tr[5]/td[1]/div[@class='day']                                                                                                                                       |xpath|
+|awardenddate         |.//*[@id='awardForm']//label[contains(.,'End Date')]/../input                                                                                                          |xpath|
+|awardforminvaliddate |.//*[@id='awardForm']//div[text()='Date is Invalid']                                                                                                                   |xpath|
+|awardformdescription |.//*[@id='awardForm']//label[contains(.,' Description ')]/../label/span/../../input                                                                                    |xpath|
+|awardsubcat          |.//*[@id='awardForm']//label[contains(.,' Award Sub Category')]/../select                                                                                              |xpath|
+|awarderrormsg        |.//*[@id='awardForm']//div[text()='Effective Date should be prior to End date.']                                                                                       |xpath|
+
+
+
+
+
+
+
+	

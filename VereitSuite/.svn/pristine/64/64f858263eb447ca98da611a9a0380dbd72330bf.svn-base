@@ -1,0 +1,52 @@
+|Object Repository|SEARCH                                 |
+|id               |value                            |type |
+|lastname         |//div[3]/input[@type='text']     |xpath|
+|firstname        |.//div[1]/input[@type='text']    |xpath|
+|searchbutton     |//div[3]/button[@type='button']  |xpath|
+|profile          |.//li[1]/a[@title='View profile']|xpath|
+
+
+|Object Repository                   |AWARD                                                                                    |
+|id                                  |value                                                                              |type |
+|awards                              |.//li[2]/a[contains (text(), 'Awards')]                                            |xpath|
+|yeardrop                            |.//span[2]/div/li/a[contains (.,'2016-2017')]                                      |xpath|
+|fryear                              |.//*[@id='main']//a[contains(.,'2015-2016')]                                       |xpath|
+|coa                                 |.//li[2]/a[contains (text(), 'Cost of Attendance')]                                |xpath|
+|totalamountincoa                    |.//tr[10]/td[1]/div/b[contains (text(), 'Total')]/../../..//div/b                  |xpath|
+|totalamountinsummary                |.//li[1]/span[2]                                                                   |xpath|
+|summary                             |.//li[1]/a[contains(text(), 'Summary ')]                                           |xpath|
+|awardmanagement                     |.//li[4]/a[contains (., 'Award Management ')]                                      |xpath|
+|loan                                |.//li[5]/a[contains (., 'Loan & Grant Management')]                                |xpath|
+|remainingneedinsummary              |.//*[@id='main']//span[1][contains (.,'Remaining Need:')]/..//span[2]              |xpath|
+|remainingneed_awardmanagement       |.//*[@id='main']//span[2][contains (.,'Remaining Need:')]/..//strong/span          |xpath|
+|remainingeligibilityinsummary       |.//*[@id='main']/div[2]//span[1][contains (.,'Remaining Eligibility:')]/..//span[2]|xpath|
+|remainingeligibility_awardmanagement|.//*[@id='main']//span[contains (.,'Remaining Eligibility:')]/..//strong/span      |xpath|
+|dependency                          |.//*[@id='main']//span[1][contains (.,'Dependency:')]/..//span[2]                  |xpath|
+|housing                             |.//*[@id='main']//span[1][contains (.,'Housing')]/..//span[2]                      |xpath|
+|enrollment                          |.//*[@id='main']//span[1][contains (.,'Enrollment Status:')]/..//span[2]           |xpath|
+
+|Object Repository|PACKAGE                                                                      |
+|id               |value                                                                  |type |
+|packagemanagement|.//li[3]/a[contains (.,'Package Management')]                          |xpath|
+|awardmanagement  |.//li[4]/a[contains (.,'Award Management')]                            |xpath|
+|loans            |.//li[5]/a[contains (.,'Loan & Grant Management')]                     |xpath|
+|pellleu          |.//*[@id='main']//span[contains (.,'Pell LEU:')]/..//span[2]           |xpath|
+|loansindefaults  |.//*[@id='main']//span[1][contains (.,'Loans in Default:')]/..//span[2]|xpath|
+
+|Object Repository   |LOAN                                                                            |
+|id                  |value                                                                     |type |
+|sula                |.//*[@id='main']//span[1][contains (.,'SULA:')]/..//span[2]               |xpath|
+|sulaapplied         |.//*[@id='main']//span[1][contains (.,'SULA Applied:')]/..//span[2]       |xpath|
+|entrancecounseling  |.//*[@id='main']//span[1][contains (.,'Entrance Counseling:')]/..//span[2]|xpath|
+|masterpromissorynote|.//*[@id='main']//span[1][contains (.,'Entrance Counseling:')]/..//span[2]|xpath|
+
+|Object Repository|AHEADER                                                                                                                      |
+|id               |value                                                                                                                  |type |
+|fundsource       |.//*[@id='main']//span[contains (.,'Awards Management')]/../..//div[2]/table/thead/tr/th[1][contains (.,'Fund Source')]|xpath|
+|awarded          |//*[@id='main']//span[contains (.,'Awards Management')]/../..//div[2]/table/thead/tr/th[2][contains (.,'Awarded')]     |xpath|
+|disbursed        |.//*[@id='main']//span[contains (.,'Awards Management')]/../..//div[2]/table/thead/tr/th[3][contains (.,'Disbursed')]  |xpath|
+|totalaward       |.//th[1][contains (.,'Total')]/../..//th[2]                                                                            |xpath|
+|totaldisbursed   |.//th[1][contains (.,'Total')]/../..//th[3]                                                                            |xpath|
+
+
+

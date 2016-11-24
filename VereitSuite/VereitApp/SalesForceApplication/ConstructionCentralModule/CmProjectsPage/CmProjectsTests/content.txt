@@ -1,0 +1,32 @@
+----
+'''Test Steps'''
+Login to mysalesforcepage.com 
+Go to CM projects 
+Click new 'Project' request
+Edit all the required fields 
+Save the project 
+Log out and close the browser 
+
+'''Pre condition for script execution'''
+1. Create new MRI property
+2. Create new Vendor
+3. Create user roles as SVP,VP, managers
+
+----
+
+|import                          |
+|net.indecomm.autong.api.fitnesse|
+
+!include -c <VereitSuite.VereitCommonFiles 
+!include -c <VereitSuite.VereitApp.SalesForceApplication.ConstructionCentralModule.ConstructionCentralHomePage
+!include -c <VereitSuite.VereitApp.SalesForceApplication.ConstructionCentralModule.CmProjectsPage.CmProjectsObjectRepository
+!include -c <VereitSuite.VereitApp.SalesForceApplication.ConstructionCentralModule.CmProjectsPage.CmProjectsScenarios
+!include -c <VereitSuite.VereitApp.SalesForceApplication.ConstructionCentralModule.CmProjectsPage.CmProjectsImplementation
+
+!|Script                               |AutomationNG                  |
+|set test                              |${PAGE_NAME}                  |
+|initialize test setup with result name|${PAGE_NAME}_${defaultBrowser}|
+|login to the Vereit module                                           |
+|create new cm project                                                |
+|logout user                                                          |
+|tear down                                                            |

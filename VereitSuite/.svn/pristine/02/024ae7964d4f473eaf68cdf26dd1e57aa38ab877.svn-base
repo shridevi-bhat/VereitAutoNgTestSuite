@@ -1,0 +1,63 @@
+----
+'''Test data:''' Payment Period 'PAY_PER1', Financial Aid Year 'FIN_AID_YR1'
+'''Note:''' Payment Period 'PAY_PER1', Financial Aid Year 'FIN_AID_YR1' and FA Group will be automatically deleted before script execution
+
+'''Test Steps'''
+1. Launch the application 
+2. Create a Payment Period 'PAY_PER1'
+3. Create a Financial Aid Year 'FIN_AID_YR1'
+4. Search for the student '10001'
+6. Create new award for the Payment Period 'PAY_PER1' and Award 'Direct Subsidized Loan'
+7. Create a New Group 'FA_GRP_PRO1' by selecting the Financial Aid Year 'FIN_AID_YR1',Payment Period 'PAY_PER1' and 'Award_Type01'and save filters
+8. Verify that the list of students in the grid
+9. Verify that selected Payment Period 'PAY_PER1' is listing in the Award 'Group Action'
+10.Edit the existing Payment Period 'PAY_PER1', disb date 09/07/2016 and disb status 'Estimated' from Group Action 
+11.Add new award from Financial Aid 'FIN_AID_YR2' Group Action
+12.Verify newly added award is associated to student who belongs to the Group
+13.Logout
+14.Close Browser
+
+'''Pre condition for script execution'''
+Not applicable
+
+
+'''Post execution instructions'''
+Not applicable
+----
+
+|import                          |
+|net.indecomm.autong.api.fitnesse|
+
+!include -c <FinancialAidSuite.FinancialAidCommonFiles 
+!include -c <FinancialAidSuite.FinancialAid.CommonScenarios
+!include -c <FinancialAidSuite.FinancialAid.AdministrationModule.AwardAdministration.FinancialAidYearTest.FinancialAidYearScenarios
+!include -c <FinancialAidSuite.FinancialAid.AdministrationModule.AwardAdministration.FinancialAidYearTest.FinancialAidYearImpl
+!include -c <FinancialAidSuite.FinancialAid.AdministrationModule.AwardAdministration.FinancialAidYearTest.FinancialAidYearObjectRepository
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.StudentCommonScenarios
+!include -c <FinancialAidSuite.FinancialAid.StudentsModule.StudentObjectRepository
+!include -c <FinancialAidSuite.FinancialAid.OperationsModule.OperationsFaGroupProcessingSubModule.FaGrpProcessingObjectRepository
+!include -c <FinancialAidSuite.FinancialAid.OperationsModule.OperationsFaGroupProcessingSubModule.FaGrpProcessingCommonScenarios
+!include -c <FinancialAidSuite.FinancialAid.OperationsModule.OperationsFaGroupProcessingSubModule.FaGrpActionAddAwardTest.FaGrpActionAddAwardImplementation
+!include -c <FinancialAidSuite.FinancialAid.OperationsModule.OperationsFaGroupProcessingSubModule.FaGrpActionAddAwardTest.FaGrpActionAddAwardScenarios
+
+
+!|Script                                       |AutomationNG                                |
+|set test                                      |${PAGE_NAME}                                |
+|initialize test setup with result name        |${PAGE_NAME}_${defaultBrowser}              |
+|delete existing payment period loan period and financial aid year                          |
+|deleting  fa group created by automation                                                   |
+|login to the Financial Aid module                                                          |
+|read test data payment period and financial aid yr from excel                              |
+|pause  execution  for                         |2                  |seconds                 |
+|search student to add award                                                                |
+|read test data of award for the selected student                                           |
+|create new fa group by selecting finaid year and award type filters                        |
+|verify group name, finaid year and award type in review page                               |
+|verify the list of student on fa group review page for selected finaid year and award type |
+|verify that selected award type and finaid year is listing on add update award Group Action|
+|verify that updated disb date and disb status is listing on student                        |
+|group action add new award to the group of student from package manually                   |
+|search student to add award                                                                |
+|verify newly added and updated awards are showing in student                               |
+|tear down                                                                                  |
+

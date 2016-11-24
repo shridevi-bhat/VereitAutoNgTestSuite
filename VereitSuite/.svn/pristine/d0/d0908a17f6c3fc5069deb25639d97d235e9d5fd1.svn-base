@@ -1,0 +1,169 @@
+'''Student - Verify horizantal bar '''
+
+!|Scenario           |Verify horizantal bar                                          |horizantalName|Horizantal Bar|
+|variable            |verifyelement                                                  |equals to                    |
+|verify page contains|//a[@class='gwt-Anchor' and contains(text(),'@horizantalName')]|Element                      |
+|assert              |{$verifyelement}                                               |true                         |
+
+'''Student - Search Student'''
+
+!|Scenario            |search student with studentid|searchid                                            |
+|clear  text          |{$DASHBOARDPAGE.SearchSudentIDfield}                                              |
+|type                 |@searchid                    |into|{$DASHBOARDPAGE.SearchSudentIDfield}|text field|
+|click                |{$DASHBOARDPAGE.Searchfield}                                                      |
+|click                |{$SEARCHRESULTPAGE.Viewprofilefield}                                              |
+|Verify horizantal bar|Awards                       |Horizantal Bar                                      |
+|click                |{$STUDENTCOSTOFATTENDANCEGRID.horizantalbarawardclick}                            |
+|pause  execution  for|2                            |seconds                                             |
+|click                |{$STUDENTCOSTOFATTENDANCEGRID.costofattendanceclick}                              |
+|pause  execution  for|2                            |seconds                                             |
+
+'''Student - verify admin pell budget values with student profile pell budget'''
+
+!|Scenario|verify admin pell budget values with student profile pell budget|
+|get admin pell budget values                                              |
+|search student                                                            |
+|get student pell budget values                                            |
+|verify admin and student pell budget tuition values                       |
+|verify admin and student pell budget fees values                          |
+|verify admin and student pell budget books n supplies values              |
+|verify admin and student pell budget transportation values                |
+|verify admin and student pell budget misc fees values                     |
+|verify admin and student pell budget housing off campus with parent values|
+
+
+''' Student - get student pell budget values '''
+
+!|Scenario            |get student pell budget values                                                                           |
+|variable             |studentpellbudget_tution                         |equals  to                                             |
+|get  text  from      |{$STUDENTCOSTOFATTENDANCEGRID.studenttuitionvalue}                                                       |
+|show                 |get                                              |studentpellbudget_tution                         |value|
+|pause  execution  for|1                                                |seconds                                                |
+|variable             |studentpellbudget_fees                           |equals  to                                             |
+|get  text  from      |{$STUDENTCOSTOFATTENDANCEGRID.studentfeesvalue}                                                          |
+|show                 |get                                              |studentpellbudget_fees                           |value|
+|pause  execution  for|1                                                |seconds                                                |
+|variable             |studentpellbudget_booksnsuppliesvalue            |equals  to                                             |
+|get  text  from      |{$STUDENTCOSTOFATTENDANCEGRID.studentbooksnsuppliesvalue}                                                |
+|show                 |get                                              |studentpellbudget_booksnsuppliesvalue            |value|
+|pause  execution  for|1                                                |seconds                                                |
+|variable             |studentpellbudget_transportationvalue            |equals  to                                             |
+|get  text  from      |{$STUDENTCOSTOFATTENDANCEGRID.studenttransportationvalue}                                                |
+|show                 |get                                              |studentpellbudget_transportationvalue            |value|
+|pause  execution  for|1                                                |seconds                                                |
+|variable             |studentpellbudget_miscfeesvalue                  |equals  to                                             |
+|get  text  from      |{$STUDENTCOSTOFATTENDANCEGRID.studentmiscellaneousvalue}                                                 |
+|show                 |get                                              |studentpellbudget_miscfeesvalue                  |value|
+|pause  execution  for|1                                                |seconds                                                |
+|variable             |studentpellbudget_housingoffcampuswithparentvalue|equals  to                                             |
+|get  text  from      |{$STUDENTCOSTOFATTENDANCEGRID.studenthouseoffcampuswithparentvalue}                                      |
+|show                 |get                                              |studentpellbudget_housingoffcampuswithparentvalue|value|
+|pause  execution  for|1                                                |seconds                                                |
+
+''' Student - verify admin and student pell budget tuition values '''
+
+!|Scenario  |verify admin and student pell budget tuition values        |
+|$val1=     |get             |adminpellbudget_tution  |value            |
+|$val2=     |get             |studentpellbudget_tution|value            |
+|$val3=     |remove          |$                       |from|$val1|string|
+|$val4=     |remove          |$                       |from|$val2|string|
+|variable   |matchFoundtution|equals  to                                |
+|verify     |$val3           |with                    |$val4            |
+|assert true|{$matchFoundtution}                                        |
+
+''' Student - verify admin and student pell budget fees values '''
+
+!|Scenario  |verify admin and student pell budget fees values         |
+|$val1=     |get             |adminpellbudget_fees  |value            |
+|$val2=     |get             |studentpellbudget_fees|value            |
+|$val3=     |remove          |$                     |from|$val1|string|
+|$val4=     |remove          |$                     |from|$val2|string|
+|variable   |matchFoundtution|equals  to                              |
+|verify     |$val3           |with                  |$val4            |
+|assert true|{$matchFoundtution}                                      |
+
+''' Student - verify admin and student pell budget books n supplies values '''
+
+!|Scenario  |verify admin and student pell budget books n supplies values            |
+|$val1=     |get             |adminpellbudget_booksnsuppliesvalue  |value            |
+|$val2=     |get             |studentpellbudget_booksnsuppliesvalue|value            |
+|$val3=     |remove          |$                                    |from|$val1|string|
+|$val4=     |remove          |$                                    |from|$val2|string|
+|variable   |matchFoundtution|equals  to                                             |
+|verify     |$val3           |with                                 |$val4            |
+|assert true|{$matchFoundtution}                                                     |
+
+''' Student - verify admin and student pell budget transportation values '''
+
+!|Scenario  |verify admin and student pell budget transportation values              |
+|$val1=     |get             |adminpellbudget_transportationvalue  |value            |
+|$val2=     |get             |studentpellbudget_transportationvalue|value            |
+|$val3=     |remove          |$                                    |from|$val1|string|
+|$val4=     |remove          |$                                    |from|$val2|string|
+|variable   |matchFoundtution|equals  to                                             |
+|verify     |$val3           |with                                 |$val4            |
+|assert true|{$matchFoundtution}                                                     |
+
+''' Student - verify admin and student pell budget misc fees values '''
+
+!|Scenario  |verify admin and student pell budget misc fees values             |
+|$val1=     |get             |adminpellbudget_otherfeesvalue |value            |
+|$val2=     |get             |studentpellbudget_miscfeesvalue|value            |
+|$val3=     |remove          |$                              |from|$val1|string|
+|$val4=     |remove          |$                              |from|$val2|string|
+|variable   |matchFoundtution|equals  to                                       |
+|verify     |$val3           |with                           |$val4            |
+|assert true|{$matchFoundtution}                                               |
+
+''' Student - verify admin and student pell budget housing off campus with parent values '''
+
+!|Scenario  |verify admin and student pell budget housing off campus with parent values          |
+|$val1=     |get             |adminpellbudget_roomoffcampuswithparentvalue     |value            |
+|$val2=     |get             |studentpellbudget_housingoffcampuswithparentvalue|value            |
+|$val3=     |remove          |$                                                |from|$val1|string|
+|$val4=     |remove          |$                                                |from|$val2|string|
+|variable   |matchFoundtution|equals  to                                                         |
+|verify     |$val3           |with                                             |$val4            |
+|assert true|{$matchFoundtution}                                                                 |
+
+
+'''Student - Select Student COA Budget'''
+
+!|Scenario            |select coa for COA Budget Period Name|coabudgetperiodname|and COA Budget EFC Budget                |coabudgetefcbudget|and COA Budget Housing|coabudgethousing|and COA Budget Comments|coabudgetcomments|
+|click                |{$STUDENTCOSTOFATTENDANCEGRID.coaawardyear}                                                                                                                                                             |
+|click                |{$STUDENTCOSTOFATTENDANCEGRID.coaawardyear201617}                                                                                                                                                       |
+|pause  execution  for|5                                    |seconds                                                                                                                                                           |
+|wait  for  element   |.//span[contains(text(),'COA Budget')]/..//a                                                                                                                                                            |
+|click                |.//span[contains(text(),'COA Budget')]/..//a                                                                                                                                                            |
+|pause  execution  for|1                                    |seconds                                                                                                                                                           |
+|variable             |studentcoabudgetperiodnamePresent    |equals  to                                                                                                                                                        |
+|wait  for  element   |{$STUDENTCOSTOFATTENDANCEGRID.coaperiodname}                                                                                                                                                            |
+|assert true          |{$studentcoabudgetperiodnamePresent}                                                                                                                                                                    |
+|log result           |{$studentcoabudgetperiodnamePresent} |with comment       |coa period name field is present         |in page           |coa period                                                                       |
+|pause  execution  for|2                                    |seconds                                                                                                                                                           |
+|select               |@coabudgetperiodname                 |from               |{$STUDENTCOSTOFATTENDANCEGRID.coaperiodname}                                                                                                  |
+|pause  execution  for|1                                    |seconds                                                                                                                                                           |
+|variable             |studentcoabudgetefcbudgetPresent     |equals  to                                                                                                                                                        |
+|wait  for  element   |{$STUDENTCOSTOFATTENDANCEGRID.coaefcbudget}                                                                                                                                                             |
+|assert true          |{$studentcoabudgetefcbudgetPresent}                                                                                                                                                                     |
+|log result           |{$studentcoabudgetefcbudgetPresent}  |with comment       |coa budget efc budget field is present   |in page           |coa period                                                                       |
+|pause  execution  for|2                                    |seconds                                                                                                                                                           |
+|select               |@coabudgetefcbudget                  |from               |{$STUDENTCOSTOFATTENDANCEGRID.coaefcbudget}                                                                                                   |
+|pause  execution  for|1                                    |seconds                                                                                                                                                           |
+|variable             |studentcoabudgethousingPresent       |equals  to                                                                                                                                                        |
+|wait  for  element   |{$STUDENTCOSTOFATTENDANCEGRID.coahousing}                                                                                                                                                               |
+|assert true          |{$studentcoabudgethousingPresent}                                                                                                                                                                       |
+|log result           |{$studentcoabudgethousingPresent}    |with comment       |coa budget housing field is present      |in page           |coa period                                                                       |
+|pause  execution  for|2                                    |seconds                                                                                                                                                           |
+|select               |@coabudgethousing                    |from               |{$STUDENTCOSTOFATTENDANCEGRID.coahousing}                                                                                                     |
+|pause  execution  for|1                                    |seconds                                                                                                                                                           |
+|variable             |studentcoabudgetcommentsPresent      |equals  to                                                                                                                                                        |
+|wait  for  element   |{$STUDENTCOSTOFATTENDANCEGRID.coacomment}                                                                                                                                                               |
+|assert true          |{$studentcoabudgetcommentsPresent}                                                                                                                                                                      |
+|log result           |{$studentcoabudgetcommentsPresent}   |with comment       |coa budget comments field is present     |in page           |coa period                                                                       |
+|pause  execution  for|1                                    |seconds                                                                                                                                                           |
+|clear  text          |{$STUDENTCOSTOFATTENDANCEGRID.coacomment}                                                                                                                                                               |
+|type                 |@coabudgetcomments                   |into               |{$STUDENTCOSTOFATTENDANCEGRID.coacomment}|text field                                                                                          |
+|press                |TAB                                  |key                                                                                                                                                               |
+|click                |{$STUDENTCOSTOFATTENDANCEGRID.coasave}                                                                                                                                                                  |
+|pause  execution  for|10                                   |seconds                                                                                                                                                           |

@@ -1,0 +1,94 @@
+!|Scenario            |create new cm project                                                                                                                                           |
+|add new cmproject                                                                                                                                                                     |
+|click                |{$HOMETABS.cmprojecttab}                                                                                                                                        |
+|pause  execution  for|5                                        |seconds                                                                                                               |
+|variable             |isNewButtonPresent                       |equals  to                                                                                                            |
+|wait  for  element   |{$CREATENEWCMPROJECT.newbutton}                                                                                                                                 |
+|assert true          |{$isNewButtonPresent}                                                                                                                                           |
+|log result           |{$isNewButtonPresent}                    |with comment|New Button is present                                                     |in page|CM Project - Home page|
+|click                |{$CREATENEWCMPROJECT.newbutton}                                                                                                                                 |
+|pause  execution  for|4                                        |seconds                                                                                                               |
+|variable             |isContinueButtonPresent                  |equals  to                                                                                                            |
+|wait  for  element   |{$SELECTCMPROJECTTYPE.continuebtn}                                                                                                                              |
+|assert true          |{$isContinueButtonPresent}                                                                                                                                      |
+|log result           |{$isContinueButtonPresent}               |with comment|Continue Button is present                                                |in page|CM Project - Home page|
+|click                |{$SELECTCMPROJECTTYPE.continuebtn}                                                                                                                              |
+|pause  execution  for|3                                        |seconds                                                                                                               |
+|type                 |{$building}                              |into        |{$CMPROJECTINFO.buildinglookup}                                           |text field                    |
+|pause  execution  for|3                                        |seconds                                                                                                               |
+|variable             |isStatusDropdownPresent                  |equals  to                                                                                                            |
+|wait  for  element   |{$CMPROJECTINFO.status}                                                                                                                                         |
+|assert true          |{$isStatusDropdownPresent}                                                                                                                                      |
+|log result           |{$isStatusDropdownPresent}               |with comment|Status Dropdown is present                                                |in page|CMProject page        |
+|select               |{$status}                                |from        |{$CMPROJECTINFO.status}                                                                                  |
+|variable             |isWorkTypeDropdownPresent                |equals  to                                                                                                            |
+|wait  for  element   |{$CMPROJECTINFO.worktype}                                                                                                                                       |
+|assert true          |{$isWorkTypeDropdownPresent}                                                                                                                                    |
+|log result           |{$isWorkTypeDropdownPresent}             |with comment|Work Type Dropdown is present                                             |in page|CMProject page        |
+|select               |{$worktype}                              |from        |{$CMPROJECTINFO.worktype}                                                                                |
+|pause  execution  for|3                                        |seconds                                                                                                               |
+|variable             |isOriginationDropdownPresent             |equals  to                                                                                                            |
+|wait  for  element   |{$CMPROJECTINFO.origination}                                                                                                                                    |
+|assert true          |{$isOriginationDropdownPresent}                                                                                                                                 |
+|log result           |{$isOriginationDropdownPresent}          |with comment|Origination Dropdown is present                                           |in page|CMProject page        |
+|select               |{$origination}                           |from        |{$CMPROJECTINFO.origination}                                                                             |
+|pause  execution  for|3                                        |seconds                                                                                                               |
+|variable             |isTaskDropdownPresent                    |equals  to                                                                                                            |
+|wait  for  element   |{$CMPROJECTINFO.task}                                                                                                                                           |
+|assert true          |{$isTaskDropdownPresent}                                                                                                                                        |
+|log result           |{$isTaskDropdownPresent}                 |with comment|Task Dropdown is present                                                  |in page|CMProject page        |
+|select               |{$task}                                  |from        |{$CMPROJECTINFO.task}                                                                                    |
+|pause  execution  for|3                                        |seconds                                                                                                               |
+|variable             |isCategoryDropdownPresent                |equals  to                                                                                                            |
+|wait  for  element   |{$CMPROJECTINFO.category}                                                                                                                                       |
+|assert true          |{$isCategoryDropdownPresent}                                                                                                                                    |
+|log result           |{$isCategoryDropdownPresent}             |with comment|Category Dropdown is present                                              |in page|CMProject page        |
+|select               |{$category}                              |from        |{$CMPROJECTINFO.category}                                                                                |
+|variable             |isContractAgreementTypeDropdownPresent   |equals  to                                                                                                            |
+|wait  for  element   |{$CMPROJECTINFO.contractagreementtype}                                                                                                                          |
+|assert true          |{$isContractAgreementTypeDropdownPresent}                                                                                                                       |
+|log result           |{$isContractAgreementTypeDropdownPresent}|with comment|Contract Agreement Type Dropdown is present                               |in page|CMProject page        |
+|select               |{$contractagreementtype}                 |from        |{$CMPROJECTINFO.contractagreementtype}                                                                   |
+|pause  execution  for|4                                        |seconds                                                                                                               |
+|type                 |{$budgetyear}                            |into        |{$KDATE.budgetyear}                                                       |text field                    |
+|pause  execution  for|3                                        |seconds                                                                                                               |
+|variable             |isBudgetmonthDropdownPresent             |equals  to                                                                                                            |
+|wait  for  element   |{$KDATE.budgetmonth}                                                                                                                                            |
+|assert true          |{$isBudgetmonthDropdownPresent}                                                                                                                                 |
+|log result           |{$isBudgetmonthDropdownPresent}          |with comment|Budget Month Dropdown is present                                          |in page|CMProject page        |
+|select               |{$budgetmonth}                           |from        |{$KDATE.budgetmonth}                                                                                     |
+|pause  execution  for|2                                        |seconds                                                                                                               |
+|type                 |11/16/2016                               |into        |.//label[contains (text(), 'Request Date')]/../../..//input               |text field                    |
+|pause  execution  for|2                                        |seconds                                                                                                               |
+|type                 |11/20/2016                               |into        |.//label[contains (text(), 'Anticipated Completion Date')]/../../..//input|text field                    |
+|pause  execution  for|2                                        |seconds                                                                                                               |
+|type                 |{$estimated}                             |into        |{$FINANCIALS.estimated}                                                   |text field                    |
+|pause  execution  for|3                                        |seconds                                                                                                               |
+|select               |{$budgeted}                              |from        |{$FINANCIALS.budgeted}                                                                                   |
+|pause  execution  for|2                                        |seconds                                                                                                               |
+|type                 |{$consopsmgr}                            |into        |{$CONTACTS.consopsmanager}                                                |text area                     |
+|pause  execution  for|2                                        |seconds                                                                                                               |
+|type                 |{$propmgr}                               |into        |{$CONTACTS.propertymanager}                                               |text area                     |
+|pause  execution  for|2                                        |seconds                                                                                                               |
+|type                 |{$assetmgr}                              |into        |{$CONTACTS.assetmanager}                                                  |text area                     |
+|pause  execution  for|2                                        |seconds                                                                                                               |
+|type                 |{$vp}                                    |into        |{$CONTACTS.directorvp}                                                    |text area                     |
+|pause  execution  for|2                                        |seconds                                                                                                               |
+|type                 |{$svp}                                   |into        |{$CONTACTS.svp}                                                           |text area                     |
+|pause  execution  for|2                                        |seconds                                                                                                               |
+|variable             |isSaveButtonPresent                      |equals  to                                                                                                            |
+|wait  for  element   |{$CMPROJECTSAVE.savebutton}                                                                                                                                     |
+|assert true          |{$isSaveButtonPresent}                                                                                                                                          |
+|log result           |{$isSaveButtonPresent}                   |with comment|Save Button is present                                                    |in page|CMProject page        |
+|click                |{$CMPROJECTSAVE.savebutton}                                                                                                                                     |
+|pause  execution  for|4                                        |seconds                                                                                                               |
+|variable             |cmprojecttitledescription                |equals  to                                                                                                            |
+|get  text  from      |//h2[@class='pageDescription']                                                                                                                                  |
+|show                 |evaluate                                 |{$cmprojecttitledescription}                                                                                          |
+
+!|Scenario            |logout user         |
+|click                |//div[@id='userNav']|
+|pause  execution  for|2      |seconds     |
+|click                |//a[@title='Logout']|
+|close browser                             |
+

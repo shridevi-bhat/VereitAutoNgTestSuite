@@ -1,0 +1,63 @@
+|Data Repository             |DATASHEET                                                                                                   |
+|Id                          |Value                                                                                                       |
+|jxauto                      |${testDataPath}/testEnvironmentData/data_jxauto.xlsx                                                        |
+|devjx                       |${testDataPath}/testEnvironmentData/data_devjx.xlsx                                                         |
+|jxqalin                     |${testDataPath}/testEnvironmentData/data_jxqalin.xlsx                                                       |
+|data                        |${testDataPath}/AdministrationModule/datahash/Awards.xlsx                                                   |
+|students                    |${testDataPath}/StudentsModule/datahash/Students.xlsx                                                       |
+|studentprofilexml           |${testDataPath}/StudentsModule/datahash/Student.xml                                                         |
+|userdata                    |${testDataPath}/AdministrationModule/datahash/userdata.xlsx                                                 |
+|financialaidyrdata          |${testDataPath}/AdministrationModule/AwardAdministration/FinancialAidYearTest/datahash/FinancialAidYear.xlsx|
+|securityrole                |${testDataPath}/AdministrationModule/datahash/securityroledata.xlsx                                         |
+|fagroupprocessingdata       |${testDataPath}/OperationsModule/OperationsFaGroupProcessingSubModule/datahash/FAGroupProcessing.xlsx       |
+|fagroupprocessingstudentdata|${testDataPath}/OperationsModule/OperationsFaGroupProcessingSubModule/datahash/FAGroupStudentList.xls       |
+|awardmanagement             |${testDataPath}/StudentsModule/datahash/AwardManagement.xlsx                        |                       |
+
+
+
+|Data Repository|MSSQLJXAUTO                                                  |
+|id             |value                                                        |
+|vendor         |MSSQL                                                        |
+|user           |jxadmin                                                      |
+|password       |newpw4me                                                     |
+|server         |cin-jxsql14.jenzabar.net:1433;DatabaseName=jxfinancialaidauto|
+
+|Data Repository|MSSQLDEVJX                                               |
+|id             |value                                                    |
+|vendor         |MSSQL                                                    |
+|user           |jxadmin                                                  |
+|password       |newpw4me                                                 |
+|server         |cin-jxsql14.jenzabar.net:1433;DatabaseName=jxfinancialaid|
+
+|Data Repository|MSSQLJXQALIN                                               |
+|id             |value                                                      |
+|vendor         |MSSQL                                                      |
+|user           |jxadmin                                                    |
+|password       |newpw4me                                                   |
+|server         |cin-jxsql14.jenzabar.net:1433;DatabaseName=jxfinancialaidqa|
+
+
+
+|Object Repository|HEADER                                                               |
+|Id               |Value                                                          |Type |
+|searchid         |.//div[@id='headSearch']//input[@placeholder='Student ID']     |xpath|
+|fname            |.//div[@id='headSearch']//input[@placeholder='First name']     |xpath|
+|lname            |.//div[@id='headSearch']//input[@placeholder='Last name']      |xpath|
+|financialaid     |.//*[@id='headerContain']//a[contains(text(),'Financial Aid')] |xpath|
+|home             |.//*[@id='headerContain']//a[contains(text(),'Home')]          |xpath|
+|students         |.//*[@id='headerContain']//a[contains(text(),'Students')]      |xpath|
+|operations       |.//*[@id='headerContain']//a[contains(text(),'Operations')]    |xpath|
+|reports          |.//*[@id='headerContain']//a[contains(text(),'Reports')]       |xpath|
+|administration   |.//*[@id='headerContain']//a[contains(text(),'Administration')]|xpath|
+
+|Object Repository|HOME                                                                        |
+|Id               |Value                                                                 |Type |
+|username         |.//*[@id='loginContainer']//input[1]                                  |xpath|
+|pwd              |.//*[@id='loginContainer']//input[2]                                  |xpath|
+|login            |.//*[@id='loginContainer']//button                                    |xpath|
+|save             |.//button[text()='Save']                                              |xpath|
+|cancel           |.//button[text()='Cancel']                                            |xpath|
+|addbutton        |.//button[text()='Add']                                               |xpath|
+|cancelnew        |.//*[@id='main']//button[@class='btn btn-default' and text()='Cancel']|xpath|
+|addbuttonnew     |.//button[text()='Add' and @class='btn btn-primary']                  |xpath|
+|search           |.//*[@id='headSearch']//button[text()='Search']                       |xpath|

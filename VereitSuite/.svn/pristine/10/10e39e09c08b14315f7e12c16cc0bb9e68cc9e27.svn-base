@@ -1,0 +1,60 @@
+!|Scenario                          |create new fa group and save filters                                                                                                                                           |
+|read from data for                 |FA Group Processing|excelsheet from|2           |to create new fa group                                                                                                        |
+|click                              |{$HEADER.financialaid}                                                                                                                                                         |
+|wait  for  element                 |.//*[@id='headerContain']//a[contains(text(),'Operations')]/..                                                                                                                 |
+|pause  execution  for              |8                  |seconds                                                                                                                                                    |
+|mouse  over                        |.//*[@id='headerContain']//a[contains(text(),'Operations')]/..                                                                                                                 |
+|pause  execution  for              |8                  |seconds                                                                                                                                                    |
+|simulate click on                  |.//*[@id='headerContain']//a[contains(text(),'FA Group Processing')]/..                                                                                                        |
+|verify form header                 |Financial Aid Group Processing                                                                                                                                                 |
+|create new FA Group with award year|{$awardyear}       |group name     |{$groupname}|description of group|{$descriptnofgrp}|award amount|{$minawrdamt}|touchpoint type|{$touchpointtype}|and award type|{$awrdtype}|
+
+
+!|Scenario                                                         |verify created fa group , selected filters and grid header in Financial Aid Group Review screen                                                                     |
+|read from data for                                                |FA Group Processing|excelsheet from    |2           |to create new fa group                                                                                         |
+|pause  execution  for                                             |2                  |seconds                                                                                                                                         |
+|verify Financial Aid Group Review page contains created group name|{$groupname}       |selected award year|{$awardyear}|selected touchpoints|{$touchpointtype}|selected award amount|{$minawrdamt}|and selected award type|{$awrdtype}||
+|                                                                  |verify grid header in Financial Aid Group Review screen                                                                                                             |
+
+
+!|Scenario         |verify grid header in Financial Aid Group Review screen|
+|verify grid header|Last Name        |is displayed in column       |1      |
+|verify grid header|First Name       |is displayed in column       |2      |
+|verify grid header|SSN              |is displayed in column       |3      |
+|verify grid header|Student Id       |is displayed in column       |4      |
+|verify grid header|Exclude          |is displayed in column       |5      |
+
+!|Scenario                             |verify fa group details in summary screen                      |
+|wait  for  element                    |{$FAGROUPPROCESS.returntogrplistlink}                          |
+|click                                 |{$FAGROUPPROCESS.returntogrplistlink}                          |
+|verify form header                    |Financial Aid Group Processing                                 |
+|read from data for                    |FA Group Processing|excelsheet from   |9|to create new fa group|
+|pause  execution  for                 |2                  |seconds                                    |
+|verify default award year             |{$awardyear}                                                   |
+|read from data for                    |FA Group Processing|excelsheet from   |2|to create new fa group|
+|pause  execution  for                 |2                  |seconds                                    |
+|verify group details in summary screen|{$groupname}       |for the award year|{$awardyear}            |
+
+!|Scenario         |verify grid header in fa group summary screen|
+|verify grid header|Name of Group    |is displayed in column  |1 |
+|verify grid header|Group Action     |is displayed in column  |2 |
+|verify grid header|Run Date         |is displayed in column  |3 |
+|verify grid header|Created By       |is displayed in column  |4 |
+|verify grid header|Group Edit Date  |is displayed in column  |5 |
+
+
+!|Scenario                                                         |verify view setting details on fa group summary screen                                                                                                             |
+|read from data for                                                |FA Group Processing|excelsheet from    |2           |to create new fa group                                                                                        |
+|pause  execution  for                                             |2                  |seconds                                                                                                                                        |
+|verify eye icon is clickable for created group                    |{$groupname}                                                                                                                                                       |
+|verify Financial Aid Group Review page contains created group name|{$groupname}       |selected award year|{$awardyear}|selected touchpoints|{$touchpointtype}|selected award amount|{$minawrdamt}|and selected award type|{$awrdtype}|
+|click                                                             |{$FAGROUPPROCESS.closebtnviewset}                                                                                                                                  |
+|pause  execution  for                                             |2                  |seconds                                                                                                                                        |
+|wait  for  element                                                |.//tbody[1]//div[contains(text(),'{$groupname}')]/ancestor::tr//a[@id='edit']                                                                                      |
+|click                                                             |.//tbody[1]//div[contains(text(),'{$groupname}')]/ancestor::tr//a[@id='edit']                                                                                      |
+
+
+!|Scenario                             |edit the existing fa group                                                                                        |
+|read from data for                    |FA Group Processing|excelsheet from|4           |to create new fa group                                           |
+|pause  execution  for                 |2                  |seconds                                                                                       |
+|edit group details from summary screen|{$awardyear}       |group name     |{$groupname}|description of group|{$descriptnofgrp}|award amount|{$minawrdamt}|

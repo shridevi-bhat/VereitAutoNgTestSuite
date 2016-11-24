@@ -1,0 +1,88 @@
+<ImportAcademicExtract size = "1">
+	<AcademicExtract>
+		<StudentId>10564</StudentId>
+		<LastName>AUTOMATION12</LastName>
+		<FirstName>TEST</FirstName>
+		<MiddleName>TA</MiddleName>
+		<MaidenName />
+		<SocialSecurityNumber>100-01-1154</SocialSecurityNumber>
+		<BirthDate>1988-03-28</BirthDate>
+		<IsDeceased>false</IsDeceased>
+		<PostalAddresses>
+			<PostalAddress>
+				<AddressLine1>1 Main Street</AddressLine1>
+				<AddressLine2>2nd cross</AddressLine2>
+				<AddressLine3 />
+				<City>Spring field</City>
+				<State>OH</State>
+				<PostalCode>45698</PostalCode>
+				<CountryCode>USA</CountryCode>
+			</PostalAddress>
+		</PostalAddresses>
+		<PhoneNumbers>
+			<PhoneNumber>987-654-3210</PhoneNumber>
+		</PhoneNumbers>
+		<EmailAddresses>
+		</EmailAddresses>
+		<MilitaryServiceRecords>
+			<MilitaryService>
+				<BranchOfService>Navy</BranchOfService>
+				<StartDate>1994-08-14</StartDate>
+				<EndDate>1996-09-17</EndDate>
+				<MilitaryRank>Captain</MilitaryRank>
+			</MilitaryService>
+		</MilitaryServiceRecords>
+		<AdmissionTerms>
+			<AdmissionTerm>
+				<TermName>Fall</TermName>
+				<AcademicYear>1991</AcademicYear>
+				<AdmittedDate>1990-01-01</AdmittedDate>
+			</AdmissionTerm>
+		</AdmissionTerms>
+		<EnrollmentTerms>
+			<EnrollmentTerm>
+				<TermName>Spring</TermName>
+				<AcademicYear>2014</AcademicYear>
+				<AttemptedHours>3</AttemptedHours>
+				<EarnedHours>3</EarnedHours>
+				<ProgramRegisteredHours>3</ProgramRegisteredHours>
+				<TermGPA>2</TermGPA>
+				<TermStartDate>2014-02-03</TermStartDate>
+				<TermEndDate>2014-05-01</TermEndDate>
+				<CumulativeAttemptedHours>2.4</CumulativeAttemptedHours>
+				<CumulativeEarnedHours>4</CumulativeEarnedHours>
+				<CumulativeGPA>4</CumulativeGPA>
+				<SAPStatus>Full Acceptance test</SAPStatus>
+				<DateOfDetermination>2015-02-04</DateOfDetermination>
+				<LastDateOfAttendance>2015-02-03</LastDateOfAttendance>
+				<WithdrawnDate>2015-02-02</WithdrawnDate>
+				<IntentToReturn>false</IntentToReturn>
+				<EnrollmentType>Enrolled</EnrollmentType>
+				<EnrollmentStatus>L</EnrollmentStatus>
+			</EnrollmentTerm>
+		</EnrollmentTerms>
+		<AcademicPrograms>
+		</AcademicPrograms>
+		<StandardizedTestScores>
+		</StandardizedTestScores>
+		<HousingChoice>
+			<HousingType>Housing(On Campus)</HousingType>
+			<ResidencyStatus>Out state</ResidencyStatus>
+			<ResidencyState>OH</ResidencyState>
+		</HousingChoice>
+		<GradeLevel>Third Year Undergraduate/Junior</GradeLevel>
+		<SpecialProgramIndicator>A</SpecialProgramIndicator>
+		<CIPCode>23.5676</CIPCode>
+		<TransferStatus>false</TransferStatus>
+		<HighSchoolRank>2</HighSchoolRank>
+		<HighSchoolName>Jenzabar school</HighSchoolName>
+		<HighSchoolGPA>3.45</HighSchoolGPA>
+		<FelonyConvictions />
+		<RegisteredHours>3</RegisteredHours>
+		<TransferCredits />
+		<StudentEligibilityCode>3</StudentEligibilityCode>
+		<ATBTestCode />
+		<ATBTestAdminCode />
+		<ATBCompletionDate />
+	</AcademicExtract>
+</ImportAcademicExtract>

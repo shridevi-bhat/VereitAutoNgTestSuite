@@ -1,0 +1,114 @@
+!|Scenario|verify    |form_name|grid should have the following fields 'Award Type Code', 'Default Award Status', 'Description', 'Award Category', 'Award Sub Category'|
+|verify   |@form_name|has      |Award Type Code                               |as                          |1                         |column                         |
+|verify   |@form_name|has      |Default Award Status                          |as                          |2                         |column                         |
+|verify   |@form_name|has      |Description                                   |as                          |3                         |column                         |
+|verify   |@form_name|has      |Award Category                                |as                          |4                         |column                         |
+|verify   |@form_name|has      |Award Sub Category                            |as                          |5                         |column                         |
+
+!|Scenario|verify    |form_name|form should have the following fields 'Award Type Code', 'Default Award Status', 'Description', 'Award Category', 'Award Sub Category'|
+|verify   |@form_name|has      |Award Type Code                               |as                          |1                         |column                         |
+|verify   |@form_name|has      |Default Award Status                          |as                          |2                         |column                         |
+|verify   |@form_name|has      |Description                                   |as                          |3                         |column                         |
+|verify   |@form_name|has      |Award Category                                |as                          |4                         |column                         |
+|verify   |@form_name|has      |Award Sub Category                            |as                          |5                         |column                         |
+
+!|Scenario|verify field of the awards having default values|
+|check if |Award Type Code         |textfield is |disabled |
+|check if |Default Status          |dropdown is  |enabled  |
+|check if |Description             |textfield is |enabled  |
+|check if |Account Number          |textfield is |enabled  |
+|check if |Long Description        |textfield is |enabled  |
+|check if |Award Category          |dropdown is  |disabled |
+|check if |Award Sub Category      |dropdown is  |disabled |
+|check if |Effective Date          |textfield is |disabled |
+|check if |End Date                |textfield is |disabled |
+|check if |Sequence                |textfield is |enabled  |
+|check if |Posting Priority        |textfield is |disabled |
+|check if |External Code           |textfield is |enabled  |
+|check if |Loan Origination Fee    |textfield is |disabled |
+|check if |First Disbursement Date |textfield is |disabled |
+|check if |Rebate Percentage       |textfield is |disabled |
+|check if |Rebate End Date         |textfield is |disabled |
+
+
+
+!|Scenario|verify field of the awards having user entered values|
+|check if |Award Type Code           |textfield is   |enabled   |
+|check if |Default Status            |dropdown is    |enabled   |
+|check if |Description               |textfield is   |enabled   |
+|check if |Account Number            |textfield is   |enabled   |
+|check if |Long Description          |textfield is   |enabled   |
+|check if |Award Category            |dropdown is    |enabled   |
+|check if |Award Sub Category        |dropdown is    |enabled   |
+|check if |Effective Date            |textfield is   |enabled   |
+|check if |End Date                  |textfield is   |enabled   |
+|check if |Sequence                  |textfield is   |enabled   |
+|check if |Posting Priority          |textfield is   |enabled   |
+|check if |External Code             |textfield is   |enabled   |
+|check if |Loan Origination Fee      |textfield is   |enabled   |
+|check if |First Disbursement Date   |textfield is   |enabled   |
+|check if |Rebate Percentage         |textfield is   |enabled   |
+|check if |Rebate End Date           |textfield is   |enabled   |
+
+!|Scenario|verify enabled disabled fields of awards where _ is _ for _ page for the defaults records|col_name , col_value , page_name|
+|edit     |@page_name                                                                               |where |@col_name |is |@col_value|
+|verify field of the awards having default values                                                                                    |
+|click    |.//*[@id='main']//a[text()='Awards']                                                                                      |
+
+!|Scenario|verify enabled disabled fields of awards where _ is _ for _ page for user enter records|col_name , col_value , page_name|
+|edit     |@page_name                                                                             |where |@col_name |is |@col_value|
+|verify field of the awards having user entered values                                                                             |
+|click    |.//*[@id='main']//a[text()='Awards']                                                                                    |
+
+!|Scenario|verify mandatory fields for Award Administration page                                                  |
+|click    |.//a[@title='New row']                                                                                 |
+|click    |.//button[@class='btn btn-primary']                                                                    |
+|verify   |Award Administration|has                 |Award Type Code|as mandatory field in new form               |
+|         |verify              |Award Administration|has            |Default Status|as mandatory field in new form|
+|verify   |Award Administration|has                 |Description    |as mandatory field in new form               |
+
+!|Scenario|verify mandatory fields for Loan Origination page                              |
+|click    |(.//button[@class='btn btn-small' and text()='Add'])[1]                        |
+|verify   |Award Administration|has|Loan Origination Fee   |as mandatory field in new form|
+|verify   |Award Administration|has|First Disbursement Date|as mandatory field in new form|
+
+!|Scenario|verify mandatory fields for Rebate page                                  |
+|click    |(.//button[@class='btn btn-small' and text()='Add'])[2]                  |
+|verify   |Award Administration|has|Rebate Percentage|as mandatory field in new form|
+|verify   |Award Administration|has|Effective Date   |as mandatory field in new form|
+
+
+!|Scenario|validate mandatory fields on Award Administration page|
+|verify mandatory fields for Award Administration page           |
+|verify mandatory fields for Loan Origination page               |
+|verify mandatory fields for Rebate page                         |
+|click cancel new button                                         |
+|click    |Yes             |from popup             |             |
+
+
+!|Scenario|verify checkbox of default records are checked and disabled|
+|edit     |Awards             |where      |Award Type Code |is |DLSUB |
+|verify   |Disbursable to A/R |check box is checked and disabled      |
+|verify   |Need Based         |check box is checked and disabled      |
+|verify   |Title IV           |check box is checked and disabled      |
+|verify   |Display on Invoice |check box is checked and disabled      |
+|verify   |Display in Portal  |check box is checked and disabled      |
+|verify   |Applied On Invoice |check box is checked and disabled      |
+|click cancel new button                                              |
+|click    |Yes                |from popup |                           |
+
+
+!|Scenario|verify checkbox of user created records are unchecked and enabled|
+|edit     |Awards              |where   |Award Type Code   |is  |AAAAAAAAAA |
+|verify   |Disbursable to A/R  |check box is unchecked and enabled          |
+|verify   |Need Based          |check box is unchecked and enabled          |
+|verify   |Title IV            |check box is unchecked and enabled          |
+|verify   |Display on Invoice  |check box is unchecked and enabled          |
+|verify   |Display in Portal   |check box is unchecked and enabled          |
+|verify   |Applied On Invoice  |check box is unchecked and enabled          |
+|check the|Disbursable to A/R  |checkbox  and verify if it is checked       |
+|check the|Need Based          |checkbox  and verify if it is checked       |
+|check the|Title IV            |checkbox  and verify if it is checked       |
+|check the|Display on Invoice  |checkbox  and verify if it is checked       |
+|check the|Applied On Invoice  |checkbox  and verify if it is checked       |
+

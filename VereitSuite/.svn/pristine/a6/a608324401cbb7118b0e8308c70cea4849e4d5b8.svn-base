@@ -1,0 +1,68 @@
+|Object Repository|LANDINGPAGE                                           |
+|id               |value                                           |type |
+|studentid        |//input[@type='text'][@placeholder='Student ID']|xpath|
+|searchbutton     |//button[@type='button']                        |xpath|
+
+|Object Repository|ISIRHISTORY                                           |
+|id               |value                                           |type |
+|profile          |.//li[1]/a[@title='View profile']               |xpath|
+|need             |.//a[contains (text(), 'Need')]                 |xpath|
+|isir             |//ul[@class='nav nav-list']/li[2]/a             |xpath|
+|firstcolum       |//tr[2]/td/div/input[@type='checkbox']          |xpath|
+|firstcheckbox    |//tr[2]/td/div/input[@type='checkbox']          |xpath|
+|secondcheckbox   |//tr[3]/td/div/input[@type='checkbox']          |xpath|
+|comparebutton    |//a[@title='Compare']                           |xpath|
+|returnisir       |//a[contains (text(), 'Return to ISIR History')]|xpath|
+|closebutton      |//a[contains (text(),'Close')]                  |xpath|
+|isirrecord       |//tr[2]/td[2]/div/a                             |xpath|
+|isirdata         |//h3[contains (.,'ISIR Data')]                  |xpath|
+
+|Object Repository|COLDATA                                                             |
+|id               |value                                                         |type |
+|date             |//thead/tr/th[3][contains (text(), 'Date Received')]          |xpath|
+|verifstatus      |//thead/tr/th[4][contains (text(), 'Verif')]                  |xpath|
+|cmts             |//thead/tr/th[5][contains (text(), 'Cmts')]                   |xpath|
+|comments         |//tbody/tr[2]/td[5]/div/a                                     |xpath|
+|commentscode     |//*[contains (text(),'Comment Codes')]                        |xpath|
+|colclosebutton   |//button[contains(text(), 'Close')]                           |xpath|
+|asmpt            |//thead/tr/th[6][contains (text(), 'Asmpt')]                  |xpath|
+|assumption       |//tr[2]/td[6]/div/a[contains (@href, 'javascript:;')]         |xpath|
+|assuptiontext    |//h3[@id='myModalLabel']/div[contains (text(), 'Assumptions')]|xpath|
+|asmptclose       |//button[contains (text(), 'Close')]                          |xpath|
+|rej              |//thead/tr/th[7][contains (text(), 'Rej')]                    |xpath|
+|efc              |//thead/tr/th[8][contains (text(), 'EFC')]                    |xpath|
+|dep              |//tbody[1]/tr[2]/td[9]/div[contains(text(),'DEP')]            |xpath|
+|eyeicon          |//tbody[1]/tr[2]/td[10]/div/a/i[@class='icon icon-eye-open']  |xpath|
+|eyeclosebutton   |//button[contains (text(),'Close')]                           |xpath|
+|gearicon         |//tr[4]/td[11]/div/a/i[@class='icon-gear icon-large']         |xpath|
+|stateindicator   |//tr[2]/td[12]/div/span[contains (text(), 'New')]             |xpath|
+|freezeunfreeze   |//div[4]/div/li/ul//a[contains (text(), 'Freeze/Unfreeze')]   |xpath|
+|makeactive       |//div[4]/div/li/ul//a[contains (text(), 'Make Active')]       |xpath|
+|makecorrection   |//div[4]/div/li/ul//a[contains (text(), 'Make Correction')]   |xpath|
+
+'''ISIR Summary '''
+
+|Object Repository                 |STUDENTPROFILENEEDTAB                                                                                           |
+|Id                                |Value                                                                                                     |Type |
+|Viewingdefaultawardyear           |//div[@class='alert centerMe']//div[@class='btn-group']//a[@class='dropdown-toggle']                      |xpath|
+|Awardyear201516                   |.//a[contains(text(),'2015-2016')]                                                                        |xpath|
+|Awardyear201617                   |.//a[contains(text(),'2016-2017')]                                                                        |xpath|
+|Statusicon                        |//div[@class = 'panel-body panel-body-list']//span[contains(text(),'Selected, Not Verified')]//..//span[1]|xpath|
+|Summaryverificationstatusfield    |.//div[@class='panel-body panel-body-list']//p//span[2]                                                   |xpath|
+|Summarylinkleftmenufield          |.//div[@class='row-fluid']//a[contains(text(),'Summary')]                                                 |xpath|
+|Summaryisirtransactionfield       |.//div//span[@class='textAlpha' and contains(text(),'ISIR Transaction:')]//..//span[2]                    |xpath|
+|Summaryparentdrtfield             |.//div//span[@class='textAlpha' and contains(text(),'Parent')]//..//span[2]                               |xpath|
+|Summaryverifiedbyfield            |//div//span[@class='textAlpha' and contains(text(),'Verified By:')]//..//span[2]                          |xpath|
+|Summaryverifiedonfield            |//div//span[@class='textAlpha' and contains(text(),'Verified On:')]//..//span[2]                          |xpath|
+|Verificationlinkleftmenufield     |.//div[@class='row-fluid']//a[contains(text(),'Verification')]                                            |xpath|
+|Verificationstatuscolumnfield     |.//tr[1][//a[@class='award-year' and contains(text(),'2016-2017')]]//span[@class='txtRed']                |xpath|
+|Verificationisircolumnfield       |.//tr[1][//a[@class='award-year' and contains(text(),'2016-2017')]]//..//td[4]/div                        |xpath|
+|Summaryactiveisircurrenttransfield|//div//span[@class='textAlpha' and contains(text(),'Current Transaction')]//..//span[2]                   |xpath|
+|Summaryactiveisirstatusfield      |//div//span[@class='textAlpha' and contains(text(),'Status')]//..//span[2]                                |xpath|
+|Summaryactiveisirefcfield         |//div//span[@class='textAlpha' and contains(text(),'EFC')]//..//span[2]                                   |xpath|
+|Summaryactiveisirdependencyfield  |//div//span[@class='textAlpha' and contains(text(),'Dependency')]//..//span[2]                            |xpath|
+|Summaryactiveisirsarcflagfield    |//div//span[@class='textAlpha' and contains(text(),'SAR C-Flag')]//..//span[2]                            |xpath|
+|Warningavailable                  |//*[@id='main']/div/div[2]/div/div/div[2]/div[2]/div/div[2]/ul/li[1]                                      |xpath|
+|Warningdateformat                 |//span[@class='time pull-right'][1]                                                                       |xpath|
+
+

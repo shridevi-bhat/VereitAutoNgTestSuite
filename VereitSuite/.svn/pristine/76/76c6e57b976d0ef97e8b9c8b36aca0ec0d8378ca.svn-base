@@ -1,0 +1,25 @@
+|import                          |
+|net.indecomm.autong.api.fitnesse|
+
+ 
+!include -c <FinancialAidSuite.FinancialAidCommonFiles 
+!include -c <FinancialAidSuite.FinancialAid.CommonScenarios
+!include -c <FinancialAidSuite.FinancialAid.AdministrationModule.OrganizationAndUsers.SecurityRolesTest.SecurityRolesRepository
+!include -c <FinancialAidSuite.FinancialAid.AdministrationModule.OrganizationAndUsers.SecurityRolesTest.SecurityRolesScenarios
+!include -c <FinancialAidSuite.FinancialAid.AdministrationModule.OrganizationAndUsers.SecurityRolesTest.SecurityRolesCommonScenarios
+
+!|Script                               |AutomationNG                                          |
+|set test                              |${PAGE_NAME}                                          |
+|initialize test setup with result name|${PAGE_NAME}_${defaultBrowser}                        |
+|delete user info                                                                             |
+|login to the Financial Aid module                                                            |
+|choose                                |Administration   |from header menu                    |
+|select                                |Security Roles   |menu from      |Organization & Users|
+|read from data for                    |securityrolesheet|excelsheet from|2 |for security role|
+|create new security role                                                                     |
+|add permission                                                                               |
+|edit permission                                                                              |
+|duplication role check                                                                       |
+|view current assignments                                                                     |
+|deactivate security roles                                                                    |
+|tear down                                                                                    |

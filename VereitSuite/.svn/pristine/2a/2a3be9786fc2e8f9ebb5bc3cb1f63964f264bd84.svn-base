@@ -1,0 +1,89 @@
+!|Scenario                   |read test data payment period and loan period from excel                |
+|read from data for          |Payment Period|excelsheet from                 |2|for new payment period|
+|pause  execution  for       |2             |seconds                                                  |
+|choose                      |Administration|from header menu                                         |
+|select                      |Payment Period|menu from                       |Award Administration    |
+|add payment period with name|{$name}       |and external code               |{$externalcode}         |
+|pause  execution  for       |2             |seconds                                                  |
+|read from data for          |Loan Period   |excelsheet from                 |2|for new loan period   |
+|pause  execution  for       |2             |seconds                                                  |
+|choose                      |Administration|from header menu                                         |
+|select                      |Loan Period   |menu from                       |Award Administration    |
+|add loan period with code   |{$loanpercode}|and loan period long description|{$loanperdesc}          |
+|pause  execution  for       |2             |seconds                                                  |
+
+
+!|Scenario      |read from data for|sheetName       |excelsheet from                |rowNumber|for new payment period|
+|load           |@sheetName        |excel sheet from|{$DATASHEET.financialaidyrdata}|in       |read       |Mode      |
+|variable       |name              |equals to                                                                        |
+|getFromExcelRow|@rowNumber        |Column          |1                                                               |
+|variable       |externalcode      |equals to                                                                        |
+|getFromExcelRow|@rowNumber        |Column          |4                                                               |
+|unload  excel sheet                                                                                                 |
+
+
+!|Scenario      |read from data for|sheetName       |excelsheet from                |rowNumber|for new loan period|
+|load           |@sheetName        |excel sheet from|{$DATASHEET.financialaidyrdata}|in       |read     |Mode     |
+|variable       |loanpercode       |equals to                                                                     |
+|getFromExcelRow|@rowNumber        |Column          |1                                                            |
+|variable       |loanperdesc       |equals to                                                                     |
+|getFromExcelRow|@rowNumber        |Column          |2                                                            |
+|unload  excel sheet                                                                                              |
+
+!|Scenario                              |create and edit financial aid year by associating payment period and loan period                                                                     |
+|read from data for                     |Financial Aid Year|excelsheet from                              |2           |for new Financial Aid Year                                             |
+|pause  execution  for                  |2                 |seconds                                                                                                                           |
+|choose                                 |Administration    |from header menu                                                                                                                  |
+|select                                 |Financial Aid Year|menu from                                    |Award Administration                                                                |
+|verify if bread crumb contains         |Administration                                                                                                                                       |
+|verify click on bread crumb            |Administration    |and navigates to                             |Administration                                                                      |
+|select                                 |Financial Aid Year|menu from                                    |Award Administration                                                                |
+|verify mandatory fields on Financial Aid Year Page                                                                                                                                           |
+|create new financial aid year with code|{$finaidyrcode}   |award year                                   |{$awardyear}|and associate payment period|{$paymentperiod}|loan period|{$loanperiod}|
+|select award year accordion            |{$awardyear}      |and click on new financial aid year edit icon|{$finaidyrcode}                                                                     |
+|read from data for                     |Financial Aid Year|excelsheet from                              |7           |for new Financial Aid Year                                             |
+|pause  execution  for                  |3                 |seconds                                                                                                                           |
+|edit financial aid year with code      |{$finaidyrcode}                                                                                                                                      |
+
+!|Scenario                  |deactivating of financial aid year                                                             |
+|read from data for         |Financial Aid Year|excelsheet from                                |7|for new Financial Aid Year|
+|pause  execution  for      |3                 |seconds                                                                     |
+|select award year accordion|{$awardyear}      |and click on financial aid year deactivate icon|{$finaidyrcode}             |
+
+
+!|Scenario      |read from data for|sheetName       |excelsheet from                |rowNumber|for new financial aid year|
+|load           |@sheetName        |excel sheet from|{$DATASHEET.financialaidyrdata}|in       |read         |Mode        |
+|variable       |finaidyrcode      |equals to                                                                            |
+|getFromExcelRow|@rowNumber        |Column          |1                                                                   |
+|variable       |awardyear         |equals to                                                                            |
+|getFromExcelRow|@rowNumber        |Column          |2                                                                   |
+|variable       |paymentperiod     |equals to                                                                            |
+|getFromExcelRow|@rowNumber        |Column          |6                                                                   |
+|variable       |loanperiod        |equals to                                                                            |
+|getFromExcelRow|@rowNumber        |Column          |7                                                                   |
+|unload  excel sheet                                                                                                     |
+
+!|Scenario            |select award year accordion|awardyear   |and click on new financial aid year edit icon|finaidyrcode                           |
+|variable             |isAccordionClickable       |equals  to                                                                                        |
+|wait  for  element   |//span[contains(text(),'@awardyear')]/following-sibling::a                                                                    |
+|assert true          |{$isAccordionClickable}                                                                                                       |
+|log result           |{$isAccordionClickable}    |with comment|click on {@awardyear} accordion              |in page|financial aid year             |
+|click                |//span[contains(text(),'@awardyear')]/following-sibling::a                                                                    |
+|pause  execution  for|2                          |seconds                                                                                           |
+|variable             |isfayCodeValuePresent      |equals  to                                                                                        |
+|wait  for  element   |//span[text()='@finaidyrcode']                                                                                                |
+|assert true          |{$isfayCodeValuePresent}                                                                                                      |
+|log result           |{$isfayCodeValuePresent}   |with comment|created financial aid year present           |in page|Financial aid year summary page|
+|pause  execution  for|2                          |seconds                                                                                           |
+|variable             |isEditIconPresent          |equals  to                                                                                        |
+|wait  for  element   |//span[text()='@finaidyrcode']/following-sibling::a[1]                                                                        |
+|assert true          |{$isEditIconPresent}                                                                                                          |
+|log result           |{$isEditIconPresent}       |with comment|Edit icon present                            |in page|Financial aid year summary page|
+|pause  execution  for|1                          |seconds                                                                                           |
+|click                |//span[text()='@finaidyrcode']/following-sibling::a[1]                                                                        |
+|pause  execution  for|1                          |seconds                                                                                           |
+
+
+
+
+

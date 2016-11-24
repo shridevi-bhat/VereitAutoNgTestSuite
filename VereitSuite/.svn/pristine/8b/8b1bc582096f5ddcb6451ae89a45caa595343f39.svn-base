@@ -1,0 +1,100 @@
+!|Scenario             |adding new award                                                                                               |
+|pause  execution  for |3                                                      |seconds                                                |
+|variable              |isPackageManagementPresent                             |equals  to                                             |
+|click                 |{$PACKAGE.packmgmt}                                                                                            |
+|assert true           |{$isPackageManagementPresent}                                                                                  |
+|log result            |{$isPackageManagementPresent}                          |with comment|Package Management link|in page|Award page|
+|pause  execution  for |1                                                      |seconds                                                |
+|variable              |isPackageManuallyButtonPresent                         |equals  to                                             |
+|click                 |{$PACKAGE.packmanually}                                                                                        |
+|assert true           |{$isPackageManuallyButtonPresent}                                                                              |
+|log result            |{$isPackageManuallyButtonPresent}                      |with comment|Package Manually Button|in page|Award page|
+|pause  execution  for |1                                                      |seconds                                                |
+|variable              |isAwardYearPresent                                     |equals  to                                             |
+|click                 |{$PACKAGE.awardyear}                                                                                           |
+|pause  execution  for |3                                                      |seconds                                                |
+|assert true           |{$isAwardYearPresent}                                                                                          |
+|log result            |{$isAwardYearPresent}                                  |with comment|Award Option Present   |in page|Award page|
+|click                 |{$PACKAGE.awardyearoption}                                                                                     |
+|variable              |isFinYearOptionPresent                                 |equals  to                                             |
+|click                 |{$PACKAGE.finaidyear}                                                                                          |
+|assert true           |{$isFinYearOptionPresent}                                                                                      |
+|log result            |{$isFinYearOptionPresent}                              |with comment|Fin Year Option        |in page|Award page|
+|variable              |isAwardPresent                                         |equals  to                                             |
+|click                 |{$PACKAGE.award}                                                                                               |
+|assert true           |{$isAwardPresent}                                                                                              |
+|log result            |{$isAwardPresent}                                      |with comment|Fin Year Option        |in page|Award page|
+|pause  execution  for |2                                                      |seconds                                                |
+|type                  |1000                                                   |into        |{$PACKAGE.maxeli}      |text field        |
+|type                  |10000                                                  |into        |{$PACKAGE.awardamount} |text field        |
+|double  click  on     |{$PACKAGE.awardstatus}                                                                                         |
+|pause  execution  for |2                                                      |seconds                                                |
+|verify  page  contains|Award Amount cannot be greater than Maximum Eligibility|text                                                   |
+|clear  text           |{$PACKAGE.awardamount}                                                                                         |
+|type                  |500                                                    |into        |{$PACKAGE.awardamount} |text field        |
+|pause  execution  for |2                                                      |seconds                                                |
+
+!|Scenario            |distribute award                                                                    |
+|click                |{$DISTRIBUTE.disaward}                                                              |
+|pause  execution  for|2                          |seconds                                                 |
+|variable             |isDistributeAwardPresent   |equals  to                                              |
+|click                |{$DISTRIBUTE.disaward}                                                              |
+|assert true          |{$isDistributeAwardPresent}                                                         |
+|log result           |{$isDistributeAwardPresent}|with comment|Distribute Award Present|in page|Award page|
+|pause  execution  for|1                          |seconds                                                 |
+
+
+!|Scenario            |add new award                                                                |
+|variable             |isAddNewAwardPresent   |equals  to                                           |
+|click                |{$DISTRIBUTE.addnewaward}                                                    |
+|assert true          |{$isAddNewAwardPresent}                                                      |
+|log result           |{$isAddNewAwardPresent}|with comment|Add New Award Present|in page|Award page|
+|pause  execution  for|1                      |seconds                                              |
+|click                |{$DISTRIBUTE.confirmyes}                                                     |
+|pause  execution  for|2                      |seconds                                              |
+|click                |{$DISTRIBUTE.xbutton}                                                        |
+|pause  execution  for|3                      |seconds                                              |
+
+
+
+!|Scenario             |delete award                                                                   |
+|click                 |{$PACKAGE.packmanually}                                                        |
+|pause  execution  for |1                       |seconds                                               |
+|click                 |{$PACKAGE.awardyearoption}                                                     |
+|pause  execution  for |1                       |seconds                                               |
+|click                 |{$PACKAGE.finaidyear}                                                          |
+|pause  execution  for |1                       |seconds                                               |
+|click                 |{$PACKAGE.award}                                                               |
+|pause  execution  for |2                       |seconds                                               |
+|click                 |{$PACKAGE.awardstatus}                                                         |
+|pause  execution  for |1                       |seconds                                               |
+|click                 |{$DISTRIBUTE.estimate}                                                         |
+|type                  |10                      |into        |{$PACKAGE.maxeli}     |text field        |
+|type                  |5                       |into        |{$PACKAGE.awardamount}|text field        |
+|pause  execution  for |2                       |seconds                                               |
+|click                 |{$DISTRIBUTE.disaward}                                                         |
+|pause  execution  for |2                       |seconds                                               |
+|variable              |isDistributeAwardPresent|equals  to                                            |
+|click                 |{$DISTRIBUTE.addnewaward}                                                      |
+|pause  execution  for |1                       |seconds                                               |
+|click                 |{$DISTRIBUTE.confirmyes}                                                       |
+|pause  execution  for |1                       |seconds                                               |
+|click                 |{$DISTRIBUTE.xbutton}                                                          |
+|pause  execution  for |2                       |seconds                                               |
+|variable              |isDeleteAwardPresent    |equals  to                                            |
+|click                 |{$DISTRIBUTE.deleteaward}                                                      |
+|assert true           |{$isDeleteAwardPresent}                                                        |
+|log result            |{$isDeleteAwardPresent} |with comment|Delete button Present |in page|Award page|
+|pause  execution  for |1                       |seconds                                               |
+|click                 |{$DISTRIBUTE.confirmyes}                                                       |
+|pause  execution  for |1                       |seconds                                               |
+|click                 |{$DISTRIBUTE.deleteready}                                                      |
+|click                 |{$DISTRIBUTE.confirmyes}                                                       |
+|pause  execution  for |2                       |seconds                                               |
+|verify  page  contains|Warning                 |text                                                  |
+|pause  execution  for |1                       |seconds                                               |
+|click                 |{$DISTRIBUTE.closebutton}                                                      |
+
+
+
+

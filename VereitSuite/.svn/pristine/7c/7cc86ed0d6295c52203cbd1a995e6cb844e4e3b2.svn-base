@@ -1,0 +1,43 @@
+!|Scenario            |search student          |searchid                                          |
+|pause  execution  for|5                       |seconds                                           |
+|type                 |100                     |into        |{$SEARCH.firstname}|text field       |
+|pause  execution  for|2                       |seconds                                           |
+|variable             |isSearchButtonPresent   |equals  to                                        |
+|click                |{$SEARCH.searchbutton}  |                                                  |
+|assert true          |{$isSearchButtonPresent}                                                   |
+|log result           |{$isSearchButtonPresent}|with comment|search button      |in page|Home page|
+
+
+!|Scenario            |get total coa values                               |
+|variable             |istotalamountincoa    |equals  to                  |
+|get  text  from      |{$AWARD.totalamountincoa}                          |
+|show                 |get                   |istotalamountincoa    |value|
+|pause  execution  for|1                     |seconds                     |
+|variable             |istotalamountinsummary|equals  to                  |
+|get  text  from      |{$AWARD.istotalamountinsummary}                    |
+|show                 |get                   |istotalamountinsummary|value|
+|pause  execution  for|1                     |seconds                     |
+
+!|Scenario            |get remaniningneed  values                                         |
+|variable             |isremaniningneedinsummary      |equals  to                         |
+|get  text  from      |{$AWARD.remainingneedinsummary}                                    |
+|show                 |get                            |isremaniningneedinsummary    |value|
+|pause  execution  for|1                              |seconds                            |
+|variable             |isremainingneed_awardmanagement|equals  to                         |
+|get  text  from      |{$AWARD.remainingneed_awardmanagement}                             |
+|show                 |get                            |remainingneed_awardmanagement|value|
+|pause  execution  for|1                              |seconds                            |
+
+!|Scenario            |get remaniningeligibility  values                                                |
+|variable             |isremainingeligibilityinsummary       |equals  to                                |
+|get  text  from      |{$AWARD.remainingeligibilityinsummary}                                           |
+|show                 |get                                   |isremainingeligibilityinsummary     |value|
+|pause  execution  for|1                                     |seconds                                   |
+|variable             |isremainingeligibility_awardmanagement|equals  to                                |
+|get  text  from      |{$AWARD.remainingeligibility_awardmanagement}                                    |
+|show                 |get                                   |remainingeligibility_awardmanagement|value|
+|pause  execution  for|1                                     |seconds                                   |
+
+
+
+

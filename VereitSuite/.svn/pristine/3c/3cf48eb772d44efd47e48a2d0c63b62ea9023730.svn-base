@@ -1,0 +1,2 @@
+!include -c <FinancialAidSuite.FinancialAid.CommonScenarios.CommunicationsManagement.CommunicationsManagementScenarios
+!include -c <FinancialAidSuite.FinancialAid.CommonScenarios.CommunicationsManagement.ObjectRepository

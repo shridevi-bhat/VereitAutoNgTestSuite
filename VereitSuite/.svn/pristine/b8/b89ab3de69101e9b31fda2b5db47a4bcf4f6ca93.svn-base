@@ -1,0 +1,43 @@
+'''Object Repository for FA Group Processing'''
+
+|Object Repository          |FAGROUPPROCESS                                                                  |
+|Id                         |Value                                                                     |Type |
+|selmenuoperation           |.//*[@id='headerContain']//a[contains(text(),'Operations')]/..            |xpath|
+|selsubmenufagroupprocessing|.//*[@id='headerContain']//a[contains(text(),'FA Group Processing')]/..   |xpath|
+|creategrpbtn               |//button[@class='btn btn-success']                                        |xpath|
+|grpheader                  |//h1/span[text()='New Group']                                             |xpath|
+|awardyeardrpdwn            |//label[contains(text(),'Award Year')]/following-sibling::select          |xpath|
+|groupname                  |//input[@name='groupName']                                                |xpath|
+|descofgrp                  |//textarea[@name='description']                                           |xpath|
+|filtminawardamt            |//input[@name='minAwardAmount']                                           |xpath|
+|touchpointtype             |.//form[@id='createEditGroupProcessingForm']/div[14]/div[2]/div/button    |xpath|
+|exluawardtype              |.//form[@id='createEditGroupProcessingForm']/div[18]/div/div[1]/div/button|xpath|
+|saveandrunbtn              |//a[@class='btn btn-primary'][text()='Save & Run']                        |xpath|
+|runonlybtn                 |//a[@class='btn btn-info'][text()='Run Only']                             |xpath|
+|returntogrplistlink        |//ul[@class='breadcrumb']/li/a[text()='Return to Group Listing']          |xpath|
+|awardyeardrpdownsummary    |//li[@class='btn btn-default dropdown-toggle']                            |xpath|
+|eyeicononsummary           |//tr[3]/td[6]/div/div/a[1]                                                |xpath|
+|editicononsummary          |//tr[3]/td[6]/div/div/a[2]                                                |xpath|
+|closebtnviewset            |//button[@class='btn accordion-toggle portletTitle'][text()='Close']      |xpath|
+|editgrpheader              |//span[contains(text(),'Edit Group')]                                     |xpath|
+|awardyeardrpdwnsummary     |//li[@class='btn btn-default dropdown-toggle']                            |xpath|
+|finaidyrdropdown           |//label[contains(text(),'Fin Aid Year')]/following-sibling::div/button    |xpath|
+|awardtypedrpdwn            |//label[contains(text(),'Award Type')]/following-sibling::div/button      |xpath|
+
+
+''' Object Repository for Group Action'''
+
+|Object Repository        |GROUPACTION                                                                                                                |
+|Id                       |Value                                                                                                                |Type |
+|addupdatetouchpointlink  |//a[@class='gwt-Anchor'][contains(text(),'Touchpoints')]                                                             |xpath|
+|addupdateawardlink       |//a[@class='gwt-Anchor'][contains(text(),'Award Status')]                                                            |xpath|
+|addtouchpointtypebtn     |//div[@class='gridActions']/a[2]                                                                                     |xpath|
+|awarddisbdate            |//th[text()='Set New Disbursement Date']/ancestor::thead/following-sibling::tbody/tr/td/input[@name='disbDateField1']|xpath|
+|awarddisbstatus          |//th[text()='Disbursement Status']/ancestor::thead/following-sibling::tbody/tr/td/select                             |xpath|
+|awardsavebtn             |//button[text()='Save']                                                                                              |xpath|
+|awardnewbtn              |//a[@title='New row']                                                                                                |xpath|
+|awardinitialpackaging    |//button[text()='Initial Packaging']                                                                                 |xpath|
+|awardpackawardyear       |//label[contains(text(),'Award Year')]/following-sibling::select                                                     |xpath|
+|awardpackfinaidyr        |//label[contains(text(),'Fin Aid Year')]/following-sibling::select                                                   |xpath|
+|awardconfirmintialpackage|//button[contains(text(),'Confirm Initial Packaging')]                                                               |xpath|
+

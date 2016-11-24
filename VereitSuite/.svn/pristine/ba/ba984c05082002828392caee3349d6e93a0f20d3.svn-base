@@ -1,0 +1,17 @@
+!|Scenario            |choose operation upload and upload student xml file                                                        |
+|pause  execution  for|5                             |seconds                                                                     |
+|click                |.//*[@id='headerContain']//a[contains(text(),'Upload')]/..                                                 |
+|upload  file         |{$DATASHEET.studentprofilexml}|by|.//*[@id='main']//button[text()='Initial Upload']/..//input[@type='file']|
+|                     |click                         |.//a[contains(.,'Close')]                                                   |
+
+!|Scenario|read _ node values of xml|node_name                          |
+|variable |nodeValue                |equals  to                         |
+|read node|@node_name               |from|{$DATASHEET.studentprofilexml}|
+
+!|Scenario     |search the uploaded student                                   |
+|read          |StudentId       |node values of xml                           |
+|search student|{$nodeValue}    |with firstname    |    |and lastname    |    |
+|click         |.//*[@id='headSearch']//button[text()='Search']               |
+|click         |.//*[@id='main']//li[contains(.,'{$nodeValue}')]/../../..//img|
+
+

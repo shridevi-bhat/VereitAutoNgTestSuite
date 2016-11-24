@@ -1,0 +1,4 @@
+!include -c <FinancialAidSuite.FinancialAid.CommonScenarios.AdministrationModule.AdministrationScenarios
+!include -c <FinancialAidSuite.FinancialAid.CommonScenarios.AdministrationModule.FieldsVerfication
+!include -c <FinancialAidSuite.FinancialAid.CommonScenarios.AdministrationModule.ObjectRepository
+

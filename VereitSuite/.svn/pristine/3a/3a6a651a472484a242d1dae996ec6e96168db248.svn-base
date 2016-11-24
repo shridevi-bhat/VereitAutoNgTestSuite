@@ -1,0 +1,123 @@
+!|Scenario                              |read test data payment period and financial aid yr from excel                                                                           |
+|variable                               |rowbeg            |equals to                                                                                                            |
+|evaluate                               |2                                                                                                                                       |
+|loop                                   |3                 |times                                                                                                                |
+|read from data for                     |Payment Period    |excelsheet from                 |{$rowbeg}   |for new payment period                                                 |
+|pause  execution  for                  |2                 |seconds                                                                                                              |
+|choose                                 |Administration    |from header menu                                                                                                     |
+|select                                 |Payment Period    |menu from                       |Award Administration                                                                |
+|add payment period with name           |{$name}           |and external code               |{$externalcode}                                                                     |
+|pause  execution  for                  |2                 |seconds                                                                                                              |
+|read from data for                     |Loan Period       |excelsheet from                 |{$rowbeg}   |for new loan period                                                    |
+|pause  execution  for                  |2                 |seconds                                                                                                              |
+|choose                                 |Administration    |from header menu                                                                                                     |
+|select                                 |Loan Period       |menu from                       |Award Administration                                                                |
+|add loan period with code              |{$loanpercode}    |and loan period long description|{$loanperdesc}                                                                      |
+|pause  execution  for                  |2                 |seconds                                                                                                              |
+|read from data for                     |Financial Aid Year|excelsheet from                 |{$rowbeg}   |for new Financial Aid Year                                             |
+|pause  execution  for                  |2                 |seconds                                                                                                              |
+|choose                                 |Administration    |from header menu                                                                                                     |
+|select                                 |Financial Aid Year|menu from                       |Award Administration                                                                |
+|verify if bread crumb contains         |Administration                                                                                                                          |
+|verify click on bread crumb            |Administration    |and navigates to                |Administration                                                                      |
+|select                                 |Financial Aid Year|menu from                       |Award Administration                                                                |
+|verify mandatory fields on Financial Aid Year Page                                                                                                                              |
+|create new financial aid year with code|{$finaidyrcode}   |award year                      |{$awardyear}|and associate payment period|{$paymentperiod}|loan period|{$loanperiod}|
+|variable                               |rowbeg            |equals to                                                                                                            |
+|evaluate                               |'{$rowbeg} + 1'                                                                                                                         |
+|end Loop                                                                                                                                                                        |
+
+!|Scenario                               |search student to add award                    |
+|read from data for                      |StudentID|excelsheet from|2|to search a student|
+|pause  execution  for                   |2        |seconds                              |
+|search  a student and navigate to awards|{$searchstudentid}                             |
+
+
+!|Scenario      |read from data for|sheetName       |excelsheet from                   |rowNumber|to create new award|
+|load           |@sheetName        |excel sheet from|{$DATASHEET.fagroupprocessingdata}|in       |read     |Mode     |
+|variable       |packawardyear     |equals to                                                                        |
+|getFromExcelRow|@rowNumber        |Column          |1                                                               |
+|variable       |packfinaidyr      |equals to                                                                        |
+|getFromExcelRow|@rowNumber        |Column          |2                                                               |
+|variable       |packawd           |equals to                                                                        |
+|getFromExcelRow|@rowNumber        |Column          |3                                                               |
+|variable       |packmaxamount     |equals to                                                                        |
+|getFromExcelRow|@rowNumber        |Column          |4                                                               |
+|variable       |packawardamount   |equals to                                                                        |
+|getFromExcelRow|@rowNumber        |Column          |5                                                               |
+|variable       |disbdate          |equals to                                                                        |
+|getFromExcelRow|@rowNumber        |Column          |6                                                               |
+|variable       |disbstatus        |equals to                                                                        |
+|getFromExcelRow|@rowNumber        |Column          |7                                                               |
+|unload  excel sheet                                                                                                 |
+
+!|Scenario                                                     |read test data of award for the selected student                                                                                                                              |
+|read from data for                                            |GA Add Award                |excelsheet from          |2              |to create new award                                                                                    |
+|wait  for  element                                            |{$STUDENTPROFILEADDAWARDSPACKAGE.packagemgmtlink}                                                                                                                             |
+|click                                                         |{$STUDENTPROFILEADDAWARDSPACKAGE.packagemgmtlink}                                                                                                                             |
+|variable                                                      |awardManagementnewbtnPresent|equals  to                                                                                                                                       |
+|create the test award for the selected student with award year|{$packawardyear}            |select financial aid year|{$packfinaidyr}|select award|{$packawd}|enter maximum amount|{$packmaxamount}|and enter award amount|{$packawardamount}|
+
+
+
+!|Scenario                                   |create new fa group by selecting finaid year and award type filters                                                                                  |
+|read from data for                          |FA Group Processing|excelsheet from|5           |to create new fa group                                                                              |
+|pause  execution  for                       |2                  |seconds                                                                                                                          |
+|click                                       |{$HEADER.financialaid}                                                                                                                               |
+|wait  for  element                          |.//*[@id='headerContain']//a[contains(text(),'Operations')]/..                                                                                       |
+|pause  execution  for                       |8                  |seconds                                                                                                                          |
+|mouse  over                                 |.//*[@id='headerContain']//a[contains(text(),'Operations')]/..                                                                                       |
+|pause  execution  for                       |8                  |seconds                                                                                                                          |
+|simulate click on                           |.//*[@id='headerContain']//a[contains(text(),'FA Group Processing')]/..                                                                              |
+|verify form header                          |Financial Aid Group Processing                                                                                                                       |
+|create new FA Group by selecting finaid year|{$awardyear}       |group name     |{$groupname}|description of group|{$descriptnofgrp}|and financial aid year|{$finaidyr}|and award type|{$awrdtype}|
+
+!|Scenario                                                           |verify group name, finaid year and award type in review page                                                         |
+|read from data for                                                  |FA Group Processing|excelsheet from    |5           |to create new fa group                                          |
+|pause  execution  for                                               |2                  |seconds                                                                                          |
+|verify Financial Aid Group Review page contains selected finaid year|{$groupname}       |selected award year|{$awardyear}|selected finaid year|{$finaidyr}|selected award type|{$awrdtype}|
+
+!|Scenario|verify the student list for selected finaid year                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|         |connect to                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |{$MSSQLDEV.vendor}|data base at      |{$MSSQLDEV.server}|with user name as            |{$MSSQLDEV.user}           |and pass word as           |{$MSSQLDEV.password}           |as           |dbConnectionObj           |
+|execute  |Select distinct(a.value) from ngp.alternate_id a inner join ngp.student_award_package b on a.constituent_id = b.constituent_id join ngp.student_award_distribution c on b.id = c.student_award_package_id  where b.award_year_id = 3 and b.financial_aid_year_id in (Select fay.id from ngp.financial_aid_year fay where fay.name in ('FIN_AID_YR1')) and b.award_type_id in (Select at.id from ngp.award_type at where at.short_description in ('Direct Subsidized Loan'))|query on          |dbConnectionObj|and export to     |C:\AutomationNG\FitNesseRoot\AutomationNg\FinancialAidSuite\FinancialAid\OperationsModule\OperationsFaGroupProcessingSubModule\datahash\FAGroupStudentList.xls|
+
+!|Scenario|verify the list of student on fa group review page for selected finaid year and award type|
+|verify the student list for selected finaid year                                                    |
+|read the list of student on fa group review page                                                    |
+
+!|Scenario                      |verify that selected award type and finaid year is listing on add update award Group Action           |
+|read from data for             |FA Group Processing|excelsheet from|5          |to create new fa group                                |
+|pause  execution  for          |2                  |seconds                                                                           |
+|verify that selected group name|{$groupname}       |award type     |{$awrdtype}|and finaid year is listing on group action|{$finaidyr}|
+
+!|Scenario                                             |verify that updated disb date and disb status is listing on student   |
+|read from data for                                    |Financial Aid Year|excelsheet from       |2|for new Financial Aid Year|
+|pause  execution  for                                 |2                 |seconds                                            |
+|click on edit icon and verify the added payment period|{$paymentperiod}  |for finaid year       |{$finaidyrcode}             |
+|read from data for                                    |GA Add Award      |excelsheet from       |2|to create new award       |
+|pause  execution  for                                 |2                 |seconds                                            |
+|update existing payment period with Disbursement Date |{$disbdate}       |and Disbursment Status|{$disbstatus}               |
+|pause  execution  for                                 |2                 |seconds                                            |
+
+!|Scenario                                                     |group action add new award to the group of student from package manually                                                                                          |
+|read from data for                                            |GA Add Award    |excelsheet from          |3              |to create new award                                                                                    |
+|pause  execution  for                                         |2               |seconds                                                                                                                                          |
+|wait  for  element                                            |{$GROUPACTION.awardnewbtn}                                                                                                                                        |
+|pause  execution  for                                         |5               |seconds                                                                                                                                          |
+|double  click  on                                             |{$GROUPACTION.awardnewbtn}                                                                                                                                        |
+|pause  execution  for                                         |5               |seconds                                                                                                                                          |
+|create the test award for the selected student with award year|{$packawardyear}|select financial aid year|{$packfinaidyr}|select award|{$packawd}|enter maximum amount|{$packmaxamount}|and enter award amount|{$packawardamount}|
+|clear text                                                    |{$DASHBOARDPAGE.SearchSudentIDfield}                                                                                                                              |
+|pause  execution  for                                         |2               |seconds                                                                                                                                          |
+
+
+!|Scenario                                            |verify newly added and updated awards are showing in student                                                                                                |
+|read from data for                                   |GA Add Award   |excelsheet from                                     |3              |to create new award                                                    |
+|pause  execution  for                                |2              |seconds                                                                                                                                     |
+|click                                                |{$STUDENTPROFILEADDAWARDSPACKAGE.awardmgmtlink}                                                                                                             |
+|verify newly added awards are showing in student with|{$packawd}     |finaid year                                         |{$packfinaidyr}|maximum eligibility   |{$packmaxamount}|award amount|{$packawardamount}|
+|read from data for                                   |GA Add Award   |excelsheet from                                     |2              |to create new award                                                    |
+|verify for selected finaid yr                        |{$packfinaidyr}|awards are updated in student with Disbursement Date|{$disbdate}    |and Disbursment Status|{$disbstatus}                                   |
+
+
+

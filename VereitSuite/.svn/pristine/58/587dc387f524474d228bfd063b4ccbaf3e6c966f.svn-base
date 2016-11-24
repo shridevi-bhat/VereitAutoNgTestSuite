@@ -1,0 +1,49 @@
+'''UI elements for creating a new Touchpoint Status'''
+
+|Object Repository              |TOUCHPOINTSTATUS                                                    |
+|Id                             |Value                                                         |Type |
+|addtouchpointnamefield         |//input[@name='code']                                         |xpath|
+|addtouchpointdescriptionfield  |//input[@name='value']                                        |xpath|
+|addtouchpointsequencefield     |//input[@name='displayOrder']                                 |xpath|
+|addtouchpointeffectivedatefield|//input[@name='effectiveOn']                                  |xpath|
+|addtouchpointenddatefield      |//input[@name='endOn']                                        |xpath|
+|addtouchpointaddbuttonfield    |//button[@class='btn btn-primary' and contains(text(), 'Add')]|xpath|
+
+'''UI elements for creating a new Touchpoint Types'''
+
+|Object Repository                     |TOUCHPOINTTYPES                                                            |
+|Id                                    |Value                                                                |Type |
+|addtouchpointtypecodefield            |//input[@name='code']                                                |xpath|
+|addtouchpointtypeshortdescriptionfield|//input[@name='shortDescription']                                    |xpath|
+|addtouchpointtypelongdescriptionfield |//textarea[@name='longDescription']                                  |xpath|
+|addtouchpointtypedefaultstatusfield   |//*[@id='main']//label[contains(text(),'Default Status')]//..//select|xpath|
+|addtouchpointtypesequencefield        |//input[@name='displayOrder']                                        |xpath|
+|addtouchpointtypeeffectivedatefield   |//input[@name='effectiveOn']                                         |xpath|
+|addtouchpointtypeenddatefield         |//input[@name='endOn']                                               |xpath|
+|addtouchpointtypeaddbuttonfield       |//button[@class='btn btn-primary' and contains(text(), 'Add')]       |xpath|
+|addtouchpointtypecancelbuttonfield    |//button[@class='btn btn-default' and contains(text(), 'Cancel')]    |xpath|
+|adddocumentawardyearfield             |//*[@id='main']//label[contains(text(),'Award Year')]//..//select    |xpath|
+
+
+
+'''UI elements for creating a new Touchpoint Groups'''
+
+|Object Repository                        |TOUCHPOINTGROUPS                                                                                             |
+|Id                                       |Value                                                                                                  |Type |
+|addtouchpointgroupnewbuttonfield         |//a[@title='New row']                                                                                  |xpath|
+|addtouchpointgroupcodefield              |//input[@name='code']                                                                                  |xpath|
+|addtouchpointgroupshortdescriptionfield  |//input[@name='shortDescription']                                                                      |xpath|
+|addtouchpointgrouplongdescriptionfield   |//textarea[@name='longDescription']                                                                    |xpath|
+|addtouchpointgroupeffectivedatefield     |//input[@name='effectiveOn']                                                                           |xpath|
+|addtouchpointgroupenddatefield           |//input[@name='endOn']                                                                                 |xpath|
+|addtouchpointgroupsequencefield          |//input[@name='displayOrder']                                                                          |xpath|
+|addtouchpointgrouptptypefield            |//*[@id='addTouchpointTypesForm']//select                                                              |xpath|
+|addtouchpointgroupnoofdaysafterstartfield|//input[@name='durationInDays']                                                                        |xpath|
+|addtouchpointgroupaddtptypebuttonfield   |//form[@id='addTouchpointTypesForm']//..//button[@class='btn' and contains(text(), 'Add')]             |xpath|
+|addtouchpointgroupcanceltptypebuttonfield|//form[@id='addTouchpointTypesForm']//..//button[@class='btn' and contains(text(), 'Cancel')]          |xpath|
+|addtouchpointgroupaddbuttonfield         |//button[@class='btn btn-primary' and contains(text(), 'Add')]                                         |xpath|
+|addtouchpointgroupcancelbuttonfield      |//button[@class='btn btn-default' and contains(text(), 'Cancel')]                                      |xpath|
+|adddocumenttypeselectfield               |(.//*[@id='documentCodeStatusForm']//select)[1]                                                        |xpath|
+|adddocumentstatusselectfield             |(.//*[@id='documentCodeStatusForm']//select)[2]                                                        |xpath|
+|adddocumentaddtypebuttonfield            |//form[@id='documentCodeStatusForm']//..//button[@class='btn btn-small' and contains(text(), 'Add')]   |xpath|
+|adddocumentcanceltypebuttonfield         |//form[@id='documentCodeStatusForm']//..//button[@class='btn btn-small' and contains(text(), 'Cancel')]|xpath|
