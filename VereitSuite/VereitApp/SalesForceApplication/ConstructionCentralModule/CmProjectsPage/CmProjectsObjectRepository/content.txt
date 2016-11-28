@@ -1,3 +1,44 @@
+''' Select Recent existing CM Project '''
+|Object Repository|RECENTCMPROJECT                                                             |
+|id               |value                                                                 |type |
+|projectnamelink  |//tr/th/a[contains(text(),'2016-Capital Improvement-Envelope-Repair')]|xpath|
+
+''' CM Projects - BIDS Section '''
+|Object Repository|BIDSSECTION                        |
+|id               |value                        |type |
+|bidsectionlabel  |//h3[contains(text(),'Bids')]|xpath|
+|newbidbtn        |//input[@title='New Bid']    |xpath|
+
+''' CM Projects - BIDS Section Column validations '''
+|Object Repository   |BIDSSECTIONCOLUMNVALIDATION                                                                                           |
+|id                  |value                                                                                                           |type |
+|actioncol           |//h3[contains(text(),'Bids')]//..//..//..//..//..//..//th[contains(text(),'Action')]                            |xpath|
+|bidnamecol          |//h3[contains(text(),'Bids')]//..//..//..//..//..//..//th[contains(text(),'Bid Name')]                          |xpath|
+|recommendedvendorcol|//h3[contains(text(),'Bids')]//..//..//..//..//..//..//th[contains(text(),'Recommended Vendor')]                |xpath|
+|bidamountcol        |//h3[contains(text(),'Bids')]//..//..//..//..//..//..//th[contains(text(),'Bid Amount')]                        |xpath|
+|bidstatuscol        |//h3[contains(text(),'Bids')]//..//..//..//..//..//..//th[contains(text(),'Bid Status')]                        |xpath|
+|commentscol         |//h3[contains(text(),'Bids')]//..//..//..//..//..//..//th[contains(text(),'Comments')]                          |xpath|
+|vendorcol           |(//h3[contains(text(),'Bids')]//..//..//..//..//..//..//th[contains(text(),'Vendor')])[2]                       |xpath|
+|editlink            |(//h3[contains(text(),'Bids')]//..//..//..//..//..//..//td[@class='actionColumn']/a[contains(text(),'Edit')])[1]|xpath|
+|dellink             |(//h3[contains(text(),'Bids')]//..//..//..//..//..//..//td[@class='actionColumn']/a[contains(text(),'Del')])[1] |xpath|
+|bideditpage         |//h2[contains(text(),'Bid Edit')]                                                                               |xpath|
+
+
+
+''' CM Projects - Top button row '''
+|Object Repository        |CMPROJECTTOPBUTTONROW                                               |
+|id                       |value                                                         |type |
+|generatebidsubmitapproval|(//td/input[@title='Generate Bid and Submit For Approval'])[1]|xpath|
+
+
+''' CM Projects - Approval History '''
+|Object Repository                      |CMPROJECTAPPROVALHISTORYSECTION                                                                                                 |
+|id                                     |value                                                                                                                     |type |
+|approvalrequestsubmitted               |//div[@class='relatedProcessHistory']//table//tbody//tr//td//span[contains(text(),'Approval Request Submitted')]          |xpath|
+|constructionmanagerapproval            |//div[@class='relatedProcessHistory']//table//tbody//tr//td//span[contains(text(),'Construction Project Manger Approval')]|xpath|
+|cosntructionmanagerapprovalorrejectlink|//div[@class='relatedProcessHistory']//table//tbody//tr//td//a[contains(text(),'Approve / Reject')]                       |xpath|
+
+
 ''' Create New CM Project '''
 |Object Repository|CREATENEWCMPROJECT                  |
 |id               |value                         |type |

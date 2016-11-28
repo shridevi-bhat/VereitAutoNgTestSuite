@@ -1,6 +1,6 @@
-!|Scenario            |associate single bid to cmproject                                                                                                                                                                         |
-|read from data for   |Bid Creation |excelsheet from|2              |for new bid                                                                                                                                                 |
-|pause  execution  for|2            |seconds                                                                                                                                                                                     |
+!|Scenario            |associate single bid to cmproject                                                                                                                                         |
+|read from data for   |Bid Creation |excelsheet from |2                |for new bid                                                                                                              |
+|pause  execution  for|2            |seconds                                                                                                                                                     |
 |add bid with bid name|{$bidbidname}|and contact name|{$bidcontactname}|and bid status|{$bidbidstatusdropdown}|and bid amount|{$bidbidamount}|and comments|{$bidcomments}|and vendor|{$bidvendor}|
 
 |Scenario       |read from data for  |sheetName       |excelsheet from               |rowNumber|for new bid|

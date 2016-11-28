@@ -4,8 +4,8 @@
 |cmprojectsbiddata|${testDataPath}/testEnvironmentData/databidcreation.xlsx|
 |cmprojectcreation|${testDataPath}/testEnvironmentData/datacmproject.xlsx  |
 
-|Object Repository|HOME                          |
-|Id               |Value                   |Type |
-|username_textbox |.//input[@id='username']|xpath|
-|pwd_textbox      |.//input[@id='password']|xpath|
-|login_button     |.//input[@id='Login']   |xpath|
+|Object Repository|HOME                         |
+|Id               |Value                  |Type |
+|username_textbox |//input[@id='username']|xpath|
+|pwd_textbox      |//input[@id='password']|xpath|
+|login_button     |//input[@id='Login']   |xpath|

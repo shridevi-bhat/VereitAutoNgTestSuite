@@ -12,14 +12,20 @@
 |log result   |COMMENT                   |with comment|Opened the URL: @url.|in page|Default Page|
 
 !|Scenario |login with username _ and password _|username , password                                            |
-|type      |@username                           |into        |.//input[@id='username']       |text field        |
-|type      |@password                           |into        |.//input[@id='password']       |text field        |
+|type      |@username                           |into        |{$HOME.username_textbox}       |text field        |
+|type      |@password                           |into        |{$HOME.pwd_textbox}            |text field        |
 |log result|COMMENT                             |with comment|Entering username and password.|in page|Login Page|
-|click     |.//input[@id='Login']                                                                               |
+|click     |{$HOME.login_button}                                                                                |
+
+!|Scenario            |logout users        |
+|click                |//div[@id='userNav']|
+|pause  execution  for|2      |seconds     |
+|click                |//a[@title='Logout']|
+|close browser                             |
 
 !|Scenario                 |login to the Vereit module          |
 |start browser and open url|{$url}                              |
 |login with username       |{$username}|and password|{$password}|
 
-!|Scenario|tear down|
-|end result         |
+!|Scenario|tear down           |
+|end result                    |
