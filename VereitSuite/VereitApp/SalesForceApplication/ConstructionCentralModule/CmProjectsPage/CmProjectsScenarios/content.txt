@@ -1,18 +1,18 @@
-!|Scenario         |verify approval request submitted                                                                                 |
-|variable          |approvalstatusinprogressfieldPresent   |equals  to                                                                |
-|wait  for  element|{$CMPROJECTINFO.approvalstatusinprogress}                                                                         |
-|assert true       |{$approvalstatusinprogressfieldPresent}                                                                           |
-|log result        |{$approvalstatusinprogressfieldPresent}|with comment|approval status in progress is present   |in page|CM Projects|
-|variable          |approvalrequestsubmittedfieldPresent   |equals  to                                                                |
-|wait  for  element|{$CMPROJECTAPPROVALHISTORYSECTION.approvalrequestsubmitted}                                                       |
-|assert true       |{$approvalrequestsubmittedfieldPresent}                                                                           |
-|log result        |{$approvalrequestsubmittedfieldPresent}|with comment|approval request submitted row is present|in page|CM Projects|
+!|Scenario         |verify approval request submitted                                                                           |
+|variable          |approvalstatusinprogressfieldPresent   |equals  to                                                          |
+|wait  for  element|{$CMPROJECTINFO.approvalstatusinprogress}                                                                   |
+|assert true       |{$approvalstatusinprogressfieldPresent}                                                                     |
+|log result        |{$approvalstatusinprogressfieldPresent}|with comment|approval status is in progress     |in page|CM Projects|
+|variable          |approvalrequestsubmittedfieldPresent   |equals  to                                                          |
+|wait  for  element|{$CMPROJECTAPPROVALHISTORYSECTION.approvalrequestsubmitted}                                                 |
+|assert true       |{$approvalrequestsubmittedfieldPresent}                                                                     |
+|log result        |{$approvalrequestsubmittedfieldPresent}|with comment|approval request has been submitted|in page|CM Projects|
 
-!|Scenario         |verify approval status is approved                                                                        |
-|variable          |approvalstatusapprovedfieldPresent   |equals  to                                                          |
-|wait  for  element|{$CMPROJECTINFO.approvalstatusapproved}                                                                   |
-|assert true       |{$approvalstatusapprovedfieldPresent}                                                                     |
-|log result        |{$approvalstatusapprovedfieldPresent}|with comment|approval status approved is present|in page|CM Projects|
+!|Scenario         |verify approval status is approved                                                                      |
+|variable          |approvalstatusapprovedfieldPresent   |equals  to                                                        |
+|wait  for  element|{$CMPROJECTINFO.approvalstatusapproved}                                                                 |
+|assert true       |{$approvalstatusapprovedfieldPresent}                                                                   |
+|log result        |{$approvalstatusapprovedfieldPresent}|with comment|approval status has been approved|in page|CM Projects|
 
 !|Scenario               |email to approve by construction manager               |
 |approve link for construction manager                                           |
@@ -22,35 +22,43 @@
 |start browser           |${defaultBrowser}                                                                                                                                      |
 |maximize browser                                                                                                                                                                |
 |open URL                |https://www.mailinator.com/inbox2.jsp?public_to=ind.con2manager#/#public_maildirdiv                                                                    |
-|pause  execution  for   |2                                                     |seconds                                                                                         |
+|pause  execution  for   |2                                    |seconds                                                                                                          |
+|variable                |isemailpresent                       |equals  to                                                                                                       |
+|wait  for  element      |(//div[contains(text(),'Sandbox: Bid Approval: Project - {$cmprojecttitledescription}')])[1]                                                           |
+|assert true             |{$isemailpresent}                                                                                                                                      |
+|log result              |{$isemailpresent}                    |with comment   |received email for approval successfully             |in page   |mail box                        |
 |click                   |(//div[contains(text(),'Sandbox: Bid Approval: Project - {$cmprojecttitledescription}')])[1]                                                           |
-|pause  execution  for   |2                                                     |seconds                                                                                         |
-|select                  |publicshowmaildivcontent                              |frame                                                                                           |
+|pause  execution  for   |2                                    |seconds                                                                                                          |
+|select                  |publicshowmaildivcontent             |frame                                                                                                            |
 |verify email message content line by line                                                                                                                                       |
 |close  window  by  title|Mailinator                                                                                                                                             |
 |start browser           |${defaultBrowser}                                                                                                                                      |
 |maximize browser                                                                                                                                                                |
 |open URL                |https://arcp--Stage.cs51.my.salesforce.com                                                                                                             |
-|pause  execution  for   |1                                                     |seconds                                                                                         |
-|type                    |ind.con2manager@mailinator.com                        |into                   |//input[@id='username']                   |text field                   |
-|pause  execution  for   |1                                                     |seconds                                                                                         |
-|type                    |welcome                                               |into                   |//input[@id='password']                   |text field                   |
-|pause  execution  for   |1                                                     |seconds                                                                                         |
+|pause  execution  for   |1                                    |seconds                                                                                                          |
+|type                    |ind.con2manager@mailinator.com       |into           |//input[@id='username']                              |text field                                 |
+|pause  execution  for   |1                                    |seconds                                                                                                          |
+|type                    |welcome                              |into           |//input[@id='password']                              |text field                                 |
+|pause  execution  for   |1                                    |seconds                                                                                                          |
 |click                   |//input[@id='Login']                                                                                                                                   |
-|pause  execution  for   |1                                                     |seconds                                                                                         |
+|pause  execution  for   |1                                    |seconds                                                                                                          |
+|variable                |islogin                              |equals  to                                                                                                       |
+|wait  for  element      |//div[@id='PendingProcessWorkitemsList_body']//th/a[contains(text(),'{$cmprojecttitledescription}')]//..//..//td/a[contains(text(),'Approve / Reject')]|
+|assert true             |{$islogin}                                                                                                                                             |
+|log result              |{$islogin}                           |with comment   |Logged in as construction manager for bid approval   |in page   |construction manager home page  |
 |click                   |//div[@id='PendingProcessWorkitemsList_body']//th/a[contains(text(),'{$cmprojecttitledescription}')]//..//..//td/a[contains(text(),'Approve / Reject')]|
-|pause  execution  for   |5                                                     |seconds                                                                                         |
-|type                    |Approved from Construction Manager                    |into                   |.//*[@id='Comments']                      |text area                    |
-|pause  execution  for   |5                                                     |seconds                                                                                         |
+|pause  execution  for   |5                                    |seconds                                                                                                          |
+|type                    |Approved from Construction Manager   |into           |.//*[@id='Comments']                                 |text area                                  |
+|pause  execution  for   |5                                    |seconds                                                                                                          |
 |click                   |//input[@title='Approve']                                                                                                                              |
-|pause  execution  for   |5                                                     |seconds                                                                                         |
+|pause  execution  for   |5                                    |seconds                                                                                                          |
 
-!|Scenario         |verify approval request submitted by construction or project manager is accepted                                                                             |
-|variable          |approvalrequestacceptedbyconstructionmanagerfieldPresent   |equals  to                                                                                       |
-|wait  for  element|//div[@class='relatedProcessHistory']//span[contains(text(),'Step: Construction Project Manager Approval')]//..//..//span[contains(text(),'Approved')]       |
-|assert true       |{$approvalrequestacceptedbyconstructionmanagerfieldPresent}                                                                                                  |
-|log result        |{$approvalrequestacceptedbyconstructionmanagerfieldPresent}|with comment|approval request accepted by construction manager row is present|in page|CM Projects|
-|logout users                                                                                                                                                                    |
+!|Scenario         |verify approval request submitted by construction or project manager is accepted                                                                      |
+|variable          |approvalrequestacceptedbyconstructionmanagerfieldPresent     |equals  to                                                                              |
+|wait  for  element|//div[@class='relatedProcessHistory']//span[contains(text(),'Step: Construction Project Manager Approval')]//..//..//span[contains(text(),'Approved')]|
+|assert true       |{$approvalrequestacceptedbyconstructionmanagerfieldPresent}                                                                                           |
+|log result        |{$approvalrequestacceptedbyconstructionmanagerfieldPresent}  |with comment  |approval request accepted by construction manager  |in page |CM Projects |
+|logout users                                                                                                                                                             |
 
 !|Scenario          |email to approve by property manager         |
 |approve link for property manager                                |
@@ -83,12 +91,12 @@
 |click                   |//input[@title='Approve']                                                                                                                              |
 |pause  execution  for   |5                                                     |seconds                                                                                         |
 
-!|Scenario         |verify approval request submitted by property manager is accepted                                                                                    |
-|variable          |approvalrequestacceptedbypropertymanagerfieldPresent   |equals  to                                                                                   |
-|wait  for  element|//div[@class='relatedProcessHistory']//span[contains(text(),'Step: Property Manager Approval')]//..//..//span[contains(text(),'Approved')]           |
-|assert true       |{$approvalrequestacceptedbypropertymanagerfieldPresent}                                                                                              |
-|log result        |{$approvalrequestacceptedbypropertymanagerfieldPresent}|with comment|approval request accepted by property manager row is present|in page|CM Projects|
-|logout users                                                                                                                                                            |
+!|Scenario         |verify approval request submitted by property manager is accepted                                                                         |
+|variable          |approvalrequestacceptedbypropertymanagerfieldPresent   |equals  to                                                                        |
+|wait  for  element|//div[@class='relatedProcessHistory']//span[contains(text(),'Step: Property Manager Approval')]//..//..//span[contains(text(),'Approved')]|
+|assert true       |{$approvalrequestacceptedbypropertymanagerfieldPresent}                                                                                   |
+|log result        |{$approvalrequestacceptedbypropertymanagerfieldPresent}|with comment|approval request accepted by property manager row|in page|CM Projects|
+|logout users                                                                                                                                                 |
 
 !|Scenario          |email to approve by asset manager         |
 |approve link for asset manager                                |
@@ -121,12 +129,13 @@
 |click                   |//input[@title='Approve']                                                                                                                              |
 |pause  execution  for   |5                                                  |seconds                                                                                            |
 
-!|Scenario         |verify approval request submitted by asset manager is accepted                                                                                  |
-|variable          |approvalrequestacceptedbyassetmanagerfieldPresent   |equals  to                                                                                 |
-|wait  for  element|//div[@class='relatedProcessHistory']//span[contains(text(),'Step: Asset Manager Approval')]//..//..//span[contains(text(),'Approved')]         |
-|assert true       |{$approvalrequestacceptedbyassetmanagerfieldPresent}                                                                                            |
-|log result        |{$approvalrequestacceptedbyassetmanagerfieldPresent}|with comment|approval request accepted by assert manager row is present|in page|CM Projects|
-|logout users                                                                                                                                                       |
+!|Scenario         |verify approval request submitted by asset manager is accepted                                                                         |
+|verify approval status is approved                                                                                                                        |
+|variable          |approvalrequestacceptedbyassetmanagerfieldPresent     |equals  to                                                                      |
+|wait  for  element|//div[@class='relatedProcessHistory']//span[contains(text(),'Step: Asset Manager Approval')]//..//..//span[contains(text(),'Approved')]|
+|assert true       |{$approvalrequestacceptedbyassetmanagerfieldPresent}                                                                                   |
+|log result        |{$approvalrequestacceptedbyassetmanagerfieldPresent}  |with comment |approval request accepted by assert manager |in page |CM Projects |
+|logout users                                                                                                                                              |
 
 !|Scenario          |email to approve by vp         |
 |approve link for vp                                |
@@ -160,10 +169,10 @@
 |pause  execution  for   |5                                             |seconds                                                                                                 |
 
 !|Scenario         |verify approval request submitted by vp is accepted                                                                                  |
-|variable          |approvalrequestacceptedbyvpfieldPresent      |equals  to                                                                             |
+|variable          |approvalrequestacceptedbyvpfieldPresent        |equals  to                                                                           |
 |wait  for  element|//div[@class='relatedProcessHistory']//span[contains(text(),'Step: Director/VP Approval')]//..//..//span[contains(text(),'Approved')]|
 |assert true       |{$approvalrequestacceptedbyvpfieldPresent}                                                                                           |
-|log result        |{$approvalrequestacceptedbyvpfieldPresent}   |with comment  |approval request accepted by vp row is present  |in page  |CM Projects  |
+|log result        |{$approvalrequestacceptedbyvpfieldPresent}     |with comment     |approval request accepted by vp row    |in page    |CM Projects    |
 |logout users                                                                                                                                            |
 
 !|Scenario          |email to approve by svp         |
@@ -174,177 +183,161 @@
 |start browser           |${defaultBrowser}                                                                                                                                      |
 |maximize browser                                                                                                                                                                |
 |open URL                |https://www.mailinator.com/inbox2.jsp?public_to=ind.svp#/#public_maildirdiv                                                                            |
-|pause  execution  for   |2                                             |seconds                                                                                                 |
+|pause  execution  for   |2                                     |seconds                                                                                                         |
+|variable                |isemailpresent                        |equals  to                                                                                                      |
+|wait  for  element      |(//div[contains(text(),'Sandbox: Bid Approval: Project - {$cmprojecttitledescription}')])[1]                                                           |
+|assert true             |{$isemailpresent}                                                                                                                                      |
+|log result              |{$isemailpresent}                     |with comment              |Got the email successfully              |in page              |mail box              |
 |click                   |(//div[contains(text(),'Sandbox: Bid Approval: Project - {$cmprojecttitledescription}')])[1]                                                           |
-|pause  execution  for   |2                                             |seconds                                                                                                 |
-|select                  |publicshowmaildivcontent                      |frame                                                                                                   |
+|pause  execution  for   |2                                     |seconds                                                                                                         |
+|select                  |publicshowmaildivcontent              |frame                                                                                                           |
 |verify email message content line by line                                                                                                                                       |
 |close  window  by  title|Mailinator                                                                                                                                             |
 |start browser           |${defaultBrowser}                                                                                                                                      |
 |maximize browser                                                                                                                                                                |
 |open URL                |https://arcp--Stage.cs51.my.salesforce.com                                                                                                             |
-|pause  execution  for   |5                                             |seconds                                                                                                 |
-|type                    |ind.svp@mailinator.com                        |into                      |//input[@id='username']                      |text field                     |
-|pause  execution  for   |5                                             |seconds                                                                                                 |
-|type                    |welcome                                       |into                      |//input[@id='password']                      |text field                     |
-|pause  execution  for   |5                                             |seconds                                                                                                 |
+|pause  execution  for   |5                                     |seconds                                                                                                         |
+|type                    |ind.svp@mailinator.com                |into                      |//input[@id='username']                 |text field                                  |
+|pause  execution  for   |5                                     |seconds                                                                                                         |
+|type                    |welcome                               |into                      |//input[@id='password']                 |text field                                  |
+|pause  execution  for   |5                                     |seconds                                                                                                         |
 |click                   |//input[@id='Login']                                                                                                                                   |
-|pause  execution  for   |5                                             |seconds                                                                                                 |
+|pause  execution  for   |5                                     |seconds                                                                                                         |
 |click                   |//div[@id='PendingProcessWorkitemsList_body']//th/a[contains(text(),'{$cmprojecttitledescription}')]//..//..//td/a[contains(text(),'Approve / Reject')]|
-|pause  execution  for   |5                                             |seconds                                                                                                 |
-|type                    |Approved from svp                             |into                      |.//*[@id='Comments']                         |text area                      |
-|pause  execution  for   |5                                             |seconds                                                                                                 |
+|pause  execution  for   |5                                     |seconds                                                                                                         |
+|type                    |Approved from svp                     |into                      |.//*[@id='Comments']                    |text area                                   |
+|pause  execution  for   |5                                     |seconds                                                                                                         |
 |click                   |//input[@title='Approve']                                                                                                                              |
-|pause  execution  for   |5                                             |seconds                                                                                                 |
+|pause  execution  for   |5                                     |seconds                                                                                                         |
 
 !|Scenario         |verify approval request submitted by svp is accepted                                                                         |
 |verify approval status is approved                                                                                                              |
-|variable          |approvalrequestacceptedbysvpfieldPresent    |equals  to                                                                      |
+|variable          |approvalrequestacceptedbysvpfieldPresent      |equals  to                                                                    |
 |wait  for  element|//div[@class='relatedProcessHistory']//span[contains(text(),'Step: SVP Approval')]//..//..//span[contains(text(),'Approved')]|
 |assert true       |{$approvalrequestacceptedbysvpfieldPresent}                                                                                  |
-|log result        |{$approvalrequestacceptedbysvpfieldPresent} |with comment|approval request accepted by svp row is present|in page|CM Projects|
+|log result        |{$approvalrequestacceptedbysvpfieldPresent}   |with comment   |approval request accepted by svp row  |in page  |CM Projects  |
 |logout users                                                                                                                                    |
 
 !|Scenario            |verify email message content line by line                                                                                                                                     |
-|pause  execution  for|5                                |seconds                                                                                                                                     |
-|variable             |emailfirstlinetextpresent        |equals  to                                                                                                                                  |
+|pause  execution  for|5                                                                                              |seconds                                                                       |
+|variable             |emailfirstlinetextpresent                                                                      |equals  to                                                                    |
 |wait  for  element   |//html/body[contains(text()[1],'A project has been submitted for your approval. Please click the link to view the Bid Review PDF:')]                                          |
 |assert true          |{$emailfirstlinetextpresent}                                                                                                                                                  |
-|log result           |{$emailfirstlinetextpresent}     |with comment|A project has been submitted for your approval. Please click the link to view the Bid Review PDF: is present|in page|email body|
-|variable             |emailsecondlinetextpresent       |equals  to                                                                                                                                  |
-|wait  for  element   |//html/body/p/a[contains(text(),'pdf')]                                                                                                                                       |
+|variable             |emailsecondlinetextpresent                                                                     |equals  to                                                                    |
+|verify page contains |//html/body/p/a[contains(text(),'pdf')]                                                        |element                                                                       |
 |assert true          |{$emailsecondlinetextpresent}                                                                                                                                                 |
-|log result           |{$emailsecondlinetextpresent}    |with comment|bid pdf file link is present                                                                                |in page|email body|
-|variable             |emailthirdlinetextpresent        |equals  to                                                                                                                                  |
-|wait  for  element   |//html/body[contains(text()[2],'Following are the submitted bids and their attachment links:')]                                                                               |
+|variable             |emailthirdlinetextpresent                                                                      |equals  to                                                                    |
+|verify page contains |//html/body[contains(text()[2],'Following are the submitted bids and their attachment links:')]|element                                                                       |
 |assert true          |{$emailthirdlinetextpresent}                                                                                                                                                  |
-|log result           |{$emailthirdlinetextpresent}     |with comment|Following are the submitted bids and their attachment links: is present                                     |in page|email body|
-|variable             |emailfourthlinetextpresent       |equals  to                                                                                                                                  |
-|wait  for  element   |//html/body/b[contains(text(),'Bid Name:')]                                                                                                                                   |
+|variable             |emailfourthlinetextpresent                                                                     |equals  to                                                                    |
+|verify page contains |//html/body/b[contains(text(),'Bid Name:')]                                                    |element                                                                       |
 |assert true          |{$emailfourthlinetextpresent}                                                                                                                                                 |
-|log result           |{$emailfourthlinetextpresent}    |with comment|bid name is present                                                                                         |in page|email body|
-|variable             |emailfifthlinetextpresent        |equals  to                                                                                                                                  |
-|wait  for  element   |//span[contains(text(),'No Attachments!')]                                                                                                                                    |
+|variable             |emailfifthlinetextpresent                                                                      |equals  to                                                                    |
+|verify page contains |//span[contains(text(),'No Attachments!')]                                                     |element                                                                       |
 |assert true          |{$emailfifthlinetextpresent}                                                                                                                                                  |
-|log result           |{$emailfifthlinetextpresent}     |with comment|no attachment text is present                                                                               |in page|email body|
-|variable             |emailsixthlinetextpresent        |equals  to                                                                                                                                  |
-|wait  for  element   |//font[@color='Green' and contains(text()[1],'To Approve,')]                                                                                                                  |
+|variable             |emailsixthlinetextpresent                                                                      |equals  to                                                                    |
+|verify page contains |//font[@color='Green' and contains(text()[1],'To Approve,')]                                   |element                                                                       |
 |assert true          |{$emailsixthlinetextpresent}                                                                                                                                                  |
-|log result           |{$emailsixthlinetextpresent}     |with comment|to approve text is present                                                                                  |in page|email body|
-|variable             |emailseventhlineonetextpresent   |equals  to                                                                                                                                  |
-|wait  for  element   |//font[@color='Green' and contains(text()[2],'Please reply with')]                                                                                                            |
+|variable             |emailseventhlineonetextpresent                                                                 |equals  to                                                                    |
+|verify page contains |//font[@color='Green' and contains(text()[2],'Please reply with')]                             |element                                                                       |
 |assert true          |{$emailseventhlineonetextpresent}                                                                                                                                             |
-|log result           |{$emailseventhlineonetextpresent}|with comment|please reply with green text is present                                                                     |in page|email body|
-|variable             |emailseventhlinetwotextpresent   |equals  to                                                                                                                                  |
-|wait  for  element   |//font[@color='Green']/b[contains(text(),'Approve/Approved/Yes')]                                                                                                             |
+|variable             |emailseventhlinetwotextpresent                                                                 |equals  to                                                                    |
+|verify page contains |//font[@color='Green']/b[contains(text(),'Approve/Approved/Yes')]                              |element                                                                       |
 |assert true          |{$emailseventhlinetwotextpresent}                                                                                                                                             |
-|log result           |{$emailseventhlinetwotextpresent}|with comment|approve approved yes text is present                                                                        |in page|email body|
-|variable             |emaileightlinetextpresent        |equals  to                                                                                                                                  |
-|wait  for  element   |//font[@color='Red' and contains(text()[1],'To Reject,')]                                                                                                                     |
+|variable             |emaileightlinetextpresent                                                                      |equals  to                                                                    |
+|verify page contains |//font[@color='Red' and contains(text()[1],'To Reject,')]                                      |element                                                                       |
 |assert true          |{$emaileightlinetextpresent}                                                                                                                                                  |
-|log result           |{$emaileightlinetextpresent}     |with comment|to reject text is present                                                                                   |in page|email body|
-|variable             |emailninthlineonetextpresent     |equals  to                                                                                                                                  |
-|wait  for  element   |//font[@color='Red' and contains(text()[2],'Please reply with')]                                                                                                              |
+|variable             |emailninthlineonetextpresent                                                                   |equals  to                                                                    |
+|verify page contains |//font[@color='Red' and contains(text()[2],'Please reply with')]                               |element                                                                       |
 |assert true          |{$emailninthlineonetextpresent}                                                                                                                                               |
-|log result           |{$emailninthlineonetextpresent}  |with comment|please reply with red text is present                                                                       |in page|email body|
-|variable             |emailninthlinetwotextpresent     |equals  to                                                                                                                                  |
-|wait  for  element   |//font[@color='Red']/b[contains(text(),'Reject/Rejected/No')]                                                                                                                 |
+|variable             |emailninthlinetwotextpresent                                                                   |equals  to                                                                    |
+|verify page contains |//font[@color='Red']/b[contains(text(),'Reject/Rejected/No')]                                  |element                                                                       |
 |assert true          |{$emailninthlinetwotextpresent}                                                                                                                                               |
-|log result           |{$emailninthlinetwotextpresent}  |with comment|reject rejected no text is present                                                                          |in page|email body|
-|variable             |emailtenthlinetextpresent        |equals  to                                                                                                                                  |
-|wait  for  element   |//td[contains(text(),'View CM Project')]                                                                                                                                      |
+|variable             |emailtenthlinetextpresent                                                                      |equals  to                                                                    |
+|verify page contains |//td[contains(text(),'View CM Project')]                                                       |element                                                                       |
 |assert true          |{$emailtenthlinetextpresent}                                                                                                                                                  |
-|log result           |{$emailtenthlinetextpresent}     |with comment|view cm project text is present                                                                             |in page|email body|
-|variable             |emaileleventhlinetextpresent     |equals  to                                                                                                                                  |
-|wait  for  element   |//td/a[contains(text(),'Click here to approve')]                                                                                                                              |
+|variable             |emaileleventhlinetextpresent                                                                   |equals  to                                                                    |
+|verify page contains |//td/a[contains(text(),'Click here to approve')]                                               |element                                                                       |
 |assert true          |{$emaileleventhlinetextpresent}                                                                                                                                               |
-|log result           |{$emaileleventhlinetextpresent}  |with comment|link click here to approve text is present                                                                  |in page|email body|
+|log result           |{$emailfirstlinetextpresent}                                                                   |with comment|verified the content of the email successfully|in page|email body|
 
-!|Scenario            |cmproject information                                                                                                            |
-|add new cmproject request                                                                                                                              |
-|click                |{$HOMETABS.cmprojecttab}                                                                                                         |
-|pause  execution  for|5                                        |seconds                                                                                |
-|variable             |isNewButtonPresent                       |equals  to                                                                             |
-|wait  for  element   |{$CREATENEWCMPROJECT.newbutton}                                                                                                  |
-|assert true          |{$isNewButtonPresent}                                                                                                            |
-|log result           |{$isNewButtonPresent}                    |with comment|New Button is present                      |in page|CM Project - Home page|
-|click                |{$CREATENEWCMPROJECT.newbutton}                                                                                                  |
-|pause  execution  for|4                                        |seconds                                                                                |
-|variable             |isContinueButtonPresent                  |equals  to                                                                             |
-|wait  for  element   |{$SELECTCMPROJECTTYPE.continuebtn}                                                                                               |
-|assert true          |{$isContinueButtonPresent}                                                                                                       |
-|log result           |{$isContinueButtonPresent}               |with comment|Continue Button is present                 |in page|CM Project - Home page|
-|click                |{$SELECTCMPROJECTTYPE.continuebtn}                                                                                               |
-|pause  execution  for|3                                        |seconds                                                                                |
-|type                 |{$building}                              |into        |{$CMPROJECTINFO.buildinglookup}            |text field                    |
-|pause  execution  for|3                                        |seconds                                                                                |
-|variable             |isStatusDropdownPresent                  |equals  to                                                                             |
-|wait  for  element   |{$CMPROJECTINFO.status}                                                                                                          |
-|assert true          |{$isStatusDropdownPresent}                                                                                                       |
-|log result           |{$isStatusDropdownPresent}               |with comment|Status Dropdown is present                 |in page|CMProject page        |
-|select               |{$status}                                |from        |{$CMPROJECTINFO.status}                                                   |
-|variable             |isWorkTypeDropdownPresent                |equals  to                                                                             |
-|wait  for  element   |{$CMPROJECTINFO.worktype}                                                                                                        |
-|assert true          |{$isWorkTypeDropdownPresent}                                                                                                     |
-|log result           |{$isWorkTypeDropdownPresent}             |with comment|Work Type Dropdown is present              |in page|CMProject page        |
-|select               |{$worktype}                              |from        |{$CMPROJECTINFO.worktype}                                                 |
-|pause  execution  for|3                                        |seconds                                                                                |
-|variable             |isOriginationDropdownPresent             |equals  to                                                                             |
-|wait  for  element   |{$CMPROJECTINFO.origination}                                                                                                     |
-|assert true          |{$isOriginationDropdownPresent}                                                                                                  |
-|log result           |{$isOriginationDropdownPresent}          |with comment|Origination Dropdown is present            |in page|CMProject page        |
-|select               |{$origination}                           |from        |{$CMPROJECTINFO.origination}                                              |
-|pause  execution  for|3                                        |seconds                                                                                |
-|variable             |isTaskDropdownPresent                    |equals  to                                                                             |
-|wait  for  element   |{$CMPROJECTINFO.task}                                                                                                            |
-|assert true          |{$isTaskDropdownPresent}                                                                                                         |
-|log result           |{$isTaskDropdownPresent}                 |with comment|Task Dropdown is present                   |in page|CMProject page        |
-|select               |{$task}                                  |from        |{$CMPROJECTINFO.task}                                                     |
-|pause  execution  for|3                                        |seconds                                                                                |
-|variable             |isCategoryDropdownPresent                |equals  to                                                                             |
-|wait  for  element   |{$CMPROJECTINFO.category}                                                                                                        |
-|assert true          |{$isCategoryDropdownPresent}                                                                                                     |
-|log result           |{$isCategoryDropdownPresent}             |with comment|Category Dropdown is present               |in page|CMProject page        |
-|select               |{$category}                              |from        |{$CMPROJECTINFO.category}                                                 |
-|variable             |isContractAgreementTypeDropdownPresent   |equals  to                                                                             |
-|wait  for  element   |{$CMPROJECTINFO.contractagreementtype}                                                                                           |
-|assert true          |{$isContractAgreementTypeDropdownPresent}                                                                                        |
-|log result           |{$isContractAgreementTypeDropdownPresent}|with comment|Contract Agreement Type Dropdown is present|in page|CMProject page        |
-|select               |{$contractagreementtype}                 |from        |{$CMPROJECTINFO.contractagreementtype}                                    |
-|pause  execution  for|4                                        |seconds                                                                                |
-|type                 |{$budgetyear}                            |into        |{$KDATE.budgetyear}                        |text field                    |
-|pause  execution  for|3                                        |seconds                                                                                |
-|variable             |isBudgetmonthDropdownPresent             |equals  to                                                                             |
-|wait  for  element   |{$KDATE.budgetmonth}                                                                                                             |
-|assert true          |{$isBudgetmonthDropdownPresent}                                                                                                  |
-|log result           |{$isBudgetmonthDropdownPresent}          |with comment|Budget Month Dropdown is present           |in page|CMProject page        |
-|select               |{$budgetmonth}                           |from        |{$KDATE.budgetmonth}                                                      |
-|pause  execution  for|2                                        |seconds                                                                                |
-|type                 |10/08/2016                               |into        |{$KDATE.requestDate}                       |text field                    |
-|pause  execution  for|2                                        |seconds                                                                                |
-|type                 |10/12/2016                               |into        |{$KDATE.completionDate}                    |text field                    |
-|pause  execution  for|2                                        |seconds                                                                                |
-|type                 |{$estimated}                             |into        |{$FINANCIALS.estimated}                    |text field                    |
-|pause  execution  for|3                                        |seconds                                                                                |
-|select               |{$budgeted}                              |from        |{$FINANCIALS.budgeted}                                                    |
-|pause  execution  for|2                                        |seconds                                                                                |
-|type                 |{$consopsmgr}                            |into        |{$CONTACTS.consopsmanager}                 |text area                     |
-|pause  execution  for|2                                        |seconds                                                                                |
-|type                 |{$propmgr}                               |into        |{$CONTACTS.propertymanager}                |text area                     |
-|pause  execution  for|2                                        |seconds                                                                                |
-|type                 |{$assetmgr}                              |into        |{$CONTACTS.assetmanager}                   |text area                     |
-|pause  execution  for|2                                        |seconds                                                                                |
-|variable             |isSaveButtonPresent                      |equals  to                                                                             |
-|wait  for  element   |{$CMPROJECTSAVE.savebutton}                                                                                                      |
-|assert true          |{$isSaveButtonPresent}                                                                                                           |
-|log result           |{$isSaveButtonPresent}                   |with comment|Save Button is present                     |in page|CMProject page        |
-|click                |{$CMPROJECTSAVE.savebutton}                                                                                                      |
-|pause  execution  for|4                                        |seconds                                                                                |
-|variable             |cmprojecttitledescription                |equals  to                                                                             |
-|get  text  from      |//h2[@class='pageDescription']                                                                                                   |
-|show                 |evaluate                                 |{$cmprojecttitledescription}                                                           |
-
-
+!|Scenario            |cmproject information                                                                                                     |
+|add new cmproject request                                                                                                                       |
+|click                |{$HOMETABS.cmprojecttab}                                                                                                  |
+|pause  execution  for|5                                     |seconds                                                                            |
+|variable             |isNewButtonPresent                    |equals  to                                                                         |
+|wait  for  element   |{$CREATENEWCMPROJECT.newbutton}                                                                                           |
+|assert true          |{$isNewButtonPresent}                                                                                                     |
+|log result           |{$isNewButtonPresent}                 |with comment|CM Project home loaded successfully    |in page|CM Project - Home page|
+|click                |{$CREATENEWCMPROJECT.newbutton}                                                                                           |
+|pause  execution  for|4                                     |seconds                                                                            |
+|variable             |isContinueButtonPresent               |equals  to                                                                         |
+|wait  for  element   |{$SELECTCMPROJECTTYPE.continuebtn}                                                                                        |
+|assert true          |{$isContinueButtonPresent}                                                                                                |
+|log result           |{$isContinueButtonPresent}            |with comment|Select CM Project Record Type          |in page|CM Project - Home page|
+|click                |{$SELECTCMPROJECTTYPE.continuebtn}                                                                                        |
+|pause  execution  for|3                                     |seconds                                                                            |
+|variable             |isbuildinglookup                      |equals  to                                                                         |
+|wait  for  element   |{$CMPROJECTINFO.buildinglookup}                                                                                           |
+|assert true          |{$isbuildinglookup}                                                                                                       |
+|log result           |{$isbuildinglookup}                   |with comment|CM Project edit page loaded succesfully|in page|CMProject edit page   |
+|type                 |{$building}                           |into        |{$CMPROJECTINFO.buildinglookup}        |text field                    |
+|pause  execution  for|3                                     |seconds                                                                            |
+|variable             |isStatusDropdownPresent               |equals  to                                                                         |
+|verify page contains |{$CMPROJECTINFO.status}               |element                                                                            |
+|assert true          |{$isStatusDropdownPresent}                                                                                                |
+|select               |{$status}                             |from        |{$CMPROJECTINFO.status}                                               |
+|variable             |isWorkTypeDropdownPresent             |equals  to                                                                         |
+|verify page contains |{$CMPROJECTINFO.worktype}             |element                                                                            |
+|assert true          |{$isWorkTypeDropdownPresent}                                                                                              |
+|select               |{$worktype}                           |from        |{$CMPROJECTINFO.worktype}                                             |
+|pause  execution  for|3                                     |seconds                                                                            |
+|variable             |isOriginationDropdownPresent          |equals  to                                                                         |
+|wait  for  element   |{$CMPROJECTINFO.origination}                                                                                              |
+|select               |{$origination}                        |from        |{$CMPROJECTINFO.origination}                                          |
+|pause  execution  for|3                                     |seconds                                                                            |
+|variable             |isTaskDropdownPresent                 |equals  to                                                                         |
+|wait  for  element   |{$CMPROJECTINFO.task}                                                                                                     |
+|select               |{$task}                               |from        |{$CMPROJECTINFO.task}                                                 |
+|pause  execution  for|3                                     |seconds                                                                            |
+|variable             |isCategoryDropdownPresent             |equals  to                                                                         |
+|wait  for  element   |{$CMPROJECTINFO.category}                                                                                                 |
+|select               |{$category}                           |from        |{$CMPROJECTINFO.category}                                             |
+|variable             |isContractAgreementTypeDropdownPresent|equals  to                                                                         |
+|wait  for  element   |{$CMPROJECTINFO.contractagreementtype}                                                                                    |
+|select               |{$contractagreementtype}              |from        |{$CMPROJECTINFO.contractagreementtype}                                |
+|pause  execution  for|4                                     |seconds                                                                            |
+|type                 |{$budgetyear}                         |into        |{$KDATE.budgetyear}                    |text field                    |
+|pause  execution  for|3                                     |seconds                                                                            |
+|variable             |isBudgetmonthDropdownPresent          |equals  to                                                                         |
+|wait  for  element   |{$KDATE.budgetmonth}                                                                                                      |
+|select               |{$budgetmonth}                        |from        |{$KDATE.budgetmonth}                                                  |
+|pause  execution  for|2                                     |seconds                                                                            |
+|type                 |10/08/2016                            |into        |{$KDATE.requestDate}                   |text field                    |
+|pause  execution  for|2                                     |seconds                                                                            |
+|type                 |10/12/2016                            |into        |{$KDATE.completionDate}                |text field                    |
+|pause  execution  for|2                                     |seconds                                                                            |
+|type                 |{$estimated}                          |into        |{$FINANCIALS.estimated}                |text field                    |
+|pause  execution  for|3                                     |seconds                                                                            |
+|select               |{$budgeted}                           |from        |{$FINANCIALS.budgeted}                                                |
+|pause  execution  for|2                                     |seconds                                                                            |
+|type                 |{$consopsmgr}                         |into        |{$CONTACTS.consopsmanager}             |text area                     |
+|pause  execution  for|2                                     |seconds                                                                            |
+|type                 |{$propmgr}                            |into        |{$CONTACTS.propertymanager}            |text area                     |
+|pause  execution  for|2                                     |seconds                                                                            |
+|type                 |{$assetmgr}                           |into        |{$CONTACTS.assetmanager}               |text area                     |
+|pause  execution  for|2                                     |seconds                                                                            |
+|variable             |isSaveButtonPresent                   |equals  to                                                                         |
+|verify page contains |{$CMPROJECTSAVE.savebutton}           |element                                                                            |
+|assert true          |{$isSaveButtonPresent}                                                                                                    |
+|click                |{$CMPROJECTSAVE.savebutton}                                                                                               |
+|pause  execution  for|4                                     |seconds                                                                            |
+|variable             |cmprojecttitledescription             |equals  to                                                                         |
+|get  text  from      |//h2[@class='pageDescription']                                                                                            |
+|variable             |iscmprojecttitledescription           |equals  to                                                                         |
+|verify page contains |{$cmprojecttitledescription}          |text                                                                               |
+|assert true          |{$iscmprojecttitledescription}                                                                                            |
+|log result           |{$iscmprojecttitledescription}        |with comment|CM Project request created successfully|in page|CM Project page       |
 
 
 

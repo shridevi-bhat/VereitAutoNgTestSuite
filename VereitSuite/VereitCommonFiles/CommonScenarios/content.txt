@@ -23,9 +23,10 @@
 |click                |//a[@title='Logout']|
 |close browser                             |
 
-!|Scenario                 |login to the Vereit module          |
-|start browser and open url|{$url}                              |
-|login with username       |{$username}|and password|{$password}|
+!|Scenario                 |login to the Vereit module                                    |
+|start browser and open url|{$url}                                                        |
+|login with username       |{$username}|and password|{$password}                          |
+|log result                |COMMENT    |with comment|Login successful|in page|Default Page|
 
-!|Scenario|tear down           |
-|end result                    |
+!|Scenario|tear down|
+|end result         |

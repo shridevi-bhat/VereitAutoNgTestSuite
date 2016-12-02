@@ -15,3 +15,7 @@
 |If                  |{$loadVereitEnvy}                  |
 |read login data from|vereit                 |excelsheet |
 |End If                                                  |
+
+!|Scenario             |set suite path|path      |
+|variable              |suitePath     |equals  to|
+|get absolute page path|@path                    |

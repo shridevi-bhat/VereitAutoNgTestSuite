@@ -1,8 +1,8 @@
-|Data Repository  |DATASHEET                                               |
-|Id               |Value                                                   |
-|vereit           |${testDataPath}/testEnvironmentData/data_vereit.xlsx    |
-|cmprojectsbiddata|${testDataPath}/testEnvironmentData/databidcreation.xlsx|
-|cmprojectcreation|${testDataPath}/testEnvironmentData/datacmproject.xlsx  |
+|Data Repository  |DATASHEET                        |
+|Id               |Value                            |
+|vereit           |{$suitePath}/data_vereit.xlsx    |
+|cmprojectsbiddata|{$suitePath}/databidcreation.xlsx|
+|cmprojectcreation|{$suitePath}/datacmproject.xlsx  |
 
 |Object Repository|HOME                         |
 |Id               |Value                  |Type |
