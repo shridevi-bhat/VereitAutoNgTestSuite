@@ -28,5 +28,12 @@
 |login with username       |{$username}|and password|{$password}                          |
 |log result                |COMMENT    |with comment|Login successful|in page|Default Page|
 
-!|Scenario|tear down|
-|end result         |
+!|Scenario            |tear down                     |
+|click                |(.//input[@title='Delete'])[1]|
+|pause  execution  for|5             |seconds        |
+|variable             |isvisible     |equals  to     |
+|verify  popup  is    |visible                       |
+|If                   |{$isvisible}                  |
+|popup  action        |ok                            |
+|End If                                              |
+|end result                                          |

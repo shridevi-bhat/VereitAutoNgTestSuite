@@ -1,2 +1,0 @@
-!include -c <FinancialAidSuite.FinancialAid.CommonScenarios.AwardSetup.AwardSetupScenarios
-!include -c <FinancialAidSuite.FinancialAid.CommonScenarios.AwardSetup.ObjectRepository

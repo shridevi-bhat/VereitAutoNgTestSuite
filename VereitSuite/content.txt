@@ -11,4 +11,3 @@
 !define testDataPath {./FitNesseRoot/AutomationNg/VereitSuite/VereitApp}
 
 
-

@@ -1,4 +1,0 @@
-|Object Repository|ADMIN                                                                                                                          |
-|Id               |Value                                                                                                                    |Type |
-|grid |//*[@id='main']//descendant::h1[contains(text(),'@tableName')]/../div[2]//table//tbody//tr[2]                            |xpath|
-|color     |//*[@id='main']//descendant::h1[contains(text(),'@tableName')]/../div[2]//table//tbody//tr[contains(@class,'GO13BLHBMI')]|xpath|

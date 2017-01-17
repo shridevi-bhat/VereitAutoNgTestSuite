@@ -1,5 +1,0 @@
-|Object Repository        |FAGRPPROGRPACTADDTOUCHPOINT                                               |
-|Id                       |Value                                                               |Type |
-|addupdatetouchpointlink  |//a[@class='gwt-Anchor'][contains(text(),'Touchpoints')]            |xpath|
-|groupnameintouchpointlist|//span[@class='inlineH2Orange']/span[contains(text(),'FA_GRP_PRO1')]|xpath|
-|addtouchpointtypebtn     |//div[@class='gridActions']/a[2]                                    |xpath|

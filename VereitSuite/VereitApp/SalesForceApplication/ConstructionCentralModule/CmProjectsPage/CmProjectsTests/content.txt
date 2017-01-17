@@ -5,12 +5,14 @@ Go to CM projects
 Click new 'Project' request for multitenant
 Edit all the required fields 
 Save the project 
-Create a bid with 25,000 as quote 
+Create a bid with 100000 as quote 
 associate the bid with the CM project
 Generate bid and submit for approval
 Approval by the Construction manager
 Approval by the Property manager
 Approval by Asset manager
+Approval by VP
+Approval by SVP
 Verify each mail sent to the approver
 Verify the approval status
 Log out and close the browser 
@@ -46,5 +48,6 @@ Log out and close the browser
 |email to approve by construction manager                             |
 |email to approve by property manager                                 |
 |email to approve by asset manager                                    |
-|tear down                                                            |
-
+|email to approve by vp                                               |
+|email to approve by svp                                              |
+|end result                                                           |

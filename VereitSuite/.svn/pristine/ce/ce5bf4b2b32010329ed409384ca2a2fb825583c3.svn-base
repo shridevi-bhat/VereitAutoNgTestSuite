@@ -1,8 +1,0 @@
-!|Scenario            |search for student      |searchid                                           |
-|pause  execution  for|5                       |seconds                                            |
-|type                 |10001                   |into        |{$STUDENT.studentid}|text field       |
-|pause  execution  for|2                       |seconds                                            |
-|variable             |isSearchButtonPresent   |equals  to                                         |
-|click                |{$SEARCH.searchbutton}  |                                                   |
-|assert true          |{$isSearchButtonPresent}                                                    |
-|log result           |{$isSearchButtonPresent}|with comment|search button       |in page|Home page|

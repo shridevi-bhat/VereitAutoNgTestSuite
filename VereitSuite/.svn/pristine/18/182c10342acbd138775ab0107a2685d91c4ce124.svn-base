@@ -1,6 +1,0 @@
-!include -c <FinancialAidSuite.FinancialAid.CommonScenarios.AdministrationModule.FieldsVerfication.FieldsVerficationImpl
-!include -c <FinancialAidSuite.FinancialAid.CommonScenarios.AdministrationModule.FieldsVerfication.NameField
-!include -c <FinancialAidSuite.FinancialAid.CommonScenarios.AdministrationModule.FieldsVerfication.SequenceFields
-!include -c <FinancialAidSuite.FinancialAid.CommonScenarios.AdministrationModule.FieldsVerfication.DescriptionField
-!include -c <FinancialAidSuite.FinancialAid.CommonScenarios.AdministrationModule.FieldsVerfication.EffectiveDateAndEndDateField
-

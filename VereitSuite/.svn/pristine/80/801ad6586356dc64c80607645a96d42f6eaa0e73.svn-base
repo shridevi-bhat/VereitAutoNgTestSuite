@@ -1,6 +1,0 @@
-|import                          |
-|net.indecomm.autong.api.fitnesse|
-
-
-!|Script                          |AutomationNG|
-|set test                         |${PAGE_NAME}|

@@ -1,4 +1,0 @@
-!|Scenario      |read login data from|sheetName       |excelsheet for students                  |
-|load           |@sheetName          |excel sheet from|{$DATASHEET.awardmanagement}|in|read|Mode|
-|variable       |userId              |equals to                                                 |
-|getFromExcelRow|2                   |Column          |1                                        |

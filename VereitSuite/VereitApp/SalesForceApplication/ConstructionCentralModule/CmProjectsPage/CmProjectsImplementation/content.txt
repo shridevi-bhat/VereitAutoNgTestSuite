@@ -43,12 +43,3 @@
 |getFromExcelRow|@rowNumber           |Column          |18                                                                 |
 |show           |evaluate             |{$svp}                                                                              |
 
-!|Scenario            |add bid approver                                     |
-|read from data for   |bidapprover|excelsheet from|2|for adding bid approver|
-|pause  execution  for|2          |seconds                                  |
-
-!|Scenario      |read from data for  |sheetName       |excelsheet from         |rowNumber|for adding bid approver|
-|load           |@sheetName          |excel sheet from|{$DATASHEET.bidapprover}|in       |read       |Mode       |
-|variable       |constructionmanager|equals to                                                                  |
-|getFromExcelRow|@rowNumber          |Column          |1                                                         |
-|show|evaluate | {$constructionmanager}|
